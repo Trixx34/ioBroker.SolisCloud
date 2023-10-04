@@ -2,14 +2,19 @@
     "i18n": true,
     "type": "panel",
     "items": {
-        "option1": {
-            "type": "checkbox",
-            "label": "option1",
+        "apiKey": {
+            "type": "text",
+            "label": "apiKey",
             "newLine": true
         },
-        "option2": {
+        "apiSecret": {
+            "type": "password",
+            "label": "apiSecret",
+            "newLine": true
+        },
+        "plantId": {
             "type": "text",
-            "label": "option2",
+            "label": "plantId",
             "newLine": true
         }
     }

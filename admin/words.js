@@ -16,28 +16,28 @@ systemDictionary = {
         'pl': 'Ustawienia adaptera dla template',
         'zh-cn': 'template的适配器设置'
     },
-    'option1': {
-        'en': 'option1',
-        'de': 'Option 1',
-        'ru': 'Опция 1',
-        'pt': 'Opção 1',
-        'nl': 'Optie 1',
-        'fr': 'Option 1',
-        'it': 'opzione 1',
-        'es': 'Opción 1',
-        'pl': 'opcja 1',
-        'zh-cn': '选项1'
+    'apiKey': {
+        'en': 'apiKey',
+        'de': 'apiKey',
+        'ru': 'apiKey',
+        'pt': 'apiKey',
+        'nl': 'apiKey',
+        'fr': 'apiKey',
+        'it': 'apiKey',
+        'es': 'apiKey',
+        'pl': 'apiKey',
+        'zh-cn': 'apiKey'
     },
-    'option2': {
-        'en': 'option2',
-        'de': 'Option 2',
-        'ru': 'вариант 2',
-        'pt': 'opção 2',
-        'nl': 'Optie 2',
-        'fr': 'Option 2',
-        'it': 'opzione 2',
-        'es': 'opcion 2',
-        'pl': 'Opcja 2',
-        'zh-cn': '选项2'
+    'ApiSecret': {
+        'en': 'ApiSecret',
+        'de': 'ApiSecret',
+        'ru': 'ApiSecret',
+        'pt': 'ApiSecret',
+        'nl': 'ApiSecret',
+        'fr': 'ApiSecret',
+        'it': 'ApiSecret',
+        'es': 'ApiSecret',
+        'pl': 'ApiSecret',
+        'zh-cn': 'ApiSecret'
     }
 };
