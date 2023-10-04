@@ -1,0 +1,21 @@
+{
+  "i18n": true,
+  "type": "panel",
+  "items": {
+    "apiKey": {
+      "type": "text",
+      "label": "apiKey",
+      "newLine": true
+    },
+    "apiSecret": {
+      "type": "text",
+      "label": "apiSecret",
+      "newLine": true
+    },
+    "stationId": {
+      "type": "text",
+      "label": "stationId",
+      "newLine": true
+    }
+  }
+}

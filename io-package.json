@@ -1,0 +1,58 @@
+{
+  "common": {
+    "name": "solis",
+    "version": "0.0.1",
+    "news": {
+      "0.0.1": {
+        "en": "initial release",
+        "de": "Erstveröffentlichung",
+        "ru": "Начальная версия",
+        "pt": "lançamento inicial",
+        "nl": "Eerste uitgave",
+        "fr": "Première version",
+        "it": "Versione iniziale",
+        "es": "Versión inicial",
+        "pl": "Pierwsze wydanie",
+        "zh-cn": "首次出版"
+      }
+    },
+    "title": "SolisIOB (TypeScript)",
+    "titleLang": {
+      "en": "SolisIOB"
+    },
+    "desc": {
+      "en": "Reads value from soliscloud"
+    },
+    "authors": ["Author <author@mail.com>"],
+    "keywords": ["ioBroker", "Solis", "Smart Home", "home automation"],
+    "license": "MIT",
+    "platform": "Javascript/Node.js",
+    "main": "build/main.js",
+    "icon": "Solis.png",
+    "enabled": true,
+    "extIcon": "https://raw.githubusercontent.com/Author/ioBroker.template/main/admin/template.png",
+    "readme": "https://github.com/Author/ioBroker.template/blob/main/README.md",
+    "loglevel": "info",
+    "mode": "daemon",
+    "type": "general",
+    "compact": true,
+    "adminUI": {
+      "config": "json",
+      "tab": "materialize"
+    },
+    "supportCustoms": true,
+    "dependencies": [
+      {
+        "js-controller": ">=3.3.22"
+      }
+    ],
+    "globalDependencies": [
+      {
+        "admin": ">=5.1.13"
+      }
+    ]
+  },
+  "native": {},
+  "objects": [],
+  "instanceObjects": []
+}
