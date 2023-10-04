@@ -20,10 +20,7 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
 var utils = __toESM(require("@iobroker/adapter-core"));
 const axios = require("axios");
 const crypto = require("crypto");
-const mqtt = require("mqtt");
-const fs = require("fs");
 const API_BASE_URL = "https://www.soliscloud.com:13333";
-const API_STATION = "/v1/api/userStationList";
 class Solis extends utils.Adapter {
   constructor(options = {}) {
     super({
@@ -35,23 +32,26 @@ class Solis extends utils.Adapter {
     this.on("unload", this.onUnload.bind(this));
   }
   async onReady() {
-    let apiKey = this.config.apiKey;
-    let apiSecret = this.config.apiSecret;
-    let stationId = this.config.stationId;
-    let callResult = await this.getStationDetails(stationId, apiKey, apiSecret);
-    this.log.info("If this works, the consumption should be: " + (callResult == null ? void 0 : callResult.current_consumption));
+    const apiKey = this.config.apiKey;
+    const apiSecret = this.config.apiSecret;
+    const stationId = this.config.stationId;
+    const callResult = await this.getStationDetails(stationId, apiKey, apiSecret);
     await this.setObjectNotExistsAsync("currentConsumption", {
       type: "state",
       common: {
         name: "currentConsumption",
-        type: "boolean",
+        type: "string",
         role: "indicator",
         read: true,
         write: true
       },
       native: {}
     });
-    this.subscribeStates("testVariable");
+    this.subscribeStates("currentConsumption");
+    if (callResult) {
+      await this.setStateAsync("currentConsumption", callResult.solis_current_consumption);
+      this.log.info(callResult == null ? void 0 : callResult.solis_battery_current_usage.toString());
+    }
   }
   onUnload(callback) {
     try {
@@ -91,15 +91,15 @@ class Solis extends utils.Adapter {
         data: requestBody
       });
       const result = {
-        current_Power: response.data.data.power,
-        current_consumption: response.data.data.familyLoadPower,
-        current_From_Net: response.data.data.psum,
-        sold_Today: response.data.data.gridSellDayEnergy,
-        generated_Today: response.data.data.dayEnergy,
-        bought_Today: response.data.data.gridPurchasedDayEnergy,
-        consumption_Today: response.data.data.homeLoadEnergy,
-        battery_percent: response.data.data.batteryPercent,
-        battery_current_usage: response.data.data.batteryPower
+        solis_current_Power: response.data.data.power,
+        solis_current_consumption: response.data.data.familyLoadPower,
+        solis_current_From_Net: response.data.data.psum,
+        solis_sold_Today: response.data.data.gridSellDayEnergy,
+        solis_generated_Today: response.data.data.dayEnergy,
+        solis_bought_Today: response.data.data.gridPurchasedDayEnergy,
+        solis_consumption_Today: response.data.data.homeLoadEnergy,
+        solis_battery_percent: response.data.data.batteryPercent,
+        solis_battery_current_usage: response.data.data.batteryPower
       };
       return result;
     } catch (error) {
