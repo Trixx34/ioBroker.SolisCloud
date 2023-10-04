@@ -1,21 +1,16 @@
 {
-  "i18n": true,
-  "type": "panel",
-  "items": {
-    "apiKey": {
-      "type": "text",
-      "label": "apiKey",
-      "newLine": true
-    },
-    "apiSecret": {
-      "type": "text",
-      "label": "apiSecret",
-      "newLine": true
-    },
-    "stationId": {
-      "type": "text",
-      "label": "stationId",
-      "newLine": true
+    "i18n": true,
+    "type": "panel",
+    "items": {
+        "option1": {
+            "type": "checkbox",
+            "label": "option1",
+            "newLine": true
+        },
+        "option2": {
+            "type": "text",
+            "label": "option2",
+            "newLine": true
+        }
     }
-  }
 }
