@@ -1,21 +1,21 @@
 {
-    "i18n": true,
-    "type": "panel",
-    "items": {
-        "apiKey": {
-            "type": "text",
-            "label": "apiKey",
-            "newLine": true
-        },
-        "apiSecret": {
-            "type": "password",
-            "label": "apiSecret",
-            "newLine": true
-        },
-        "plantId": {
-            "type": "text",
-            "label": "plantId",
-            "newLine": true
-        }
-    }
+	"i18n": true,
+	"type": "panel",
+	"items": {
+		"apiKey": {
+			"type": "text",
+			"label": "API Key",
+			"newLine": true
+		},
+		"apiSecret": {
+			"type": "password",
+			"label": "API Secret",
+			"newLine": true
+		},
+		"plantId": {
+			"type": "text",
+			"label": "Station/Plant ID",
+			"newLine": true
+		}
+	}
 }
