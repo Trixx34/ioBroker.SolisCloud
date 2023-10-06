@@ -1,9 +1,9 @@
 import * as utils from "@iobroker/adapter-core";
 import { getStationDetails } from "./lib/apiHelper";
-import 'lib/apiHelper';
+import "./lib/apiHelper";
 
 class SolisCloud extends utils.Adapter {
-	private running: boolean = false;
+	private running = false;
 	public constructor(options: Partial<utils.AdapterOptions> = {}) {
 		super({
 			...options,
@@ -17,6 +17,7 @@ class SolisCloud extends utils.Adapter {
 	}
 
 	private async onReady(): Promise<void> {
+		this.log.info("Starting soliscloud adapter");
 		await this.setObjectNotExistsAsync("current_Consumption", {
 			type: "state",
 			common: {
@@ -125,29 +126,32 @@ class SolisCloud extends utils.Adapter {
 		});
 
 		if (this.config.apiKey && this.config.apiSecret && this.config.plantId) {
-		this.running = true;
-		while (this.running) {
+			this.log.info("Start polling soliscloud");
+			this.running = true;
+			while (this.running) {
 
-			try {
-				const callResult = await getStationDetails(this.config.plantId, this.config.apiKey, this.config.apiSecret);
-				await this.setStateAsync("current_Consumption", callResult?.current_consumption);
-				await this.setStateAsync("current_Power", callResult?.current_Power);
-				await this.setStateAsync("current_From_Net", callResult?.current_From_Net);
-				await this.setStateAsync("sold_Today", callResult?.sold_Today);
-				await this.setStateAsync("generated_Today", callResult?.generated_Today);
-				await this.setStateAsync("bought_Today", callResult?.bought_Today);
-				await this.setStateAsync("consumption_Today", callResult?.consumption_Today);
-				await this.setStateAsync("battery_percent", callResult?.battery_percent);
-				await this.setStateAsync("battery_current_usage", callResult?.battery_current_usage);
+				try {
+					const callResult = await getStationDetails(this.config.plantId, this.config.apiKey, this.config.apiSecret);
+					await this.setStateAsync("current_Consumption", callResult?.current_consumption);
+					await this.setStateAsync("current_Power", callResult?.current_Power);
+					await this.setStateAsync("current_From_Net", callResult?.current_From_Net);
+					await this.setStateAsync("sold_Today", callResult?.sold_Today);
+					await this.setStateAsync("generated_Today", callResult?.generated_Today);
+					await this.setStateAsync("bought_Today", callResult?.bought_Today);
+					await this.setStateAsync("consumption_Today", callResult?.consumption_Today);
+					await this.setStateAsync("battery_percent", callResult?.battery_percent);
+					await this.setStateAsync("battery_current_usage", callResult?.battery_current_usage);
 
-				//Wait 30 seconds and loop again. #TODO make interval configurable
-				await new Promise(resolve => setTimeout(resolve, 30000));
-			} catch (e){
-				//#TODO make interval configurable
-				this.log.error("Error while calling solis api, retrying in 30 seconds");
-				await new Promise(resolve => setTimeout(resolve, 30000));
+					//Wait 30 seconds and loop again. #TODO make interval configurable
+					await new Promise(resolve => setTimeout(resolve, 30000));
+				} catch (e) {
+					//#TODO make interval configurable
+					this.log.error("Error while calling solis api, retrying in 30 seconds");
+					await new Promise(resolve => setTimeout(resolve, 30000));
+				}
 			}
-			}
+		} else {
+			this.log.info("Can't start polling, missing needed settings.");
 		}
 	}
 	/**
@@ -155,9 +159,11 @@ class SolisCloud extends utils.Adapter {
 	 */
 	private onUnload(callback: () => void): void {
 		try {
+			this.log.info("Stopping soliscloud polling");
 			this.running = false;
 			callback();
 		} catch (e) {
+			this.log.info("Error while stopping polling: " + e);
 			callback();
 		}
 	}
