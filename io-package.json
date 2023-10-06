@@ -65,23 +65,6 @@
 			"config": "json",
 			"tab": "materialize"
 		},
-		"adminTab": {
-			"singleton": true,
-			"name": {
-				"en": "soliscloud",
-				"de": "soliscloud",
-				"ru": "soliscloud",
-				"pt": "soliscloud",
-				"nl": "soliscloud",
-				"fr": "soliscloud",
-				"it": "soliscloud",
-				"es": "soliscloud",
-				"pl": "soliscloud",
-				"zh-cn": "soliscloud"
-			},
-			"link": "",
-			"fa-icon": "info"
-		},
 		"supportCustoms": true,
 		"dependencies": [
 			{

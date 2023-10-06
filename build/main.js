@@ -27,19 +27,13 @@ class SolisCloud extends utils.Adapter {
       ...options,
       name: "soliscloud"
     });
+    this.running = false;
     this.on("ready", this.onReady.bind(this));
     this.on("stateChange", this.onStateChange.bind(this));
     this.on("unload", this.onUnload.bind(this));
   }
   async onReady() {
-    this.log.info("config apiKey: " + this.config.apiKey);
-    this.log.info("config apiSecret: " + this.config.apiSecret);
-    this.log.info("config plantID: " + this.config.plantId);
-    const callResult = await this.getStationDetails(this.config.plantId, this.config.apiKey, this.config.apiSecret);
-    if (callResult) {
-      this.log.info("Should work, Consumption = " + callResult.current_consumption);
-    }
-    await this.setObjectNotExistsAsync("currentConsumption", {
+    await this.setObjectNotExistsAsync("current_Consumption", {
       type: "state",
       common: {
         name: "currentConsumption",
@@ -50,12 +44,114 @@ class SolisCloud extends utils.Adapter {
       },
       native: {}
     });
-    this.subscribeStates("currentConsumption");
-    await this.setStateAsync("currentConsumption", callResult == null ? void 0 : callResult.current_consumption);
-    this.log.info("Finished running");
+    await this.setObjectNotExistsAsync("current_Power", {
+      type: "state",
+      common: {
+        name: "current_Power",
+        type: "number",
+        role: "indicator",
+        read: true,
+        write: true
+      },
+      native: {}
+    });
+    await this.setObjectNotExistsAsync("current_From_Net", {
+      type: "state",
+      common: {
+        name: "current_From_Net",
+        type: "number",
+        role: "indicator",
+        read: true,
+        write: true
+      },
+      native: {}
+    });
+    await this.setObjectNotExistsAsync("sold_Today", {
+      type: "state",
+      common: {
+        name: "sold_Today",
+        type: "number",
+        role: "indicator",
+        read: true,
+        write: true
+      },
+      native: {}
+    });
+    await this.setObjectNotExistsAsync("generated_Today", {
+      type: "state",
+      common: {
+        name: "generated_Today",
+        type: "number",
+        role: "indicator",
+        read: true,
+        write: true
+      },
+      native: {}
+    });
+    await this.setObjectNotExistsAsync("bought_Today", {
+      type: "state",
+      common: {
+        name: "bought_Today",
+        type: "number",
+        role: "indicator",
+        read: true,
+        write: true
+      },
+      native: {}
+    });
+    await this.setObjectNotExistsAsync("consumption_Today", {
+      type: "state",
+      common: {
+        name: "consumption_Today",
+        type: "number",
+        role: "indicator",
+        read: true,
+        write: true
+      },
+      native: {}
+    });
+    await this.setObjectNotExistsAsync("battery_percent", {
+      type: "state",
+      common: {
+        name: "battery_percent",
+        type: "number",
+        role: "indicator",
+        read: true,
+        write: true
+      },
+      native: {}
+    });
+    await this.setObjectNotExistsAsync("battery_current_usage", {
+      type: "state",
+      common: {
+        name: "battery_current_usage",
+        type: "number",
+        role: "indicator",
+        read: true,
+        write: true
+      },
+      native: {}
+    });
+    if (this.config.apiKey && this.config.apiSecret && this.config.plantId) {
+      this.running = true;
+      while (this.running) {
+        const callResult = await this.getStationDetails(this.config.plantId, this.config.apiKey, this.config.apiSecret);
+        await this.setStateAsync("current_Consumption", callResult == null ? void 0 : callResult.current_consumption);
+        await this.setStateAsync("current_Power", callResult == null ? void 0 : callResult.current_Power);
+        await this.setStateAsync("current_From_Net", callResult == null ? void 0 : callResult.current_From_Net);
+        await this.setStateAsync("sold_Today", callResult == null ? void 0 : callResult.sold_Today);
+        await this.setStateAsync("generated_Today", callResult == null ? void 0 : callResult.generated_Today);
+        await this.setStateAsync("bought_Today", callResult == null ? void 0 : callResult.bought_Today);
+        await this.setStateAsync("consumption_Today", callResult == null ? void 0 : callResult.consumption_Today);
+        await this.setStateAsync("battery_percent", callResult == null ? void 0 : callResult.battery_percent);
+        await this.setStateAsync("battery_current_usage", callResult == null ? void 0 : callResult.battery_current_usage);
+        await new Promise((resolve) => setTimeout(resolve, 3e4));
+      }
+    }
   }
   onUnload(callback) {
     try {
+      this.running = false;
       callback();
     } catch (e) {
       callback();
