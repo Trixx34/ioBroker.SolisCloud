@@ -2,7 +2,7 @@ import * as utils from "@iobroker/adapter-core";
 import { getStationDetails } from "./lib/apiHelper";
 import "./lib/apiHelper";
 
-class SolisCloud extends utils.Adapter {
+class soliscloud extends utils.Adapter {
 	private running = false;
 	public constructor(options: Partial<utils.AdapterOptions> = {}) {
 		super({
@@ -180,8 +180,8 @@ class SolisCloud extends utils.Adapter {
 
 if (require.main !== module) {
 	// Export the constructor in compact mode
-	module.exports = (options: Partial<utils.AdapterOptions> | undefined) => new SolisCloud(options);
+	module.exports = (options: Partial<utils.AdapterOptions> | undefined) => new soliscloud(options);
 } else {
 	// otherwise start the instance directly
-	(() => new SolisCloud())();
+	(() => new soliscloud())();
 }
