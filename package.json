@@ -16,7 +16,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/Trixx34/ioBroker.soliscloud.git"
+    "url": "https://github.com/Trixx34/ioBroker.SolisCloud.git"
   },
   "engines": {
     "node": ">= 14"
@@ -103,7 +103,7 @@
     "instrument": true
   },
   "bugs": {
-    "url": "https://github.com/Trixx34/ioBroker.template/issues"
+    "url": "https://github.com/Trixx34/ioBroker.soliscloud/issues"
   },
   "readmeFilename": "README.md"
 }

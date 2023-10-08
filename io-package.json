@@ -2,6 +2,8 @@
     "common": {
         "name": "soliscloud",
         "version": "1.0.0",
+        "connectionType": "cloud",
+        "dataSource": "poll",
         "news": {
             "1.0.0": {
                 "en": "initial release",
@@ -49,17 +51,15 @@
         "email": "trixxdev034@gmail.com"
     },
         "keywords": [
-            "ioBroker",
-            "template",
-            "Smart Home",
-            "home automation"
+            "Solis",
+            "soliscloud"
         ],
         "license": "MIT",
         "platform": "Javascript/Node.js",
         "main": "build/main.js",
         "icon": "solis.png",
         "enabled": true,
-        "extIcon": "https://raw.githubusercontent.com/Author/ioBroker.template/main/admin/template.png",
+        "extIcon": "https://raw.githubusercontent.com/Trixx34/ioBroker.soliscloud/main/admin/solis.png",
         "readme": "https://github.com/Author/ioBroker.template/blob/main/README.md",
         "loglevel": "info",
         "mode": "daemon",
