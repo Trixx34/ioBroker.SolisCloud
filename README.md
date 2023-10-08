@@ -1,5 +1,7 @@
 ![Logo](admin/solis.png)
 
+[Buy Me a Coffee](https://www.buymeacoffee.com/trixxdev)
+
 ## soliscloud adapter for IOBroker
 # Current version: 1.0.0
 
