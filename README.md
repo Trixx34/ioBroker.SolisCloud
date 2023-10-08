@@ -1,5 +1,6 @@
 ![Logo](admin/solis.png)
-## SolisCloud adapter for IOBroker
+
+## soliscloud adapter for IOBroker
 
 This integration is heavily based on this home-assistant integration:
 https://github.com/hultenvp/solis-sensor
@@ -7,6 +8,7 @@ https://github.com/hultenvp/solis-sensor
 The steps to get the needed data to use the integration are as following:
 
 Create a ticket with ginlong to request enabling API access on your account and wait untill they confirm the change
+
 - Go to https://www.soliscloud.com/#/apiManage.
 - Activate API management and agree with the usage conditions.
 - After activation, click on view key tot get a pop-up window asking for the verification code.
@@ -15,6 +17,7 @@ Create a ticket with ginlong to request enabling API access on your account and 
 - Once confirmed, you get the API ID, secret and API URL
 
 This adapter will read and store the following values into objects:
+
 - battery_current_usage
 - battery_percent
 - bought_Today
@@ -28,4 +31,34 @@ This adapter will read and store the following values into objects:
 The API returns other values that can be added, but at the moment these are sufficient for my needs.
 
 ## Current state
+
 This adapter is still very new, I'm not a professional developer. Use at your own risk.
+
+## Changelog
+
+- Split api logic in separate files
+- various update to comply with publishing rules
+
+## License
+
+MIT License
+
+"Copyright (c) 2023 Trixx trixxdev034@gmail.com"
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

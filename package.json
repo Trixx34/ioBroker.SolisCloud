@@ -1,10 +1,10 @@
 {
   "name": "iobroker.soliscloud",
   "version": "1.0.0",
-  "description": "Adapter for reading data from SolisCloud",
+  "description": "Adapter for reading data from soliscloud",
   "author": {
     "name": "Trixx",
-    "email": "author@mail.com"
+    "email": "trixxdev034@gmail.com"
   },
   "homepage": "https://github.com/Trixx34/ioBroker.soliscloud",
   "license": "MIT",

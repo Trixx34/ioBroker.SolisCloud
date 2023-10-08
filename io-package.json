@@ -32,7 +32,7 @@
             "uk": "soliscloud"
         },
         "desc": {
-            "en": "Adapter for reading data from SolisCloud",
+            "en": "Adapter for reading data from soliscloud",
             "de": "Vorlage für die Adapterentwicklung",
             "ru": "Шаблон для разработки адаптера",
             "pt": "Modelo para desenvolvimento de adaptador",
@@ -42,11 +42,12 @@
             "es": "Plantilla para el desarrollo de adaptadores",
             "pl": "Szablon do opracowania adaptera",
             "zh-cn": "适配器开发模板",
-            "uk": "Адаптер для читання даних із SolisCloud"
+            "uk": "Адаптер для читання даних із soliscloud"
         },
-        "authors": [
-            "Author <author@mail.com>"
-        ],
+        "author": {
+        "name": "Trixx",
+        "email": "trixxdev034@gmail.com"
+    },
         "keywords": [
             "ioBroker",
             "template",
@@ -78,8 +79,14 @@
             {
                 "admin": ">=5.1.13"
             }
-        ]
-    },
+        ],
+    "config": {},
+    "createAt": "",
+    "homepage": "",
+    "identifier": "",
+    "meta": {},
+    "schemaVersion": 0
+},
     "native": {},
     "objects": [],
     "instanceObjects": []
