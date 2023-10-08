@@ -7,6 +7,7 @@ declare global {
 			apiKey: string;
 			apiSecret: string;
 			plantId: string;
+			pollInterval: number;
 		}
 	}
 }

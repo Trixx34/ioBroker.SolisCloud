@@ -126,7 +126,7 @@ class SolisCloud extends utils.Adapter {
 		});
 
 		if (this.config.apiKey && this.config.apiSecret && this.config.plantId) {
-			this.log.info("Start polling soliscloud");
+			this.log.info(`Start polling soliscloud, polling every ${this.config.pollInterval} seconds`);
 			this.running = true;
 			while (this.running) {
 
@@ -145,9 +145,8 @@ class SolisCloud extends utils.Adapter {
 					//Wait 30 seconds and loop again. #TODO make interval configurable
 					await new Promise(resolve => setTimeout(resolve, 30000));
 				} catch (e) {
-					//#TODO make interval configurable
-					this.log.error("Error while calling solis api, retrying in 30 seconds");
-					await new Promise(resolve => setTimeout(resolve, 30000));
+					this.log.error(`Error while calling solis api, retrying in ${this.config.pollInterval} seconds`);
+					await new Promise(resolve => setTimeout(resolve, this.config.pollInterval * 1000));
 				}
 			}
 		} else {
@@ -177,8 +176,6 @@ class SolisCloud extends utils.Adapter {
 			this.log.info(`state ${id} deleted`);
 		}
 	}
-
-
 }
 
 if (require.main !== module) {
