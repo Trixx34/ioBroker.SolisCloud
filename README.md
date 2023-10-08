@@ -1,9 +1,11 @@
 ![Logo](admin/solis.png)
 
 ## soliscloud adapter for IOBroker
+# Current version: 1.0.0
 
 This integration is heavily based on this home-assistant integration:
 https://github.com/hultenvp/solis-sensor
+
 
 The steps to get the needed data to use the integration are as following:
 
