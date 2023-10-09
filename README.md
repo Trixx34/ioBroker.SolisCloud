@@ -44,8 +44,10 @@ This adapter is still very new, I'm not a professional developer. Use at your ow
 
 ## Changelog
 
+### 1.0.0 (2023-10-09)
 - Split api logic in separate files
-- various update to comply with publishing rules
+- various updates to comply with publishing rules
+- Initial release!
 
 ## License
 
