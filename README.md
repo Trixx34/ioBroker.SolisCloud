@@ -3,7 +3,7 @@
 [![Buy Me a Coffee](https://www.buymeacoffee.com/assets/img/guidelines/download-assets-sm-2.svg)](https://www.buymeacoffee.com/trixxdev)
 
 ## soliscloud adapter for IOBroker
-# Current version: 1.0.0
+# version: 1.0.1
 
 This integration is heavily based on this home-assistant integration:
 https://github.com/hultenvp/solis-sensor

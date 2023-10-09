@@ -46,10 +46,6 @@
             "zh-cn": "适配器开发模板",
             "uk": "Адаптер для читання даних із soliscloud"
         },
-        "author":{
-        "name": "Trixx",
-        "email": "trixxdev034@gmail.com"
-    },
         "authors": [
             {
                 "name": "Trixx",

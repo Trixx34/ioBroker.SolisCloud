@@ -1,6 +1,6 @@
 {
   "name": "iobroker.soliscloud",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Adapter for reading data from soliscloud",
   "author": {
     "name": "Trixx",
@@ -16,7 +16,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/Trixx34/ioBroker.SolisCloud.git"
+    "url": "https://github.com/Trixx34/ioBroker.soliscloud.git"
   },
   "engines": {
     "node": ">= 14"
