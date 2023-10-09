@@ -4,7 +4,7 @@
 
 ## soliscloud adapter for IOBroker
 
-Version 1.0.0
+Version 1.0.1
 
 This integration is based on this home-assistant integration:
 https://github.com/hultenvp/solis-sensor
@@ -43,7 +43,8 @@ This adapter is still very new, I'm not a professional developer. Use at your ow
 [![Buy Me a Coffee](https://www.buymeacoffee.com/assets/img/guidelines/download-assets-sm-2.svg)](https://www.buymeacoffee.com/trixxdev)
 
 ## Changelog
-
+### 1.0.1 (2023-10-09)
+- Fixed issue where pollinterval wasn't checked/used
 ### 1.0.0 (2023-10-09)
 - Split api logic in separate files
 - various updates to comply with publishing rules

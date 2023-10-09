@@ -132,7 +132,7 @@ class soliscloud extends utils.Adapter {
       },
       native: {}
     });
-    if (this.config.apiKey && this.config.apiSecret && this.config.plantId) {
+    if (this.config.apiKey && this.config.apiSecret && this.config.plantId && this.config.pollInterval >= 30) {
       this.log.info(`Start polling soliscloud, polling every ${this.config.pollInterval} seconds`);
       this.running = true;
       while (this.running) {

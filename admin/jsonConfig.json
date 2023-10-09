@@ -10,7 +10,7 @@
 		"apiSecret": {
 			"type": "password",
 			"label": "API Secret",
-			"newLine": true
+			"newLine": true,
 		},
 		"plantId": {
 			"type": "text",

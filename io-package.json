@@ -1,13 +1,13 @@
 {
     "common": {
         "name": "soliscloud",
-        "version": "1.0.0",
+        "version": "1.0.1",
         "connectionType": "cloud",
         "dataSource": "poll",
         "news": {
-            "1.0.0": {
-                "en": "initial release",
-                "de": "Erstveröffentlichung",
+            "1.0.1": {
+                "en": "Make polling interval configurable",
+                "de": "Abfrageintervall konfigurierbar machen",
                 "ru": "Начальная версия",
                 "pt": "lançamento inicial",
                 "nl": "Eerste uitgave",
@@ -35,7 +35,7 @@
         },
         "desc": {
             "en": "Adapter for reading data from soliscloud",
-            "de": "Vorlage für die Adapterentwicklung",
+            "de": "Adapter zum Auslesen von Daten aus soliscloud",
             "ru": "Шаблон для разработки адаптера",
             "pt": "Modelo para desenvolvimento de adaptador",
             "nl": "Sjabloon voor adapterontwikkeling",
