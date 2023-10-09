@@ -1,6 +1,6 @@
 ![Logo](admin/solis.png)
 
-[![Buy Me a Coffee](https://www.buymeacoffee.com/assets/img/guidelines/download-assets-sm-2.svg)](https://www.buymeacoffee.com/trixxdev)
+[![NPM version](http://img.shields.io/npm/v/iobroker.soliscloud)](https://www.npmjs.com/package/iobroker.soliscloud)
 
 ## soliscloud adapter for IOBroker
 
@@ -38,6 +38,9 @@ The API returns other values that can be added, but at the moment these are suff
 ## Current state
 
 This adapter is still very new, I'm not a professional developer. Use at your own risk.
+
+
+[![Buy Me a Coffee](https://www.buymeacoffee.com/assets/img/guidelines/download-assets-sm-2.svg)](https://www.buymeacoffee.com/trixxdev)
 
 ## Changelog
 
