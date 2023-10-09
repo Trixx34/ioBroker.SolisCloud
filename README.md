@@ -1,11 +1,12 @@
 ![Logo](admin/solis.png)
 
-[![Buy Me a Coffee](https://www.buymeacoffee.com/assets/img/guidelines/download-assets-sm-2.svg)](https://www.buymeacoffee.com/trixxdev)
+[![NPM version](http://img.shields.io/npm/v/iobroker.soliscloud)](https://www.npmjs.com/package/iobroker.soliscloud)
 
 ## soliscloud adapter for IOBroker
-# version: 1.0.1
 
-This integration is heavily based on this home-assistant integration:
+Version 1.0.0
+
+This integration is based on this home-assistant integration:
 https://github.com/hultenvp/solis-sensor
 
 
@@ -38,10 +39,15 @@ The API returns other values that can be added, but at the moment these are suff
 
 This adapter is still very new, I'm not a professional developer. Use at your own risk.
 
+
+[![Buy Me a Coffee](https://www.buymeacoffee.com/assets/img/guidelines/download-assets-sm-2.svg)](https://www.buymeacoffee.com/trixxdev)
+
 ## Changelog
 
+### 1.0.0 (2023-10-09)
 - Split api logic in separate files
-- various update to comply with publishing rules
+- various updates to comply with publishing rules
+- Initial release!
 
 ## License
 
