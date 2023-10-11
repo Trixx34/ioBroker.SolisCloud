@@ -58,7 +58,7 @@
     "icon": "solis.png",
     "enabled": true,
     "extIcon": "https://raw.githubusercontent.com/Trixx34/ioBroker.soliscloud/main/admin/solis.png",
-    "readme": "https://github.com/Author/ioBroker.template/blob/main/README.md",
+    "readme": "https://github.com/Trixx34/ioBroker.SolisCloud#readme",
     "loglevel": "info",
     "mode": "daemon",
     "type": "general",
