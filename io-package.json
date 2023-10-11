@@ -1,95 +1,91 @@
 {
-    "common": {
-        "name": "soliscloud",
-        "version": "1.0.1",
-        "connectionType": "cloud",
-        "dataSource": "poll",
-        "news": {
-            "1.0.1": {
-                "en": "Make polling interval configurable",
-                "de": "Abfrageintervall konfigurierbar machen",
-                "ru": "Начальная версия",
-                "pt": "lançamento inicial",
-                "nl": "Eerste uitgave",
-                "fr": "Première version",
-                "it": "Versione iniziale",
-                "es": "Versión inicial",
-                "pl": "Pierwsze wydanie",
-                "zh-cn": "首次出版",
-                "uk": "початковий випуск"
-            }
-        },
-        "title": "soliscloud",
-        "titleLang": {
-            "en": "soliscloud",
-            "de": "soliscloud",
-            "ru": "soliscloud",
-            "pt": "soliscloud",
-            "nl": "soliscloud",
-            "fr": "soliscloud",
-            "it": "soliscloud",
-            "es": "soliscloud",
-            "pl": "soliscloud",
-            "zh-cn": "soliscloud",
-            "uk": "soliscloud"
-        },
-        "desc": {
-            "en": "Adapter for reading data from soliscloud",
-            "de": "Adapter zum Auslesen von Daten aus soliscloud",
-            "ru": "Шаблон для разработки адаптера",
-            "pt": "Modelo para desenvolvimento de adaptador",
-            "nl": "Sjabloon voor adapterontwikkeling",
-            "fr": "Modèle pour le développement d'adaptateurs",
-            "it": "Modello per lo sviluppo dell'adattatore",
-            "es": "Plantilla para el desarrollo de adaptadores",
-            "pl": "Szablon do opracowania adaptera",
-            "zh-cn": "适配器开发模板",
-            "uk": "Адаптер для читання даних із soliscloud"
-        },
-        "authors": [
-            {
-                "name": "Trixx",
-                "email": "trixxdev034@gmail.com"
-            }
-        ],
-        "keywords": [
-            "Solis",
-            "soliscloud"
-        ],
-        "license": "MIT",
-        "platform": "Javascript/Node.js",
-        "main": "build/main.js",
-        "icon": "solis.png",
-        "enabled": true,
-        "extIcon": "https://raw.githubusercontent.com/Trixx34/ioBroker.soliscloud/main/admin/solis.png",
-        "readme": "https://github.com/Author/ioBroker.template/blob/main/README.md",
-        "loglevel": "info",
-        "mode": "daemon",
-        "type": "general",
-        "compact": true,
-        "adminUI": {
-            "config": "json",
-            "tab": "materialize"
-        },
-        "supportCustoms": false,
-        "dependencies": [
-            {
-                "js-controller": ">=3.3.22"
-            }
-        ],
-        "globalDependencies": [
-            {
-                "admin": ">=5.1.13"
-            }
-        ],
+  "common": {
+    "name": "soliscloud",
+    "version": "1.0.1",
+    "connectionType": "cloud",
+    "dataSource": "poll",
+    "news": {
+      "1.0.1": {
+        "en": "Make polling interval configurable",
+        "de": "Abfrageintervall konfigurierbar machen",
+        "ru": "Начальная версия",
+        "pt": "lançamento inicial",
+        "nl": "Eerste uitgave",
+        "fr": "Première version",
+        "it": "Versione iniziale",
+        "es": "Versión inicial",
+        "pl": "Pierwsze wydanie",
+        "zh-cn": "首次出版",
+        "uk": "початковий випуск"
+      }
+    },
+    "titleLang": {
+      "en": "soliscloud",
+      "de": "soliscloud",
+      "ru": "soliscloud",
+      "pt": "soliscloud",
+      "nl": "soliscloud",
+      "fr": "soliscloud",
+      "it": "soliscloud",
+      "es": "soliscloud",
+      "pl": "soliscloud",
+      "zh-cn": "soliscloud",
+      "uk": "soliscloud"
+    },
+    "desc": {
+      "en": "Adapter for reading data from soliscloud",
+      "de": "Adapter zum Auslesen von Daten aus soliscloud",
+      "ru": "Шаблон для разработки адаптера",
+      "pt": "Modelo para desenvolvimento de adaptador",
+      "nl": "Sjabloon voor adapterontwikkeling",
+      "fr": "Modèle pour le développement d'adaptateurs",
+      "it": "Modello per lo sviluppo dell'adattatore",
+      "es": "Plantilla para el desarrollo de adaptadores",
+      "pl": "Szablon do opracowania adaptera",
+      "zh-cn": "适配器开发模板",
+      "uk": "Адаптер для читання даних із soliscloud"
+    },
+    "authors": [
+      {
+        "name": "Trixx",
+        "email": "trixxdev034@gmail.com"
+      }
+    ],
+    "keywords": ["Solis", "soliscloud"],
+    "license": "MIT",
+    "platform": "Javascript/Node.js",
+    "main": "build/main.js",
+    "icon": "solis.png",
+    "enabled": true,
+    "extIcon": "https://raw.githubusercontent.com/Trixx34/ioBroker.soliscloud/main/admin/solis.png",
+    "readme": "https://github.com/Author/ioBroker.template/blob/main/README.md",
+    "loglevel": "info",
+    "mode": "daemon",
+    "type": "general",
+    "compact": true,
+    "adminUI": {
+      "config": "json",
+      "tab": "materialize"
+    },
+    "supportCustoms": false,
+    "dependencies": [
+      {
+        "js-controller": ">=3.3.22"
+      }
+    ],
+    "globalDependencies": [
+      {
+        "admin": ">=5.1.13"
+      }
+    ],
     "config": {},
     "createAt": "",
     "homepage": "",
     "identifier": "",
     "meta": {},
     "schemaVersion": 0
-},
-    "native": {},
-    "objects": [],
-    "instanceObjects": []
+  },
+  "native": {},
+  "objects": [],
+  "instanceObjects": []
 }
