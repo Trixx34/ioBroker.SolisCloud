@@ -1,22 +1,22 @@
 {
   "common": {
     "name": "soliscloud",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "connectionType": "cloud",
     "dataSource": "poll",
     "news": {
-      "1.0.1": {
-        "en": "Make polling interval configurable",
-        "de": "Abfrageintervall konfigurierbar machen",
-        "ru": "Начальная версия",
-        "pt": "lançamento inicial",
-        "nl": "Eerste uitgave",
-        "fr": "Première version",
-        "it": "Versione iniziale",
-        "es": "Versión inicial",
-        "pl": "Pierwsze wydanie",
-        "zh-cn": "首次出版",
-        "uk": "початковий випуск"
+      "1.0.2": {
+        "en": "Translations. Removed some unneeded files",
+        "de": "Übersetzungen. Entfernt einige nicht benötigte Dateien",
+        "ru": "Переводы. Удалили некоторые ненужные файлы",
+        "pt": "Traduções. Removido alguns arquivos desnecessários",
+        "nl": "Vertaling. Verwijder wat onnodige bestanden",
+        "fr": "Traductions. Enlevé certains fichiers non nécessaires",
+        "it": "Traduzioni. Rimuovere alcuni file non necessari",
+        "es": "Traducciones. Eliminar algunos archivos sin necesidad",
+        "pl": "Tłumaczenia. Remove niektóre nieuniknione pliki",
+        "uk": "Переклади. Видалено деякі невидимі файли",
+        "zh-cn": "翻译。 删除一些急需的档案"
       }
     },
     "titleLang": {
@@ -34,16 +34,16 @@
     },
     "desc": {
       "en": "Adapter for reading data from soliscloud",
-      "de": "Adapter zum Auslesen von Daten aus soliscloud",
-      "ru": "Шаблон для разработки адаптера",
-      "pt": "Modelo para desenvolvimento de adaptador",
-      "nl": "Sjabloon voor adapterontwikkeling",
-      "fr": "Modèle pour le développement d'adaptateurs",
-      "it": "Modello per lo sviluppo dell'adattatore",
-      "es": "Plantilla para el desarrollo de adaptadores",
-      "pl": "Szablon do opracowania adaptera",
-      "zh-cn": "适配器开发模板",
-      "uk": "Адаптер для читання даних із soliscloud"
+      "de": "Adapter zum Lesen von Daten von soliscloud",
+      "ru": "Адаптер для чтения данных из soliscloud",
+      "pt": "Adaptador para ler dados de soliscloud",
+      "nl": "Adapter voor het lezen van gegevens van Soliscloud",
+      "fr": "Adaptateur pour la lecture des données de soliscloud",
+      "it": "Adattatore per la lettura dei dati da soliscloud",
+      "es": "Adaptador para la lectura de datos de soliscloud",
+      "pl": "Adapter for read data from soliscloud (ang.)",
+      "uk": "Адаптер для читання даних з солісклою",
+      "zh-cn": "阅读从Iliscloud获得的数据"
     },
     "authors": [
       {
@@ -77,13 +77,7 @@
       {
         "admin": ">=5.1.13"
       }
-    ],
-    "config": {},
-    "createAt": "",
-    "homepage": "",
-    "identifier": "",
-    "meta": {},
-    "schemaVersion": 0
+    ]
   },
   "native": {},
   "objects": [],

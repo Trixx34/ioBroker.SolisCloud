@@ -43,6 +43,11 @@ This adapter is still very new, I'm not a professional developer. Use at your ow
 [![Buy Me a Coffee](https://www.buymeacoffee.com/assets/img/guidelines/download-assets-sm-2.svg)](https://www.buymeacoffee.com/trixxdev)
 
 ## Changelog
+
+### 1.0.2 (2023-11-10)
+- Translations
+- Removed some unneeded files.
+
 ### 1.0.1 (2023-10-09)
 - Fixed issue where pollinterval wasn't checked/used
 ### 1.0.0 (2023-10-09)
