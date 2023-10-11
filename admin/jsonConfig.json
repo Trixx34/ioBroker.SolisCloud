@@ -1,26 +1,26 @@
 {
-	"i18n": true,
-	"type": "panel",
-	"items": {
-		"apiKey": {
-			"type": "text",
-			"label": "API Key",
-			"newLine": true
-		},
-		"apiSecret": {
-			"type": "password",
-			"label": "API Secret",
-			"newLine": true,
-		},
-		"plantId": {
-			"type": "text",
-			"label": "Station/Plant ID",
-			"newLine": true
-		},
-		"pollInterval": {
-			"type": "number",
-			"label": "polling interval in seconds. (At least 40)",
-			"newLine": true
-		}
-	}
+  "i18n": true,
+  "type": "panel",
+  "items": {
+    "apiKey": {
+      "type": "text",
+      "label": "API Key",
+      "newLine": true
+    },
+    "apiSecret": {
+      "type": "password",
+      "label": "API Secret",
+      "newLine": true
+    },
+    "plantId": {
+      "type": "text",
+      "label": "Station/Plant ID",
+      "newLine": true
+    },
+    "pollInterval": {
+      "type": "number",
+      "label": "polling interval in seconds. (At least 40)",
+      "newLine": true
+    }
+  }
 }
