@@ -2,6 +2,11 @@
 .*/
 !.vscode/
 !.github/
+.create-adapter.json
+.eslintignore
+.eslintrc.js
+.eslintrc.json
+.releaseconfig.json
 
 *.code-workspace
 node_modules
