@@ -1,0 +1,17 @@
+on:
+  push:
+    branches: [main, protected]
+  schedule:
+    - cron: '00 18 * * 1'
+  pull_request:
+    branches: [main]
+    paths-ignore:
+      - '**/*.md'
+      - '**/*.txt'
+      - '.vscode/'
+jobs:
+  analyze:
+    name: Analyze
+    runs-on: [ubuntu-latest]
+    strategy:
+      fail-fast: false
