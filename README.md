@@ -4,8 +4,6 @@
 
 ## soliscloud adapter for IOBroker
 
-Version 1.0.1
-
 This integration is based on this home-assistant integration:
 https://github.com/hultenvp/solis-sensor
 
@@ -13,6 +11,7 @@ https://github.com/hultenvp/solis-sensor
 The steps to get the needed data to use the integration are as following:
 
 Create a ticket with ginlong to request enabling API access on your account and wait untill they confirm the change
+You can find the contact information for your region here: https://www.solisinverters.com/global/contactus.html
 
 - Go to https://www.soliscloud.com/#/apiManage.
 - Activate API management and agree with the usage conditions.
@@ -20,6 +19,7 @@ Create a ticket with ginlong to request enabling API access on your account and 
 - First click on "Verification code" after which you get an image with 2 puzzle pieces, which you need to overlap each other using the slider below.
 - After that, you will receive an email with the verification code you need to enter (within 60 seconds).
 - Once confirmed, you get the API ID, secret and API URL
+- The plant ID you need to enter in the settings is the ID found in the url once you are logged in. For example: https://www.soliscloud.com/#/station/stationdetail_1?id=**123486816843454864**
 
 This adapter will read and store the following values into objects:
 
@@ -37,12 +37,22 @@ The API returns other values that can be added, but at the moment these are suff
 
 ## Current state
 
-This adapter is still very new, I'm not a professional developer. Use at your own risk.
-
+This adapter is still very new, but tested and seemingly stable.
+I'm not a professional developer. Use at your own risk.
 
 [![Buy Me a Coffee](https://www.buymeacoffee.com/assets/img/guidelines/download-assets-sm-2.svg)](https://www.buymeacoffee.com/trixxdev)
 
 ## Changelog
+
+### 1.1.3 (2023-15-10)
+- Switched to setInterval -> https://github.com/Trixx34/ioBroker.soliscloud/issues/12
+
+### 1.0.3 (2023-15-10)
+- Removed console logging
+- Removed unused onStateChange handler
+- Adjusted state-id naming
+- Added units to values
+- Added plant ID as root folder for objects
 
 ### 1.0.2 (2023-11-10)
 - Translations
