@@ -1,23 +1,21 @@
 {
   "common": {
     "name": "soliscloud",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "connectionType": "cloud",
     "dataSource": "poll",
     "news": {
-      "1.0.2": {
-        "en": "Translations. Removed some unneeded files",
-        "de": "Übersetzungen. Entfernt einige nicht benötigte Dateien",
-        "ru": "Переводы. Удалили некоторые ненужные файлы",
-        "pt": "Traduções. Removido alguns arquivos desnecessários",
-        "nl": "Vertaling. Verwijder wat onnodige bestanden",
-        "fr": "Traductions. Enlevé certains fichiers non nécessaires",
-        "it": "Traduzioni. Rimuovere alcuni file non necessari",
-        "es": "Traducciones. Eliminar algunos archivos sin necesidad",
-        "pl": "Tłumaczenia. Remove niektóre nieuniknione pliki",
-        "uk": "Переклади. Видалено деякі невидимі файли",
-        "zh-cn": "翻译。 删除一些急需的档案"
-      }
+      "en": "Updates based on feedback. Check readme for details.",
+      "de": "Updates basierend auf Feedback. Lesen Sie mehr über die Details.",
+      "ru": "Обновления на основе обратной связи. Проверьте readme для деталей.",
+      "pt": "Atualizações baseadas no feedback. Verifique o readme para detalhes.",
+      "nl": "Updates gebaseerd op feedback. Controleer de details.",
+      "fr": "Mises à jour basées sur les commentaires. Vérifiez le readme pour les détails.",
+      "it": "Aggiornamenti basati su feedback. Controlla il readme per i dettagli.",
+      "es": "Actualizaciones basadas en comentarios. Revisa el texto para obtener detalles.",
+      "pl": "Updates oparty jest na opiniach. Uczy się czytać szczegóły.",
+      "uk": "Оновлення на основі відгуків. Перевірити зчитувач для деталей.",
+      "zh-cn": "根据反馈的最新情况。 详细情况见面。."
     },
     "titleLang": {
       "en": "soliscloud",

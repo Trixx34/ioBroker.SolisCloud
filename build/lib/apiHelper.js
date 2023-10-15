@@ -54,21 +54,22 @@ async function getStationDetails(stationId, apiKey, apiSecret) {
         "Content-MD5": ContentMd5,
         Date: currentDate
       },
-      data: requestBody
+      data: requestBody,
+      timeout: 5e3
     });
     return {
-      current_Power: response.data.data.power,
+      current_power: response.data.data.power,
       current_consumption: response.data.data.familyLoadPower,
-      current_From_Net: response.data.data.psum,
-      sold_Today: response.data.data.gridSellDayEnergy,
-      generated_Today: response.data.data.dayEnergy,
-      bought_Today: response.data.data.gridPurchasedDayEnergy,
-      consumption_Today: response.data.data.homeLoadEnergy,
+      current_from_net: response.data.data.psum,
+      sold_today: response.data.data.gridSellDayEnergy,
+      generated_today: response.data.data.dayEnergy,
+      bought_today: response.data.data.gridPurchasedDayEnergy,
+      consumption_today: response.data.data.homeLoadEnergy,
       battery_percent: response.data.data.batteryPercent,
       battery_current_usage: response.data.data.batteryPower
     };
   } catch (error) {
-    console.error(error);
+    this.log.error(error);
   }
 }
 function HmacSHA1Encrypt(encryptText, keySecret) {

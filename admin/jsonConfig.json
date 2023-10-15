@@ -19,8 +19,10 @@
     },
     "pollInterval": {
       "type": "number",
-      "label": "polling interval in seconds. (At least 40)",
-      "newLine": true
+      "label": "polling interval in seconds.",
+      "newLine": true,
+      "min": 45,
+      "max": 1800
     }
   }
 }

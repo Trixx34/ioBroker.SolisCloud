@@ -28,133 +28,205 @@ class soliscloud extends utils.Adapter {
     });
     this.running = false;
     this.on("ready", this.onReady.bind(this));
-    this.on("stateChange", this.onStateChange.bind(this));
     this.on("unload", this.onUnload.bind(this));
   }
   async onReady() {
     this.log.info("Starting soliscloud adapter");
-    await this.setObjectNotExistsAsync("current_Consumption", {
-      type: "state",
-      common: {
-        name: "currentConsumption",
-        type: "number",
-        role: "indicator",
-        read: true,
-        write: true
-      },
-      native: {}
-    });
-    await this.setObjectNotExistsAsync("current_Power", {
-      type: "state",
-      common: {
-        name: "current_Power",
-        type: "number",
-        role: "indicator",
-        read: true,
-        write: true
-      },
-      native: {}
-    });
-    await this.setObjectNotExistsAsync("current_From_Net", {
-      type: "state",
-      common: {
-        name: "current_From_Net",
-        type: "number",
-        role: "indicator",
-        read: true,
-        write: true
-      },
-      native: {}
-    });
-    await this.setObjectNotExistsAsync("sold_Today", {
-      type: "state",
-      common: {
-        name: "sold_Today",
-        type: "number",
-        role: "indicator",
-        read: true,
-        write: true
-      },
-      native: {}
-    });
-    await this.setObjectNotExistsAsync("generated_Today", {
-      type: "state",
-      common: {
-        name: "generated_Today",
-        type: "number",
-        role: "indicator",
-        read: true,
-        write: true
-      },
-      native: {}
-    });
-    await this.setObjectNotExistsAsync("bought_Today", {
-      type: "state",
-      common: {
-        name: "bought_Today",
-        type: "number",
-        role: "indicator",
-        read: true,
-        write: true
-      },
-      native: {}
-    });
-    await this.setObjectNotExistsAsync("consumption_Today", {
-      type: "state",
-      common: {
-        name: "consumption_Today",
-        type: "number",
-        role: "indicator",
-        read: true,
-        write: true
-      },
-      native: {}
-    });
-    await this.setObjectNotExistsAsync("battery_percent", {
-      type: "state",
-      common: {
-        name: "battery_percent",
-        type: "number",
-        role: "indicator",
-        read: true,
-        write: true
-      },
-      native: {}
-    });
-    await this.setObjectNotExistsAsync("battery_current_usage", {
-      type: "state",
-      common: {
-        name: "battery_current_usage",
-        type: "number",
-        role: "indicator",
-        read: true,
-        write: true
-      },
-      native: {}
-    });
-    if (this.config.apiKey && this.config.apiSecret && this.config.plantId && this.config.pollInterval >= 30) {
-      this.log.info(`Start polling soliscloud, polling every ${this.config.pollInterval} seconds`);
+    if (this.config.plantId != null) {
+      await this.setObjectNotExistsAsync(
+        `${this.config.plantId}.current_consumption`,
+        {
+          type: "state",
+          common: {
+            name: "current_consumption",
+            type: "number",
+            unit: "kW",
+            role: "value",
+            read: true,
+            write: true
+          },
+          native: {}
+        }
+      );
+      await this.setObjectNotExistsAsync(
+        `${this.config.plantId}.current_power`,
+        {
+          type: "state",
+          common: {
+            name: "current_power",
+            type: "number",
+            unit: "kW",
+            role: "value",
+            read: true,
+            write: true
+          },
+          native: {}
+        }
+      );
+      await this.setObjectNotExistsAsync(
+        `${this.config.plantId}.current_from_net`,
+        {
+          type: "state",
+          common: {
+            name: "current_from_net",
+            type: "number",
+            unit: "kW",
+            role: "value",
+            read: true,
+            write: true
+          },
+          native: {}
+        }
+      );
+      await this.setObjectNotExistsAsync(`${this.config.plantId}.sold_today`, {
+        type: "state",
+        common: {
+          name: "sold_today",
+          type: "number",
+          unit: "kWh",
+          role: "value",
+          read: true,
+          write: true
+        },
+        native: {}
+      });
+      await this.setObjectNotExistsAsync(
+        `${this.config.plantId}.generated_today`,
+        {
+          type: "state",
+          common: {
+            name: "generated_today",
+            type: "number",
+            unit: "kWh",
+            role: "value",
+            read: true,
+            write: true
+          },
+          native: {}
+        }
+      );
+      await this.setObjectNotExistsAsync(
+        `${this.config.plantId}.bought_today`,
+        {
+          type: "state",
+          common: {
+            name: "bought_today",
+            type: "number",
+            unit: "kWh",
+            role: "value",
+            read: true,
+            write: true
+          },
+          native: {}
+        }
+      );
+      await this.setObjectNotExistsAsync(
+        `${this.config.plantId}.consumption_today`,
+        {
+          type: "state",
+          common: {
+            name: "consumption_today",
+            type: "number",
+            unit: "kWh",
+            role: "value",
+            read: true,
+            write: true
+          },
+          native: {}
+        }
+      );
+      await this.setObjectNotExistsAsync(
+        `${this.config.plantId}.battery_percent`,
+        {
+          type: "state",
+          common: {
+            name: "battery_percent",
+            type: "number",
+            unit: "%",
+            role: "value",
+            read: true,
+            write: true
+          },
+          native: {}
+        }
+      );
+      await this.setObjectNotExistsAsync(
+        `${this.config.plantId}.battery_current_usage`,
+        {
+          type: "state",
+          common: {
+            name: "battery_current_usage",
+            type: "number",
+            unit: "kW",
+            role: "value",
+            read: true,
+            write: true
+          },
+          native: {}
+        }
+      );
+    }
+    if (this.config.apiKey && this.config.apiSecret && this.config.plantId) {
+      this.log.info(
+        `Start polling soliscloud, polling every ${this.config.pollInterval} seconds`
+      );
       this.running = true;
       while (this.running) {
         try {
-          const callResult = await (0, import_apiHelper.getStationDetails)(this.config.plantId, this.config.apiKey, this.config.apiSecret);
-          await this.setStateAsync("current_Consumption", callResult == null ? void 0 : callResult.current_consumption);
-          await this.setStateAsync("current_Power", callResult == null ? void 0 : callResult.current_Power);
-          await this.setStateAsync("current_From_Net", callResult == null ? void 0 : callResult.current_From_Net);
-          await this.setStateAsync("sold_Today", callResult == null ? void 0 : callResult.sold_Today);
-          await this.setStateAsync("generated_Today", callResult == null ? void 0 : callResult.generated_Today);
-          await this.setStateAsync("bought_Today", callResult == null ? void 0 : callResult.bought_Today);
-          await this.setStateAsync("consumption_Today", callResult == null ? void 0 : callResult.consumption_Today);
-          await this.setStateAsync("battery_percent", callResult == null ? void 0 : callResult.battery_percent);
-          await this.setStateAsync("battery_current_usage", callResult == null ? void 0 : callResult.battery_current_usage);
+          const callResult = await (0, import_apiHelper.getStationDetails)(
+            this.config.plantId,
+            this.config.apiKey,
+            this.config.apiSecret
+          );
+          await this.setStateAsync(
+            `${this.config.plantId}.current_consumption`,
+            callResult == null ? void 0 : callResult.current_consumption
+          );
+          await this.setStateAsync(
+            `${this.config.plantId}.current_power`,
+            callResult == null ? void 0 : callResult.current_power
+          );
+          await this.setStateAsync(
+            `${this.config.plantId}.current_from_net`,
+            callResult == null ? void 0 : callResult.current_from_net
+          );
+          await this.setStateAsync(
+            `${this.config.plantId}.sold_today`,
+            callResult == null ? void 0 : callResult.sold_today
+          );
+          await this.setStateAsync(
+            `${this.config.plantId}.generated_today`,
+            callResult == null ? void 0 : callResult.generated_today
+          );
+          await this.setStateAsync(
+            `${this.config.plantId}.bought_today`,
+            callResult == null ? void 0 : callResult.bought_today
+          );
+          await this.setStateAsync(
+            `${this.config.plantId}.consumption_today`,
+            callResult == null ? void 0 : callResult.consumption_today
+          );
+          await this.setStateAsync(
+            `${this.config.plantId}.battery_percent`,
+            callResult == null ? void 0 : callResult.battery_percent
+          );
+          await this.setStateAsync(
+            `${this.config.plantId}.battery_current_usage`,
+            callResult == null ? void 0 : callResult.battery_current_usage
+          );
           await new Promise((resolve) => setTimeout(resolve, 3e4));
         } catch (e) {
-          this.log.error(`Error while calling solis api, retrying in ${this.config.pollInterval} seconds`);
-          await new Promise((resolve) => setTimeout(resolve, this.config.pollInterval * 1e3));
+          this.log.error(
+            `Error while calling solis api, retrying in ${this.config.pollInterval} seconds.`
+          );
+          this.log.error(`Error was: ${e}`);
+          await new Promise(
+            (resolve) => setTimeout(resolve, this.config.pollInterval * 1e3)
+          );
         }
       }
     } else {
-      this.log.info("Can't start polling, missing needed settings.");
+      this.log.error("Can't start polling, missing needed settings.");
     }
   }
   onUnload(callback) {
@@ -165,13 +237,6 @@ class soliscloud extends utils.Adapter {
     } catch (e) {
       this.log.info("Error while stopping polling: " + e);
       callback();
-    }
-  }
-  onStateChange(id, state) {
-    if (state) {
-      this.log.info(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
-    } else {
-      this.log.info(`state ${id} deleted`);
     }
   }
 }
