@@ -26,7 +26,6 @@ class soliscloud extends utils.Adapter {
       ...options,
       name: "soliscloud"
     });
-    this.running = false;
     this.on("ready", this.onReady.bind(this));
     this.on("unload", this.onUnload.bind(this));
   }
@@ -170,69 +169,59 @@ class soliscloud extends utils.Adapter {
       this.log.info(
         `Start polling soliscloud, polling every ${this.config.pollInterval} seconds`
       );
-      this.running = true;
-      while (this.running) {
-        try {
-          const callResult = await (0, import_apiHelper.getStationDetails)(
-            this.config.plantId,
-            this.config.apiKey,
-            this.config.apiSecret
-          );
-          await this.setStateAsync(
-            `${this.config.plantId}.current_consumption`,
-            callResult == null ? void 0 : callResult.current_consumption
-          );
-          await this.setStateAsync(
-            `${this.config.plantId}.current_power`,
-            callResult == null ? void 0 : callResult.current_power
-          );
-          await this.setStateAsync(
-            `${this.config.plantId}.current_from_net`,
-            callResult == null ? void 0 : callResult.current_from_net
-          );
-          await this.setStateAsync(
-            `${this.config.plantId}.sold_today`,
-            callResult == null ? void 0 : callResult.sold_today
-          );
-          await this.setStateAsync(
-            `${this.config.plantId}.generated_today`,
-            callResult == null ? void 0 : callResult.generated_today
-          );
-          await this.setStateAsync(
-            `${this.config.plantId}.bought_today`,
-            callResult == null ? void 0 : callResult.bought_today
-          );
-          await this.setStateAsync(
-            `${this.config.plantId}.consumption_today`,
-            callResult == null ? void 0 : callResult.consumption_today
-          );
-          await this.setStateAsync(
-            `${this.config.plantId}.battery_percent`,
-            callResult == null ? void 0 : callResult.battery_percent
-          );
-          await this.setStateAsync(
-            `${this.config.plantId}.battery_current_usage`,
-            callResult == null ? void 0 : callResult.battery_current_usage
-          );
-          await new Promise((resolve) => setTimeout(resolve, 3e4));
-        } catch (e) {
-          this.log.error(
-            `Error while calling solis api, retrying in ${this.config.pollInterval} seconds.`
-          );
-          this.log.error(`Error was: ${e}`);
-          await new Promise(
-            (resolve) => setTimeout(resolve, this.config.pollInterval * 1e3)
-          );
-        }
-      }
-    } else {
-      this.log.error("Can't start polling, missing needed settings.");
+      this.intervalId = this.setInterval(async () => {
+        await this.pollSolis();
+      }, this.config.pollInterval * 1e3);
     }
+  }
+  async pollSolis() {
+    this.log.info("Polling ?");
+    const callResult = await (0, import_apiHelper.getStationDetails)(
+      this.config.plantId,
+      this.config.apiKey,
+      this.config.apiSecret
+    );
+    await this.setStateAsync(
+      `${this.config.plantId}.current_consumption`,
+      callResult == null ? void 0 : callResult.current_consumption
+    );
+    await this.setStateAsync(
+      `${this.config.plantId}.current_power`,
+      callResult == null ? void 0 : callResult.current_power
+    );
+    await this.setStateAsync(
+      `${this.config.plantId}.current_from_net`,
+      callResult == null ? void 0 : callResult.current_from_net
+    );
+    await this.setStateAsync(
+      `${this.config.plantId}.sold_today`,
+      callResult == null ? void 0 : callResult.sold_today
+    );
+    await this.setStateAsync(
+      `${this.config.plantId}.generated_today`,
+      callResult == null ? void 0 : callResult.generated_today
+    );
+    await this.setStateAsync(
+      `${this.config.plantId}.bought_today`,
+      callResult == null ? void 0 : callResult.bought_today
+    );
+    await this.setStateAsync(
+      `${this.config.plantId}.consumption_today`,
+      callResult == null ? void 0 : callResult.consumption_today
+    );
+    await this.setStateAsync(
+      `${this.config.plantId}.battery_percent`,
+      callResult == null ? void 0 : callResult.battery_percent
+    );
+    await this.setStateAsync(
+      `${this.config.plantId}.battery_current_usage`,
+      callResult == null ? void 0 : callResult.battery_current_usage
+    );
   }
   onUnload(callback) {
     try {
       this.log.info("Stopping soliscloud polling");
-      this.running = false;
+      this.clearInterval(this.intervalId);
       callback();
     } catch (e) {
       this.log.info("Error while stopping polling: " + e);
