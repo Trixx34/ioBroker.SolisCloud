@@ -19,7 +19,7 @@ You can find the contact information for your region here: https://www.solisinve
 - First click on "Verification code" after which you get an image with 2 puzzle pieces, which you need to overlap each other using the slider below.
 - After that, you will receive an email with the verification code you need to enter (within 60 seconds).
 - Once confirmed, you get the API ID, secret and API URL
-- The plant ID you need to enter in the settings is the ID found in the url once you are logged in. For example: https://www.soliscloud.com/#/station/stationdetail_1?id=**123486816843454864**
+- The plant ID you need to enter in the settings is the ID found in the url once you are logged in. For example: soliscloud.com/#/station/stationdetail_1?id=**123486816843454864**
 
 This adapter will read and store the following values into objects:
 
