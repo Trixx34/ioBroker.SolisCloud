@@ -5,6 +5,20 @@
     "connectionType": "cloud",
     "dataSource": "poll",
     "news": {
+      "1.1.3": {
+        "en": "Switched to setInterval instead of loop. Issue #14",
+        "de": "Geschaltet, um Interval anstelle der Schleife einzustellen. Lieferung 14",
+        "ru": "Переключен для setInterval вместо loop. Номер #14",
+        "pt": "Mudou para setInterval em vez de loop. Edição 14",
+        "nl": "In plaats van lus. Issue 14",
+        "fr": "Passé à setInterval au lieu de boucle. Numéro #14",
+        "it": "Passato per impostareInterval invece di loop. Numero 14",
+        "es": "Interval en lugar de bucle. Cuestión #14",
+        "pl": "Zamiast pętli zamiast miksowania. Wydanie 14",
+        "uk": "Перемкнено до комплектуСталь замість петлі. Випуск #14",
+        "zh-cn": "证人试图打造相互交道,而不是开头。 问题"
+      },
+      "1.0.3": {
       "en": "Updates based on feedback. Check readme for details.",
       "de": "Updates basierend auf Feedback. Lesen Sie mehr über die Details.",
       "ru": "Обновления на основе обратной связи. Проверьте readme для деталей.",
@@ -16,6 +30,7 @@
       "pl": "Updates oparty jest na opiniach. Uczy się czytać szczegóły.",
       "uk": "Оновлення на основі відгуків. Перевірити зчитувач для деталей.",
       "zh-cn": "根据反馈的最新情况。 详细情况见面。."
+    }
     },
     "titleLang": {
       "en": "soliscloud",
