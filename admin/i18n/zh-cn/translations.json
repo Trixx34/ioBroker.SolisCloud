@@ -1,5 +1,7 @@
 {
-    "soliscloud adapter settings": "soliscloud 的适配器设置",
-    "option1": "选项1",
-    "option2": "选项2"
+    "apiKey": "API密钥",
+    "apiSecret": "api秘密",
+    "plantID": "植物ID",
+    "pollInterval": "轮询间隔",
+    "soliscloud adapter settings": "soliscloud 的适配器设置"
 }

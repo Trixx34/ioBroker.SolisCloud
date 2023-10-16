@@ -175,7 +175,6 @@ class soliscloud extends utils.Adapter {
     }
   }
   async pollSolis() {
-    this.log.info("Polling ?");
     const callResult = await (0, import_apiHelper.getStationDetails)(
       this.config.plantId,
       this.config.apiKey,

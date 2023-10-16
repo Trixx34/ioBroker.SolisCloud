@@ -1,5 +1,7 @@
 {
-    "soliscloud adapter settings": "Paramètres d'adaptateur pour soliscloud",
-    "option1": "Option 1",
-    "option2": "Option 2"
+    "apiKey": "clé API",
+    "apiSecret": "apiSecret",
+    "plantID": "IDplante",
+    "pollInterval": "Intervalle de sondage",
+    "soliscloud adapter settings": "Paramètres d'adaptateur pour soliscloud"
 }

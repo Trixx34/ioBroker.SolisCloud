@@ -1,5 +1,7 @@
 {
-    "soliscloud adapter settings": "Impostazioni dell'adattatore per template",
-    "option1": "opzione 1",
-    "option2": "opzione 2"
+    "apiKey": "apiKey",
+    "apiSecret": "apiSecret",
+    "plantID": "IDpianta",
+    "pollInterval": "pollInterval",
+    "soliscloud adapter settings": "Impostazioni dell'adattatore per template"
 }

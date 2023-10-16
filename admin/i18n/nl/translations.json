@@ -1,5 +1,7 @@
 {
-    "soliscloud adapter settings": "Adapterinstellingen voor soliscloud",
-    "option1": "Optie 1",
-    "option2": "Optie 2"
+    "apiKey": "API sleutel",
+    "apiSecret": "apiGeheim",
+    "plantID": "plantId",
+    "pollInterval": "pollInterval",
+    "soliscloud adapter settings": "Adapterinstellingen voor soliscloud"
 }

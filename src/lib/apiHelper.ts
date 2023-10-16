@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/indent */
 import axios from "axios";
 import crypto from "crypto";
 const API_BASE_URL = "https://www.soliscloud.com:13333";
@@ -27,7 +28,7 @@ export async function getStationDetails(
     "/v1/api/stationDetail";
   const sign = HmacSHA1Encrypt(param, apiSecret);
   //todo fix logging in apihelper
-  //this.log.debug(    `Encrypted SHA1 (this can NOT be retraced to your API secret): ${sign}`,  );
+  //logger.info(`Encrypted SHA1 (this can NOT be retraced to your API secret): ${sign}`);
   const url = API_BASE_URL + "/v1/api/stationDetail";
   try {
     const requestBody = JSON.stringify(map);

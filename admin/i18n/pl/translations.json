@@ -1,5 +1,7 @@
 {
-    "soliscloud adapter settings": "Ustawienia adaptera dla soliscloud",
-    "option1": "opcja 1",
-    "option2": "Opcja 2"
+    "apiKey": "Klucz API",
+    "apiSecret": "apiSecret",
+    "plantID": "identyfikator rośliny",
+    "pollInterval": "ankietaInterwał",
+    "soliscloud adapter settings": "Ustawienia adaptera dla soliscloud"
 }

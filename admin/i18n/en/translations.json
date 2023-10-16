@@ -1,7 +1,7 @@
 {
-  "soliscloud adapter settings": "Adapter settings for soliscloud",
-  "apiKey": "apiKey",
-  "apiSecret": "apiSecret",
-  "plantID": "plantId",
-  "pollInterval": "pollInterval"
+    "apiKey": "apiKey",
+    "apiSecret": "apiSecret",
+    "plantID": "plantId",
+    "pollInterval": "pollInterval",
+    "soliscloud adapter settings": "Adapter settings for soliscloud"
 }
