@@ -2,7 +2,7 @@ import * as utils from "@iobroker/adapter-core";
 import { getStationDetails } from "./lib/apiHelper";
 import "./lib/apiHelper";
 
-class soliscloud extends utils.Adapter {
+export class soliscloud extends utils.Adapter {
   private intervalId: any;
   public constructor(options: Partial<utils.AdapterOptions> = {}) {
     super({

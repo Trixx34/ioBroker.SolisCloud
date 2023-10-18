@@ -32,7 +32,7 @@ export async function getStationDetails(
   const url = API_BASE_URL + "/v1/api/stationDetail";
   try {
     const requestBody = JSON.stringify(map);
-    //this.log.debug(`Requestbody: ${JSON.stringify(map)}`);
+    //this.log.debug(`Request body: ${JSON.stringify(map)}`);
     const response = await axios({
       method: "post",
       url: url,

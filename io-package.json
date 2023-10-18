@@ -96,6 +96,12 @@
         ]
     },
     "native": {},
+    "encryptedNative": [
+        "apiKey"
+    ],
+    "protectedNative": [
+        "apiKey"
+    ],
     "objects": [],
     "instanceObjects": []
 }
