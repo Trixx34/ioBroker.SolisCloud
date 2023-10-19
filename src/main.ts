@@ -16,7 +16,7 @@ export class soliscloud extends utils.Adapter {
   private async onReady(): Promise<void> {
     this.log.info("Starting soliscloud adapter");
 
-    if (this.config.plantId != null) {
+    if (this.config.plantId) {
       await this.setObjectNotExistsAsync(
         `${this.config.plantId}.current_consumption`,
         {
