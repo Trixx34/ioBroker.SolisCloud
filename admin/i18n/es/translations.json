@@ -1,0 +1,7 @@
+{
+    "apiKey": "Clave API",
+    "apiSecret": "apiSecret",
+    "plantID": "ID de planta",
+    "pollInterval": "intervalo de encuesta",
+    "soliscloud adapter settings": "Ajustes del adaptador para soliscloud"
+}

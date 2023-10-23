@@ -1,0 +1,7 @@
+{
+    "apiKey": "APIKey",
+    "apiSecret": "APISecret",
+    "plantID": "идентификатор растения",
+    "pollInterval": "опросИнтервал",
+    "soliscloud adapter settings": "Настройки адаптера для soliscloud"
+}
