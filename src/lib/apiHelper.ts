@@ -90,9 +90,8 @@ export function getGMTTime(): string {
     "Nov",
     "Dec",
   ];
-  return `${days[cd.getUTCDay()]}, ${cd.getUTCDate()} ${
-    months[cd.getUTCMonth()]
-  } ${cd.getUTCFullYear()} ${cd.getUTCHours()}:${cd.getUTCMinutes()}:${cd.getUTCSeconds()} GMT`;
+  return `${days[cd.getUTCDay()]}, ${cd.getUTCDate()} ${months[cd.getUTCMonth()]
+    } ${cd.getUTCFullYear()} ${cd.getUTCHours()}:${cd.getUTCMinutes()}:${cd.getUTCSeconds()} GMT`;
 }
 
 export function getDigest(test: string): string {

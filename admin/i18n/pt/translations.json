@@ -3,5 +3,9 @@
     "apiSecret": "apiSecret",
     "plantID": "plantaId",
     "pollInterval": "pollInterval",
-    "soliscloud adapter settings": "Configurações do adaptador para soliscloud"
+    "soliscloud adapter settings": "Configurações do adaptador para soliscloud",
+    "API Key": "Chave API",
+    "API Secret": "Segredo da API",
+    "Station/Plant ID": "Encontrado no URL quando conectado ao soliscloud. soliscloud.com/#/station/stationdetail_1?id=123486816843454864",
+    "help_pollinterval": "Intervalo em segundos entre chamadas de API. Valor mínimo=45 segundos, valor máximo=1800 segundos."
 }

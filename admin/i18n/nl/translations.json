@@ -3,5 +3,9 @@
     "apiSecret": "apiGeheim",
     "plantID": "plantId",
     "pollInterval": "pollInterval",
-    "soliscloud adapter settings": "Adapterinstellingen voor soliscloud"
+    "soliscloud adapter settings": "Adapterinstellingen voor soliscloud",
+    "API Key": "API sleutel",
+    "API Secret": "API-geheim",
+    "Station/Plant ID": "Gevonden in URL bij inloggen op soliscloud. soliscloud.com/#/station/stationdetail_1?id=123486816843454864",
+    "help_pollinterval": "Interval in seconden tussen API-aanroepen. Min. waarde=45 seconden, max. waarde=1800 seconden."
 }

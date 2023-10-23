@@ -92,6 +92,7 @@
 		]
 	},
 	"native": {},
+	"i18n": true,
 	"encryptedNative": ["apiKey"],
 	"protectedNative": ["apiKey"],
 	"objects": [],

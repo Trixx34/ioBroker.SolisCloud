@@ -3,5 +3,9 @@
     "apiSecret": "apiSecret",
     "plantID": "IDpianta",
     "pollInterval": "pollInterval",
-    "soliscloud adapter settings": "Impostazioni dell'adattatore per template"
+    "soliscloud adapter settings": "Impostazioni dell'adattatore per template",
+    "API Key": "Chiave API",
+    "API Secret": "Segreto dell'API",
+    "Station/Plant ID": "Trovato nell'URL quando si accede a soliscloud. soliscloud.com/#/station/stationdetail_1?id=123486816843454864",
+    "help_pollinterval": "Intervallo in secondi tra le chiamate API. Valore minimo=45 secondi, valore massimo=1800 secondi."
 }

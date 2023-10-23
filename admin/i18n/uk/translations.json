@@ -3,5 +3,9 @@
     "apiSecret": "apiSecret",
     "plantID": "plantId",
     "pollInterval": "pollInterval",
-    "soliscloud adapter settings": "Налаштування адаптера для soliscloud"
+    "soliscloud adapter settings": "Налаштування адаптера для soliscloud",
+    "API Key": "Ключ API",
+    "API Secret": "Секрет API",
+    "Station/Plant ID": "Знайдено в URL-адресі під час входу в soliscloud. soliscloud.com/#/station/stationdetail_1?id=123486816843454864",
+    "help_pollinterval": "Інтервал у секундах між викликами API. Мінімальне значення=45 секунд, максимальне значення=1800 секунд."
 }

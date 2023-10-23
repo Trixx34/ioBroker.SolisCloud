@@ -2,7 +2,7 @@ import * as utils from "@iobroker/adapter-core";
 import { getStationDetails } from "./lib/apiHelper";
 import "./lib/apiHelper";
 
-export class soliscloud extends utils.Adapter {
+class soliscloud extends utils.Adapter {
 	private intervalId: any;
 	public constructor(options: Partial<utils.AdapterOptions> = {}) {
 		super({
@@ -25,7 +25,7 @@ export class soliscloud extends utils.Adapter {
 						name: "current_consumption",
 						type: "number",
 						unit: "kW",
-						role: "value",
+						role: "value.power.consumed",
 						read: true,
 						write: true,
 					},
@@ -41,7 +41,7 @@ export class soliscloud extends utils.Adapter {
 						name: "current_power",
 						type: "number",
 						unit: "kW",
-						role: "value",
+						role: "value.power.produced",
 						read: true,
 						write: true,
 					},
@@ -57,7 +57,7 @@ export class soliscloud extends utils.Adapter {
 						name: "current_from_net",
 						type: "number",
 						unit: "kW",
-						role: "value",
+						role: "value.power",
 						read: true,
 						write: true,
 					},
@@ -71,7 +71,7 @@ export class soliscloud extends utils.Adapter {
 					name: "sold_today",
 					type: "number",
 					unit: "kWh",
-					role: "value",
+					role: "value.energy",
 					read: true,
 					write: true,
 				},
@@ -85,7 +85,7 @@ export class soliscloud extends utils.Adapter {
 						name: "generated_today",
 						type: "number",
 						unit: "kWh",
-						role: "value",
+						role: "value.energy",
 						read: true,
 						write: true,
 					},
@@ -101,7 +101,7 @@ export class soliscloud extends utils.Adapter {
 						name: "bought_today",
 						type: "number",
 						unit: "kWh",
-						role: "value",
+						role: "value.energy",
 						read: true,
 						write: true,
 					},
@@ -117,7 +117,7 @@ export class soliscloud extends utils.Adapter {
 						name: "consumption_today",
 						type: "number",
 						unit: "kWh",
-						role: "value",
+						role: "value.energy",
 						read: true,
 						write: true,
 					},
@@ -133,7 +133,7 @@ export class soliscloud extends utils.Adapter {
 						name: "battery_percent",
 						type: "number",
 						unit: "%",
-						role: "value",
+						role: "value.fill",
 						read: true,
 						write: true,
 					},
@@ -149,7 +149,7 @@ export class soliscloud extends utils.Adapter {
 						name: "battery_current_usage",
 						type: "number",
 						unit: "kW",
-						role: "value",
+						role: "value.power",
 						read: true,
 						write: true,
 					},
@@ -174,42 +174,47 @@ export class soliscloud extends utils.Adapter {
 			this.config.apiKey,
 			this.config.apiSecret,
 		);
-		await this.setStateAsync(
-			`${this.config.plantId}.current_consumption`,
-			callResult?.current_consumption,
-		);
-		await this.setStateAsync(
-			`${this.config.plantId}.current_power`,
-			callResult?.current_power,
-		);
-		await this.setStateAsync(
-			`${this.config.plantId}.current_from_net`,
-			callResult?.current_from_net,
-		);
-		await this.setStateAsync(
-			`${this.config.plantId}.sold_today`,
-			callResult?.sold_today,
-		);
-		await this.setStateAsync(
-			`${this.config.plantId}.generated_today`,
-			callResult?.generated_today,
-		);
-		await this.setStateAsync(
-			`${this.config.plantId}.bought_today`,
-			callResult?.bought_today,
-		);
-		await this.setStateAsync(
-			`${this.config.plantId}.consumption_today`,
-			callResult?.consumption_today,
-		);
-		await this.setStateAsync(
-			`${this.config.plantId}.battery_percent`,
-			callResult?.battery_percent,
-		);
-		await this.setStateAsync(
-			`${this.config.plantId}.battery_current_usage`,
-			callResult?.battery_current_usage,
-		);
+		if (callResult) {
+			this.log.debug("Received result from API call, current consumption should be: " + callResult.current_consumption);
+			await this.setStateAsync(
+				`${this.config.plantId}.current_consumption`,
+				callResult.current_consumption,
+			);
+			await this.setStateAsync(
+				`${this.config.plantId}.current_power`,
+				callResult.current_power,
+			);
+			await this.setStateAsync(
+				`${this.config.plantId}.current_from_net`,
+				callResult.current_from_net,
+			);
+			await this.setStateAsync(
+				`${this.config.plantId}.sold_today`,
+				callResult.sold_today,
+			);
+			await this.setStateAsync(
+				`${this.config.plantId}.generated_today`,
+				callResult.generated_today,
+			);
+			await this.setStateAsync(
+				`${this.config.plantId}.bought_today`,
+				callResult.bought_today,
+			);
+			await this.setStateAsync(
+				`${this.config.plantId}.consumption_today`,
+				callResult.consumption_today,
+			);
+			await this.setStateAsync(
+				`${this.config.plantId}.battery_percent`,
+				callResult.battery_percent,
+			);
+			await this.setStateAsync(
+				`${this.config.plantId}.battery_current_usage`,
+				callResult.battery_current_usage,
+			);
+		} else {
+			this.log.debug("Did not receive a correct response from the API call");
+		}
 	}
 
 	private onUnload(callback: () => void): void {
