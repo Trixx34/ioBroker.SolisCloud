@@ -11,5 +11,7 @@
     "plantIdHelp": "Trouvé dans l'URL lors de la connexion à soliscloud. soliscloud.com/#/station/stationdetail_1?id=123486816843454864",
     "help_plantId": "Trouvé dans l'URL lors de la connexion à soliscloud. soliscloud.com/#/station/stationdetail_1?id=123486816843454864",
     "api Key": "clé API",
-    "api Secret": "Secret API"
+    "api Secret": "Secret API",
+    "plantId": "ID de station/usine",
+    "help_pollInterval": "Valeur minimale = 45 secondes, valeur maximale = 1 800 secondes."
 }

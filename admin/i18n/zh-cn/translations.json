@@ -11,5 +11,7 @@
     "help_plantId": "登录到 soliscloud 时可在 URL 中找到。 soliscloud.com/#/station/stationdetail_1?id=123486816843454864",
     "api Key": "API密钥",
     "api Secret": "API秘密",
-    "Station/Plant ID": "站/工厂 ID"
+    "Station/Plant ID": "站/工厂 ID",
+    "plantId": "站/厂ID",
+    "help_pollInterval": "最小值=45 秒，最大值=1800 秒。"
 }

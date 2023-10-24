@@ -1,7 +1,7 @@
 {
 	"apiKey": "API Key",
 	"apiSecret": "API Secret",
-	"plantID": "Station/Plant ID",
+	"plantId": "Station/Plant ID",
 	"API Key": "API Key",
 	"API Secret": "API Secret",
 	"Station/Plant ID": "Station / Plant ID",
@@ -11,5 +11,5 @@
 	"api Secret": "API Secret",
 	"plantIdHelp": "Found in URL when logged into soliscloud. soliscloud.com/#/station/stationdetail_1?id=123486816843454864",
 	"help_plantId": "Found in URL when logged into soliscloud. soliscloud.com/#/station/stationdetail_1?id=123486816843454864",
-	"help_pollinterval": "Interval in seconds between API Calls. Min value=45 seconds, max value=1800 seconds."
+	"help_pollInterval": "Min value=45 seconds, max value=1800 seconds."
 }
