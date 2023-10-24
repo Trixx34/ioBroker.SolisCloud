@@ -1,11 +1,15 @@
 {
-	"apiKey": "apiKey",
-	"apiSecret": "apiSecret",
-	"plantID": "plantId",
-	"pollInterval": "poll Interval",
-	"soliscloud adapter settings": "Adaptereinstellungen für soliscloud",
-	"API Key": "API-Schlüssel",
-	"API Secret": "API-Geheimnis",
-	"Station/Plant ID": "Wird in der URL gefunden, wenn Sie bei soliscloud angemeldet sind. soliscloud.com/#/station/stationdetail_1?id=123486816843454864",
-	"help_pollinterval": "Intervall in Sekunden zwischen API-Aufrufen. Min. Wert=45 Sekunden, Max. Wert=1800 Sekunden."
+    "apiKey": "apiKey",
+    "apiSecret": "apiSecret",
+    "plantID": "plantId",
+    "pollInterval": "poll Interval",
+    "soliscloud adapter settings": "Adaptereinstellungen für soliscloud",
+    "API Key": "API-Schlüssel",
+    "API Secret": "API-Geheimnis",
+    "Station/Plant ID": "Wird in der URL gefunden, wenn Sie bei soliscloud angemeldet sind. soliscloud.com/#/station/stationdetail_1?id=123486816843454864",
+    "help_pollinterval": "Intervall in Sekunden zwischen API-Aufrufen. Min. Wert=45 Sekunden, Max. Wert=1800 Sekunden.",
+    "plantIdHelp": "Wird in der URL gefunden, wenn Sie bei soliscloud angemeldet sind. soliscloud.com/#/station/stationdetail_1?id=123486816843454864",
+    "help_plantId": "Wird in der URL gefunden, wenn Sie bei soliscloud angemeldet sind. soliscloud.com/#/station/stationdetail_1?id=123486816843454864",
+    "api Key": "API-Schlüssel",
+    "api Secret": "API-Geheimnis"
 }

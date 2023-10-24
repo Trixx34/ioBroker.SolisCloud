@@ -4,26 +4,26 @@
 	"items": {
 		"apiKey": {
 			"type": "text",
-			"label": "API Key",
+			"label": "api Key",
 			"newLine": true,
 			"sm": 6
 		},
 		"apiSecret": {
 			"type": "password",
-			"label": "API Secret",
+			"label": "api Secret",
 			"newLine": false,
 			"sm": 6
 		},
 		"plantId": {
 			"type": "text",
-			"label": "Station/Plant ID",
-			"help": "Found in URL when logged into soliscloud. soliscloud.com/#/station/stationdetail_1?id=123486816843454864",
+			"label": "plantId",
+			"help": "help_plantId",
 			"newLine": true
 		},
 		"pollInterval": {
 			"type": "number",
-			"label": "polling interval.",
-			"help": "Interval in seconds between API Calls. Min value=45 seconds, max value=1800 seconds.",
+			"label": "pollInterval",
+			"help": "help_pollInterval",
 			"newLine": true,
 			"min": 45,
 			"max": 1800

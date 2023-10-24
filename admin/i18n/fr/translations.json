@@ -7,5 +7,9 @@
     "API Key": "clé API",
     "API Secret": "Secret API",
     "Station/Plant ID": "Trouvé dans l'URL lors de la connexion à soliscloud. soliscloud.com/#/station/stationdetail_1?id=123486816843454864",
-    "help_pollinterval": "Intervalle en secondes entre les appels API. Valeur minimale = 45 secondes, valeur maximale = 1 800 secondes."
+    "help_pollinterval": "Intervalle en secondes entre les appels API. Valeur minimale = 45 secondes, valeur maximale = 1 800 secondes.",
+    "plantIdHelp": "Trouvé dans l'URL lors de la connexion à soliscloud. soliscloud.com/#/station/stationdetail_1?id=123486816843454864",
+    "help_plantId": "Trouvé dans l'URL lors de la connexion à soliscloud. soliscloud.com/#/station/stationdetail_1?id=123486816843454864",
+    "api Key": "clé API",
+    "api Secret": "Secret API"
 }

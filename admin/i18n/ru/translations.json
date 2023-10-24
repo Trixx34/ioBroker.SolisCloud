@@ -1,11 +1,15 @@
 {
-    "apiKey": "APIKey",
-    "apiSecret": "APISecret",
-    "plantID": "идентификатор растения",
     "pollInterval": "опросИнтервал",
     "soliscloud adapter settings": "Настройки адаптера для soliscloud",
     "API Key": "API-ключ",
     "API Secret": "Секрет API",
-    "Station/Plant ID": "Обнаружен в URL-адресе при входе в solicloud. soliscloud.com/#/station/stationdetail_1?id=123486816843454864",
-    "help_pollinterval": "Интервал в секундах между вызовами API. Минимальное значение=45 секунд, максимальное значение=1800 секунд."
+    "help_pollinterval": "Интервал в секундах между вызовами API. Минимальное значение=45 секунд, максимальное значение=1800 секунд.",
+    "plantIdHelp": "Обнаружен в URL-адресе при входе в solicloud. soliscloud.com/#/station/stationdetail_1?id=123486816843454864",
+    "plantID": "Идентификатор растения",
+    "apiKey": "API-ключ",
+    "apiSecret": "Секрет API",
+    "help_plantId": "Обнаружен в URL-адресе при входе в solicloud. soliscloud.com/#/station/stationdetail_1?id=123486816843454864",
+    "api Key": "API-ключ",
+    "api Secret": "Секрет API",
+    "Station/Plant ID": "Идентификатор станции/завода"
 }

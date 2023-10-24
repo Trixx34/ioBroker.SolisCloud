@@ -7,5 +7,9 @@
     "API Key": "API sleutel",
     "API Secret": "API-geheim",
     "Station/Plant ID": "Gevonden in URL bij inloggen op soliscloud. soliscloud.com/#/station/stationdetail_1?id=123486816843454864",
-    "help_pollinterval": "Interval in seconden tussen API-aanroepen. Min. waarde=45 seconden, max. waarde=1800 seconden."
+    "help_pollinterval": "Interval in seconden tussen API-aanroepen. Min. waarde=45 seconden, max. waarde=1800 seconden.",
+    "help_plantId": "Gevonden in URL bij inloggen op soliscloud. soliscloud.com/#/station/stationdetail_1?id=123486816843454864",
+    "api Key": "API sleutel",
+    "api Secret": "API-geheim",
+    "plantIdHelp": "Gevonden in URL bij inloggen op soliscloud. soliscloud.com/#/station/stationdetail_1?id=123486816843454864"
 }
