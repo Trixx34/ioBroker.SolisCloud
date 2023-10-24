@@ -7,7 +7,6 @@
 This integration is based on this home-assistant integration:
 https://github.com/hultenvp/solis-sensor
 
-
 The steps to get the needed data to use the integration are as following:
 
 Create a ticket with ginlong to request enabling API access on your account and wait untill they confirm the change
@@ -44,10 +43,16 @@ I'm not a professional developer. Use at your own risk.
 
 ## Changelog
 
+### 1.1.4 (2023-24-10)
+
+- Fixed issues with translations.
+
 ### 1.1.3 (2023-15-10)
+
 - Switched to setInterval -> https://github.com/Trixx34/ioBroker.soliscloud/issues/12
 
 ### 1.0.3 (2023-15-10)
+
 - Removed console logging
 - Removed unused onStateChange handler
 - Adjusted state-id naming
@@ -55,12 +60,16 @@ I'm not a professional developer. Use at your own risk.
 - Added plant ID as root folder for objects
 
 ### 1.0.2 (2023-11-10)
+
 - Translations
 - Removed some unneeded files.
 
 ### 1.0.1 (2023-10-09)
+
 - Fixed issue where pollinterval wasn't checked/used
+
 ### 1.0.0 (2023-10-09)
+
 - Split api logic in separate files
 - various updates to comply with publishing rules
 - Initial release!

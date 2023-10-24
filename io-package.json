@@ -1,107 +1,113 @@
 {
-    "common": {
-        "name": "soliscloud",
-        "version": "1.1.3",
-        "connectionType": "cloud",
-        "dataSource": "poll",
-        "news": {
-            "1.1.3": {
-                "en": "Switched to setInterval instead of loop. Issue #14",
-                "de": "Geschaltet, um Interval anstelle der Schleife einzustellen. Lieferung 14",
-                "ru": "Переключен для setInterval вместо loop. Номер #14",
-                "pt": "Mudou para setInterval em vez de loop. Edição 14",
-                "nl": "In plaats van lus. Issue 14",
-                "fr": "Passé à setInterval au lieu de boucle. Numéro #14",
-                "it": "Passato per impostareInterval invece di loop. Numero 14",
-                "es": "Interval en lugar de bucle. Cuestión #14",
-                "pl": "Zamiast pętli zamiast miksowania. Wydanie 14",
-                "uk": "Перемкнено до комплектуСталь замість петлі. Випуск #14",
-                "zh-cn": "证人试图打造相互交道,而不是开头。 问题"
-            },
-            "1.0.3": {
-                "en": "Updates based on feedback. Check readme for details.",
-                "de": "Updates basierend auf Feedback. Lesen Sie mehr über die Details.",
-                "ru": "Обновления на основе обратной связи. Проверьте readme для деталей.",
-                "pt": "Atualizações baseadas no feedback. Verifique o readme para detalhes.",
-                "nl": "Updates gebaseerd op feedback. Controleer de details.",
-                "fr": "Mises à jour basées sur les commentaires. Vérifiez le readme pour les détails.",
-                "it": "Aggiornamenti basati su feedback. Controlla il readme per i dettagli.",
-                "es": "Actualizaciones basadas en comentarios. Revisa el texto para obtener detalles.",
-                "pl": "Updates oparty jest na opiniach. Uczy się czytać szczegóły.",
-                "uk": "Оновлення на основі відгуків. Перевірити зчитувач для деталей.",
-                "zh-cn": "根据反馈的最新情况。 详细情况见面。."
-            }
-        },
-        "titleLang": {
-            "en": "soliscloud",
-            "de": "soliscloud",
-            "ru": "soliscloud",
-            "pt": "soliscloud",
-            "nl": "soliscloud",
-            "fr": "soliscloud",
-            "it": "soliscloud",
-            "es": "soliscloud",
-            "pl": "soliscloud",
-            "zh-cn": "soliscloud",
-            "uk": "soliscloud"
-        },
-        "desc": {
-            "en": "Adapter for reading data from soliscloud",
-            "de": "Adapter zum Lesen von Daten von soliscloud",
-            "ru": "Адаптер для чтения данных из soliscloud",
-            "pt": "Adaptador para ler dados de soliscloud",
-            "nl": "Adapter voor het lezen van gegevens van Soliscloud",
-            "fr": "Adaptateur pour la lecture des données de soliscloud",
-            "it": "Adattatore per la lettura dei dati da soliscloud",
-            "es": "Adaptador para la lectura de datos de soliscloud",
-            "pl": "Adapter for read data from soliscloud (ang.)",
-            "uk": "Адаптер для читання даних з солісклою",
-            "zh-cn": "阅读从Iliscloud获得的数据"
-        },
-        "authors": [
-            {
-                "name": "Trixx",
-                "email": "trixxdev034@gmail.com"
-            }
-        ],
-        "keywords": [
-            "Solis",
-            "soliscloud"
-        ],
-        "license": "MIT",
-        "platform": "Javascript/Node.js",
-        "main": "build/main.js",
-        "icon": "solis.png",
-        "enabled": true,
-        "extIcon": "https://raw.githubusercontent.com/Trixx34/ioBroker.soliscloud/main/admin/solis.png",
-        "readme": "https://github.com/Trixx34/ioBroker.SolisCloud#readme",
-        "loglevel": "info",
-        "mode": "daemon",
-        "type": "general",
-        "compact": true,
-        "adminUI": {
-            "config": "json"
-        },
-        "supportCustoms": false,
-        "dependencies": [
-            {
-                "js-controller": ">=3.3.22"
-            }
-        ],
-        "globalDependencies": [
-            {
-                "admin": ">=5.1.13"
-            }
-        ]
-    },
-    "native": {},
-    "i18n": true,
-    "encryptedNative": [
-        "apiKey"
-    ],
-    "protectedNative": [
-        "apiKey"
-    ],
-    "objects": [],
-    "instanceObjects": []
+	"common": {
+		"name": "soliscloud",
+		"version": "1.1.4",
+		"connectionType": "cloud",
+		"dataSource": "poll",
+		"news": {
+			"1.1.4": {
+				"en": "Translations should work correctly now.",
+				"de": "Übersetzungen sollten jetzt korrekt funktionieren.",
+				"ru": "Переводы должны работать правильно сейчас.",
+				"pt": "As traduções devem funcionar corretamente agora.",
+				"nl": "Vertalingen moeten nu correct werken.",
+				"fr": "Les traductions devraient fonctionner correctement maintenant.",
+				"it": "Le traduzioni dovrebbero funzionare correttamente ora.",
+				"es": "Las traducciones deben funcionar correctamente ahora.",
+				"pl": "Tłumaczenia powinny działać poprawnie.",
+				"uk": "Переклади повинні працювати правильно зараз.",
+				"zh-cn": "翻译工作现在应该正确。."
+			},
+			"1.1.3": {
+				"en": "Switched to setInterval instead of loop. Issue #14",
+				"de": "Geschaltet, um Interval anstelle der Schleife einzustellen. Lieferung 14",
+				"ru": "Переключен для setInterval вместо loop. Номер #14",
+				"pt": "Mudou para setInterval em vez de loop. Edição 14",
+				"nl": "In plaats van lus. Issue 14",
+				"fr": "Passé à setInterval au lieu de boucle. Numéro #14",
+				"it": "Passato per impostareInterval invece di loop. Numero 14",
+				"es": "Interval en lugar de bucle. Cuestión #14",
+				"pl": "Zamiast pętli zamiast miksowania. Wydanie 14",
+				"uk": "Перемкнено до комплектуСталь замість петлі. Випуск #14",
+				"zh-cn": "证人试图打造相互交道,而不是开头。 问题"
+			},
+			"1.0.3": {
+				"en": "Updates based on feedback. Check readme for details.",
+				"de": "Updates basierend auf Feedback. Lesen Sie mehr über die Details.",
+				"ru": "Обновления на основе обратной связи. Проверьте readme для деталей.",
+				"pt": "Atualizações baseadas no feedback. Verifique o readme para detalhes.",
+				"nl": "Updates gebaseerd op feedback. Controleer de details.",
+				"fr": "Mises à jour basées sur les commentaires. Vérifiez le readme pour les détails.",
+				"it": "Aggiornamenti basati su feedback. Controlla il readme per i dettagli.",
+				"es": "Actualizaciones basadas en comentarios. Revisa el texto para obtener detalles.",
+				"pl": "Updates oparty jest na opiniach. Uczy się czytać szczegóły.",
+				"uk": "Оновлення на основі відгуків. Перевірити зчитувач для деталей.",
+				"zh-cn": "根据反馈的最新情况。 详细情况见面。."
+			}
+		},
+		"titleLang": {
+			"en": "soliscloud",
+			"de": "soliscloud",
+			"ru": "soliscloud",
+			"pt": "soliscloud",
+			"nl": "soliscloud",
+			"fr": "soliscloud",
+			"it": "soliscloud",
+			"es": "soliscloud",
+			"pl": "soliscloud",
+			"zh-cn": "soliscloud",
+			"uk": "soliscloud"
+		},
+		"desc": {
+			"en": "Adapter for reading data from soliscloud",
+			"de": "Adapter zum Lesen von Daten von soliscloud",
+			"ru": "Адаптер для чтения данных из soliscloud",
+			"pt": "Adaptador para ler dados de soliscloud",
+			"nl": "Adapter voor het lezen van gegevens van Soliscloud",
+			"fr": "Adaptateur pour la lecture des données de soliscloud",
+			"it": "Adattatore per la lettura dei dati da soliscloud",
+			"es": "Adaptador para la lectura de datos de soliscloud",
+			"pl": "Adapter for read data from soliscloud (ang.)",
+			"uk": "Адаптер для читання даних з солісклою",
+			"zh-cn": "阅读从Iliscloud获得的数据"
+		},
+		"authors": [
+			{
+				"name": "Trixx",
+				"email": "trixxdev034@gmail.com"
+			}
+		],
+		"keywords": ["Solis", "soliscloud"],
+		"license": "MIT",
+		"platform": "Javascript/Node.js",
+		"main": "build/main.js",
+		"icon": "solis.png",
+		"enabled": true,
+		"extIcon": "https://raw.githubusercontent.com/Trixx34/ioBroker.soliscloud/main/admin/solis.png",
+		"readme": "https://github.com/Trixx34/ioBroker.SolisCloud#readme",
+		"loglevel": "info",
+		"mode": "daemon",
+		"type": "general",
+		"compact": true,
+		"adminUI": {
+			"config": "json"
+		},
+		"supportCustoms": false,
+		"dependencies": [
+			{
+				"js-controller": ">=3.3.22"
+			}
+		],
+		"globalDependencies": [
+			{
+				"admin": ">=5.1.13"
+			}
+		]
+	},
+	"native": {},
+	"i18n": true,
+	"encryptedNative": ["apiKey"],
+	"protectedNative": ["apiKey"],
+	"objects": [],
+	"instanceObjects": []
 }
