@@ -43,6 +43,13 @@ I'm not a professional developer. Use at your own risk.
 
 ## Changelog
 
+### 1.1.5 (2023-30-10)
+
+- Updated minimum node version.
+- Limited input to numerical values only for the plantID.
+- removed some unneeded settings.
+- updated translations.
+
 ### 1.1.4 (2023-24-10)
 
 - Fixed issues with translations.

@@ -13,5 +13,6 @@
     "api Key": "Clave API",
     "api Secret": "Secreto de API",
     "plantId": "ID de estación/planta",
-    "help_pollInterval": "Valor mínimo = 45 segundos, valor máximo = 1800 segundos."
+    "help_pollInterval": "Valor mínimo = 45 segundos, valor máximo = 1800 segundos.",
+    "errValplantId": "Se encontraron caracteres no válidos en plantId, solo se permiten valores numéricos."
 }

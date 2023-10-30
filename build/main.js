@@ -168,7 +168,7 @@ class soliscloud extends utils.Adapter {
     } else {
       this.log.error("No plantID was entered or it contains invalid characters.");
     }
-    if (this.config.apiKey && this.config.apiSecret && this.config.plantId) {
+    if (this.config.apiKey && this.config.apiSecret && this.validatePlantID(this.config.plantId)) {
       this.log.info(
         `Start polling soliscloud, polling every ${this.config.pollInterval} seconds`
       );

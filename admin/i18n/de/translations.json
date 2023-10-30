@@ -13,5 +13,6 @@
     "api Key": "API-Schlüssel",
     "api Secret": "API-Geheimnis",
     "plantId": "Stations-/Anlagen-ID",
-    "help_pollInterval": "Min. Wert=45 Sekunden, Max. Wert=1800 Sekunden."
+    "help_pollInterval": "Min. Wert=45 Sekunden, Max. Wert=1800 Sekunden.",
+    "errValplantId": "In plantId wurden ungültige Zeichen gefunden. Es sind nur numerische Werte zulässig."
 }
