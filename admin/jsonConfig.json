@@ -1,32 +1,33 @@
 {
-	"i18n": true,
-	"type": "panel",
-	"items": {
-		"apiKey": {
-			"type": "text",
-			"label": "api Key",
-			"newLine": true,
-			"sm": 6
-		},
-		"apiSecret": {
-			"type": "password",
-			"label": "api Secret",
-			"newLine": false,
-			"sm": 6
-		},
-		"plantId": {
-			"type": "text",
-			"label": "plantId",
-			"help": "help_plantId",
-			"newLine": true
-		},
-		"pollInterval": {
-			"type": "number",
-			"label": "pollInterval",
-			"help": "help_pollInterval",
-			"newLine": true,
-			"min": 45,
-			"max": 1800
-		}
-	}
+  "i18n": true,
+  "type": "panel",
+  "items": {
+    "apiKey": {
+      "type": "text",
+      "label": "api Key",
+      "newLine": true,
+      "sm": 6
+    },
+    "apiSecret": {
+      "type": "password",
+      "label": "api Secret",
+      "newLine": false,
+      "sm": 6
+    },
+    "plantId": {
+      "type": "text",
+      "label": "plantId",
+      "help": "help_plantId",
+      "newLine": true,
+      "validate": "^[a-zA-Z0-9_-]*$"
+    },
+    "pollInterval": {
+      "type": "number",
+      "label": "pollInterval",
+      "help": "help_pollInterval",
+      "newLine": true,
+      "min": 45,
+      "max": 1800
+    }
+  }
 }

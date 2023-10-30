@@ -15,11 +15,8 @@ class soliscloud extends utils.Adapter {
 
 	private async onReady(): Promise<void> {
 		this.log.info("Starting soliscloud adapter");
-
-		if (this.config.plantId != null) {
-			this.log.debug(`PlantID was: ${this.config.plantId}`);
-			this.config.plantId = this.config.plantId.replace(this.FORBIDDEN_CHARS, "_");
-			this.log.debug(`PlantID after sanitizing: ${this.config.plantId}`);
+		this.validatePlantID(this.config.plantId)
+		if (this.config.plantId != null && this.validatePlantID(this.config.plantId)) {
 			await this.setObjectNotExistsAsync(
 				`${this.config.plantId}.current_consumption`,
 				{
@@ -159,6 +156,8 @@ class soliscloud extends utils.Adapter {
 					native: {},
 				},
 			);
+		} else {
+			this.log.error("No plantID was entered or it contains invalid characters.");
 		}
 
 		if (this.config.apiKey && this.config.apiSecret && this.config.plantId) {
@@ -168,7 +167,14 @@ class soliscloud extends utils.Adapter {
 			this.intervalId = this.setInterval(async () => {
 				await this.pollSolis();
 			}, this.config.pollInterval * 1000);
+		} else {
+			this.log.error("No plantID was entered or it contains invalid characters. NOT polling.");
 		}
+	}
+
+	private validatePlantID(plantId: string): boolean {
+		const pattern = /^[a-zA-Z0-9]*$/; // Regular expression pattern
+		return pattern.test(plantId);
 	}
 
 	private async pollSolis(): Promise<void> {
