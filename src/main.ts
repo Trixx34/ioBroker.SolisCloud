@@ -17,6 +17,9 @@ class soliscloud extends utils.Adapter {
 		this.log.info("Starting soliscloud adapter");
 
 		if (this.config.plantId != null) {
+			this.log.debug(`PlantID was: ${this.config.plantId}`);
+			this.config.plantId = this.config.plantId.replace(this.FORBIDDEN_CHARS, "_");
+			this.log.debug(`PlantID after sanitizing: ${this.config.plantId}`);
 			await this.setObjectNotExistsAsync(
 				`${this.config.plantId}.current_consumption`,
 				{
