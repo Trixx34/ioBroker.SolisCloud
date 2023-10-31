@@ -29,10 +29,14 @@ class soliscloud extends utils.Adapter {
     this.on("ready", this.onReady.bind(this));
     this.on("unload", this.onUnload.bind(this));
   }
+  logMessage(level, message) {
+    if (level === "error") {
+      this.log.error(message);
+    }
+  }
   async onReady() {
     this.log.info("Starting soliscloud adapter");
-    this.validatePlantID(this.config.plantId);
-    if (this.config.plantId != null && this.validatePlantID(this.config.plantId)) {
+    if (this.config.plantId != null) {
       await this.setObjectNotExistsAsync(
         `${this.config.plantId}.current_consumption`,
         {
@@ -165,10 +169,113 @@ class soliscloud extends utils.Adapter {
           native: {}
         }
       );
+      await this.setObjectNotExistsAsync(
+        `${this.config.plantId}.battery_today_charge`,
+        {
+          type: "state",
+          common: {
+            name: "battery_today_charge",
+            type: "number",
+            unit: "kWh",
+            role: "value.power",
+            read: true,
+            write: true
+          },
+          native: {}
+        }
+      );
+      await this.setObjectNotExistsAsync(
+        `${this.config.plantId}.battery_today_discharge`,
+        {
+          type: "state",
+          common: {
+            name: "battery_today_discharge",
+            type: "number",
+            unit: "kWh",
+            role: "value.power",
+            read: true,
+            write: true
+          },
+          native: {}
+        }
+      );
+      await this.setObjectNotExistsAsync(
+        `${this.config.plantId}.total_consumption_energy`,
+        {
+          type: "state",
+          common: {
+            name: "total_consumption_energy",
+            type: "number",
+            unit: "kWh",
+            role: "value.power",
+            read: true,
+            write: true
+          },
+          native: {}
+        }
+      );
+      await this.setObjectNotExistsAsync(
+        `${this.config.plantId}.self_consumption_energy`,
+        {
+          type: "state",
+          common: {
+            name: "self_consumption_energy",
+            type: "number",
+            unit: "kWh",
+            role: "value.power",
+            read: true,
+            write: true
+          },
+          native: {}
+        }
+      );
+      await this.setObjectNotExistsAsync(
+        `${this.config.plantId}.plant_state`,
+        {
+          type: "state",
+          common: {
+            name: "plant_state",
+            type: "string",
+            role: "text",
+            read: true,
+            write: true
+          },
+          native: {}
+        }
+      );
+      await this.setObjectNotExistsAsync(
+        `${this.config.plantId}.energy_day`,
+        {
+          type: "state",
+          common: {
+            name: "energy_day",
+            type: "number",
+            role: "value.power",
+            unit: "kWh",
+            read: true,
+            write: true
+          },
+          native: {}
+        }
+      );
+      await this.setObjectNotExistsAsync(
+        `${this.config.plantId}.inverter_state`,
+        {
+          type: "state",
+          common: {
+            name: "inverter_state",
+            type: "string",
+            role: "text",
+            read: true,
+            write: true
+          },
+          native: {}
+        }
+      );
     } else {
       this.log.error("No plantID was entered or it contains invalid characters.");
     }
-    if (this.config.apiKey && this.config.apiSecret && this.validatePlantID(this.config.plantId)) {
+    if (this.config.apiKey && this.config.apiSecret && this.config.plantId) {
       this.log.info(
         `Start polling soliscloud, polling every ${this.config.pollInterval} seconds`
       );
@@ -179,10 +286,6 @@ class soliscloud extends utils.Adapter {
       this.log.error("No plantID was entered or it contains invalid characters. NOT polling.");
     }
   }
-  validatePlantID(plantId) {
-    const pattern = /^[a-zA-Z0-9]*$/;
-    return pattern.test(plantId);
-  }
   async pollSolis() {
     const callResult = await (0, import_apiHelper.getStationDetails)(
       this.config.plantId,
@@ -191,6 +294,22 @@ class soliscloud extends utils.Adapter {
     );
     if (callResult) {
       this.log.debug("Received result from API call, current consumption should be: " + callResult.current_consumption);
+      let plantStatus = "";
+      switch (callResult.plant_state) {
+        case 1:
+          plantStatus = "Online";
+          break;
+        case 2:
+          plantStatus = "Offline";
+          break;
+        case 3:
+          plantStatus = "Alarm";
+          break;
+        default:
+          this.log.error(`Received an incorrect plant status from the API Call, this should NOT happen.`);
+          break;
+      }
+      this.log.debug(`Plant ${this.config.plantId} is ${plantStatus}`);
       await this.setStateAsync(
         `${this.config.plantId}.current_consumption`,
         callResult.current_consumption
@@ -227,8 +346,64 @@ class soliscloud extends utils.Adapter {
         `${this.config.plantId}.battery_current_usage`,
         callResult.battery_current_usage
       );
+      await this.setStateAsync(
+        `${this.config.plantId}.battery_today_charge`,
+        callResult.battery_today_charge
+      );
+      await this.setStateAsync(
+        `${this.config.plantId}.battery_today_discharge`,
+        callResult.battery_today_discharge
+      );
+      await this.setStateAsync(
+        `${this.config.plantId}.total_consumption_energy`,
+        callResult.total_consumption_energy
+      );
+      await this.setStateAsync(
+        `${this.config.plantId}.self_consumption_energy`,
+        callResult.self_consumption_energy
+      );
+      await this.setStateAsync(
+        `${this.config.plantId}.plant_state`,
+        plantStatus
+      );
     } else {
-      this.log.debug("Did not receive a correct response from the API call");
+      this.log.debug("Did not receive a correct response from the Stationdetails API call");
+    }
+    try {
+      const inverterResult = await (0, import_apiHelper.getInverterDetails)(
+        this.config.plantId,
+        this.config.apiKey,
+        this.config.apiSecret
+      );
+      this.log.debug(`Correct result from Inverter API call, inverter state: ${inverterResult.data.page.records[0].state}`);
+      let inverterStatus = "";
+      switch (inverterResult.data.page.records[0].state) {
+        case 1:
+          inverterStatus = "Online";
+          break;
+        case 2:
+          inverterStatus = "Offline";
+          break;
+        case 3:
+          inverterStatus = "Alarm";
+          break;
+        default:
+          this.log.error(`Received an incorrect plant status from the inverter API Call, this should NOT happen.`);
+          break;
+      }
+      this.log.debug(`set inverter state to: ${inverterStatus}`);
+      if (inverterResult) {
+        await this.setStateAsync(
+          `${this.config.plantId}.energy_day`,
+          inverterResult.data.page.records[0].etoday
+        );
+        await this.setStateAsync(
+          `${this.config.plantId}.inverter_state`,
+          inverterStatus
+        );
+      }
+    } catch (e) {
+      this.log.error(`error while calling API (Inverter): ${e}`);
     }
   }
   onUnload(callback) {

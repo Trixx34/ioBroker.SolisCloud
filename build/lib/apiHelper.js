@@ -27,6 +27,7 @@ __export(apiHelper_exports, {
   HmacSHA1Encrypt: () => HmacSHA1Encrypt,
   getDigest: () => getDigest,
   getGMTTime: () => getGMTTime,
+  getInverterDetails: () => getInverterDetails,
   getStationDetails: () => getStationDetails
 });
 module.exports = __toCommonJS(apiHelper_exports);
@@ -66,10 +67,46 @@ async function getStationDetails(stationId, apiKey, apiSecret) {
       bought_today: response.data.data.gridPurchasedDayEnergy,
       consumption_today: response.data.data.homeLoadEnergy,
       battery_percent: response.data.data.batteryPercent,
-      battery_current_usage: response.data.data.batteryPower
+      battery_current_usage: response.data.data.batteryPower,
+      battery_today_charge: response.data.data.batteryChargeEnergy,
+      battery_today_discharge: response.data.data.batteryDischargeEnergy,
+      total_consumption_energy: response.data.data.homeLoadEnergy,
+      self_consumption_energy: response.data.data.oneSelf,
+      plant_state: response.data.data.state
     };
   } catch (error) {
     this.log.error(error);
+  }
+}
+async function getInverterDetails(stationId, apiKey, apiSecret) {
+  const map = {
+    pageNo: 1,
+    pageSize: 20,
+    stationId
+  };
+  const body = JSON.stringify(map);
+  const ContentMd5 = getDigest(body);
+  const currentDate = getGMTTime();
+  const param = "POST\n" + ContentMd5 + "\napplication/json\n" + currentDate + "\n/v1/api/inverterList";
+  const sign = HmacSHA1Encrypt(param, apiSecret);
+  const url = API_BASE_URL + "/v1/api/inverterList";
+  try {
+    const requestBody = JSON.stringify(map);
+    const response = await (0, import_axios.default)({
+      method: "post",
+      url,
+      headers: {
+        "Content-type": "application/json;charset=UTF-8",
+        Authorization: `API ${apiKey}:${sign}`,
+        "Content-MD5": ContentMd5,
+        Date: currentDate
+      },
+      data: requestBody,
+      timeout: 5e3
+    });
+    return response.data;
+  } catch (e) {
+    console.log(e);
   }
 }
 function HmacSHA1Encrypt(encryptText, keySecret) {
@@ -108,6 +145,7 @@ function getDigest(test) {
   HmacSHA1Encrypt,
   getDigest,
   getGMTTime,
+  getInverterDetails,
   getStationDetails
 });
 //# sourceMappingURL=apiHelper.js.map

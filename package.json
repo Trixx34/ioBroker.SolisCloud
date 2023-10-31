@@ -1,6 +1,6 @@
 {
   "name": "iobroker.soliscloud",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "Adapter for reading data from soliscloud",
   "author": {
     "name": "Trixx",

@@ -1,10 +1,23 @@
 {
   "common": {
     "name": "soliscloud",
-    "version": "1.1.5",
+    "version": "1.1.6",
     "connectionType": "cloud",
     "dataSource": "poll",
     "news": {
+      "1.1.6": {
+        "en": "Added new values.",
+        "de": "Neue Werte hinzugefügt.",
+        "ru": "Добавлены новые значения.",
+        "pt": "Adicionados novos valores.",
+        "nl": "Nieuwe waarden toegevoegd.",
+        "fr": "Ajout de nouvelles valeurs.",
+        "it": "Aggiunti nuovi valori.",
+        "es": "Nuevos valores añadidos.",
+        "pl": "Nowe wartości.",
+        "uk": "Додано нові значення.",
+        "zh-cn": "增加新的价值。."
+      },
       "1.1.5": {
         "en": "Updates required for inclusion in testing repository",
         "de": "Aktualisierungen, die für die Aufnahme in das Projektarchiv erforderlich sind",
@@ -97,10 +110,10 @@
     "icon": "solis.png",
     "enabled": true,
     "extIcon": "https://raw.githubusercontent.com/Trixx34/ioBroker.soliscloud/main/admin/solis.png",
-    "readme": "https://github.com/Trixx34/ioBroker.SolisCloud#readme",
+    "readme": "https://github.com/Trixx34/ioBroker.soliscloud#readme",
     "loglevel": "info",
     "mode": "daemon",
-    "type": "general",
+    "type": "energy",
     "compact": true,
     "adminUI": {
       "config": "json"

@@ -43,6 +43,21 @@ I'm not a professional developer. Use at your own risk.
 
 ## Changelog
 
+### 1.1.6 (2023-31-10)
+
+- Added new values:
+  from the Power Station List:
+  batteryTodayDischargeEnergy
+  batteryTodayChargeEnergy
+  homeLoadTodayEnergy
+  state
+  oneSelf
+
+  from the Inverter List:
+  eToday
+  etodayStr
+  state
+
 ### 1.1.5 (2023-30-10)
 
 - Updated minimum node version.

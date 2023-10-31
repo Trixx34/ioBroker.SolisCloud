@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/indent */
 import axios from "axios";
 import crypto from "crypto";
+import { stat } from "fs";
 const API_BASE_URL = "https://www.soliscloud.com:13333";
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
@@ -27,7 +28,7 @@ export async function getStationDetails(
     "\n" +
     "/v1/api/stationDetail";
   const sign = HmacSHA1Encrypt(param, apiSecret);
-  //todo fix logging in apihelper
+  //#todo fix logging in apihelper
   //logger.info(`Encrypted SHA1 (this can NOT be retraced to your API secret): ${sign}`);
   const url = API_BASE_URL + "/v1/api/stationDetail";
   try {
@@ -56,9 +57,61 @@ export async function getStationDetails(
       consumption_today: response.data.data.homeLoadEnergy,
       battery_percent: response.data.data.batteryPercent,
       battery_current_usage: response.data.data.batteryPower,
+      battery_today_charge: response.data.data.batteryChargeEnergy,
+      battery_today_discharge: response.data.data.batteryDischargeEnergy,
+      total_consumption_energy: response.data.data.homeLoadEnergy,
+      self_consumption_energy: response.data.data.oneSelf,
+      plant_state: response.data.data.state,
     };
   } catch (error) {
     this.log.error(error);
+  }
+}
+
+export async function getInverterDetails(
+  this: any,
+  stationId: string,
+  apiKey: string,
+  apiSecret: string
+): Promise<any> {
+  const map = {
+    pageNo: 1,
+    pageSize: 20,
+    stationId: stationId
+  };
+  const body = JSON.stringify(map);
+  const ContentMd5 = getDigest(body);
+  const currentDate = getGMTTime();
+  const param =
+    "POST" +
+    "\n" +
+    ContentMd5 +
+    "\n" +
+    "application/json" +
+    "\n" +
+    currentDate +
+    "\n" +
+    "/v1/api/inverterList";
+  const sign = HmacSHA1Encrypt(param, apiSecret);
+  const url = API_BASE_URL + "/v1/api/inverterList";
+  try {
+    const requestBody = JSON.stringify(map);
+    const response = await axios({
+      method: "post",
+      url: url,
+      headers: {
+        "Content-type": "application/json;charset=UTF-8",
+        Authorization: `API ${apiKey}:${sign}`,
+        "Content-MD5": ContentMd5,
+        Date: currentDate,
+      },
+      data: requestBody,
+      timeout: 5000,
+    });
+    return response.data
+  } catch (e) {
+    //#TODO fix console logging
+    console.log(e)
   }
 }
 
