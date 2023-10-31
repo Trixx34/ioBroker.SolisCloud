@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/indent */
 import axios from "axios";
 import crypto from "crypto";
-import { stat } from "fs";
 const API_BASE_URL = "https://www.soliscloud.com:13333";
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
