@@ -1,10 +1,23 @@
 {
   "common": {
     "name": "soliscloud",
-    "version": "1.1.7",
+    "version": "1.2.0",
     "connectionType": "cloud",
     "dataSource": "poll",
     "news": {
+      "1.2.0": {
+        "en": "Adjusted processing of inverter API call.\nFixed logging for API calls\nimproved error handling\nwrite attribute set to false for all objects.",
+        "de": "Anpassung der Verarbeitung von Inverter-API-Aufruf.\nFeste Protokollierung für API-Anrufe\nverbesserte fehlerbehandlung\nschreibattribut auf false für alle objekte gesetzt.",
+        "ru": "Настройка обработки инверторного API звонка.\nФиксированный вход для API звонков\nулучшенная обработка ошибок\nнаписать атрибут, установленный ложно для всех объектов.",
+        "pt": "Processamento ajustado da chamada API do inversor.\nRegistro fixo para chamadas de API\nmelhor manipulação de erros\nescrever atributo definido para false para todos os objetos.",
+        "nl": "Verwerking van inverter API oproep.\nVertaling:\nverbeterde fouten\nschrijf attribute op vals voor alle objecten.",
+        "fr": "Traitement ajusté de l'appel API d'inverter.\nLogging fixe pour les appels API\namélioration de la manipulation des erreurs\nécrire attribut set à false pour tous les objets.",
+        "it": "Trattamento rettificato della chiamata API inverter.\nRegistrazione fissa per le chiamate API\nmigliore gestione degli errori\nscrivere attributo impostato a falso per tutti gli oggetti.",
+        "es": "Tratamiento ajustado de la llamada API inverter.\nRegistro fijo para llamadas API\nmejor manejo de errores\nescribir atributo fijado a falso para todos los objetos.",
+        "pl": "Adjusted processing of inverter API call.\nFixed logging forAPI calls call\npolepszenie błędów\npisanie atrybutów jest fałszywe dla wszystkich obiektów.",
+        "uk": "Регульована обробка інвертора API виклику.\nФіксований журнал для викликів API\nполіпшення обробки помилок\nнапишіть атрибут, який встановлюється на false для всіх об'єктів.",
+        "zh-cn": "合理处理各种不同的阿联酋呼吁。.\nA. 扶持型企业的固定伐木\n改进错误处理\n写信给所有物体。."
+      },
       "1.1.7": {
         "en": "Code improvements",
         "de": "Verbesserungen des Codes",
@@ -116,7 +129,10 @@
         "email": "trixxdev034@gmail.com"
       }
     ],
-    "keywords": ["Solis", "soliscloud"],
+    "keywords": [
+      "Solis",
+      "soliscloud"
+    ],
     "license": "MIT",
     "platform": "Javascript/Node.js",
     "main": "build/main.js",
@@ -145,8 +161,12 @@
   },
   "native": {},
   "i18n": true,
-  "encryptedNative": ["apiKey"],
-  "protectedNative": ["apiKey"],
+  "encryptedNative": [
+    "apiKey"
+  ],
+  "protectedNative": [
+    "apiKey"
+  ],
   "objects": [],
   "instanceObjects": []
 }

@@ -42,8 +42,7 @@ I'm not a professional developer. Use at your own risk.
 [![Buy Me a Coffee](https://www.buymeacoffee.com/assets/img/guidelines/download-assets-sm-2.svg)](https://www.buymeacoffee.com/trixxdev)
 
 ## Changelog
-
-### **WORK IN PROGRESS**
+### 1.2.0 (2023-11-01)
 
 - Adjusted processing of inverter API call.
 - Fixed logging for API calls
