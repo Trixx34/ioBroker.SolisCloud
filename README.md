@@ -42,6 +42,11 @@ I'm not a professional developer. Use at your own risk.
 [![Buy Me a Coffee](https://www.buymeacoffee.com/assets/img/guidelines/download-assets-sm-2.svg)](https://www.buymeacoffee.com/trixxdev)
 
 ## Changelog
+
+### **WORK IN PROGRESS**
+
+- attempt 2 to fix values
+
 ### 1.2.4 (2023-11-01)
 
 - 2 values weren't updated correctly
