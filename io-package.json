@@ -1,10 +1,23 @@
 {
   "common": {
     "name": "soliscloud",
-    "version": "1.2.3",
+    "version": "1.2.4",
     "connectionType": "cloud",
     "dataSource": "poll",
     "news": {
+      "1.2.4": {
+        "en": "2 values weren't updated correctly",
+        "de": "2 werte wurden nicht korrekt aktualisiert",
+        "ru": "2 значения не были обновлены правильно",
+        "pt": "2 valores não foram atualizados corretamente",
+        "nl": "twee waarden werden niet correct geüpdateerd",
+        "fr": "2 valeurs n'ont pas été mises à jour correctement",
+        "it": "2 valori non sono stati aggiornati correttamente",
+        "es": "2 valores no se han actualizado correctamente",
+        "pl": "2 wartości nie zostały poprawnie aktualizowane",
+        "uk": "2 значення не було оновлено належним чином",
+        "zh-cn": "2 价值正确更新"
+      },
       "1.2.3": {
         "en": "Typo in main which caused application crashes",
         "de": "Typo im Haupt, die Anwendungsunfälle verursacht",
@@ -82,19 +95,6 @@
         "pl": "Nowe wartości.",
         "uk": "Додано нові значення.",
         "zh-cn": "增加新的价值。."
-      },
-      "1.1.5": {
-        "en": "Updates required for inclusion in testing repository",
-        "de": "Aktualisierungen, die für die Aufnahme in das Projektarchiv erforderlich sind",
-        "ru": "Обновления, необходимые для включения в репозиторий тестирования",
-        "pt": "Atualizações necessárias para inclusão no repositório de testes",
-        "nl": "Updates vereist voor inclusie in testen",
-        "fr": "Mises à jour nécessaires à l ' inclusion dans le dépôt d ' essais",
-        "it": "Aggiornamenti necessari per l'inclusione nel repository di test",
-        "es": "Actualizaciones necesarias para su inclusión en el repositorio de pruebas",
-        "pl": "Ulepszenie wymaga włączenia do repozytorium testów",
-        "uk": "Оновлення, необхідні для включення в репозиторію тестування",
-        "zh-cn": "列入试验储存所需的最新资料"
       }
     },
     "titleLang": {

@@ -406,11 +406,11 @@ class soliscloud extends utils.Adapter {
       if (inverterResult) {
         await this.setStateAsync(
           `${this.config.plantId}.energy_day`,
-          { val: inverterResult.etoday, ack: true }
+          inverterResult.etoday
         );
         await this.setStateAsync(
           `${this.config.plantId}.inverter_state`,
-          { val: inverterStatus, ack: true }
+          inverterStatus
         );
       }
     } catch (e) {
