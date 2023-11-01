@@ -1,10 +1,23 @@
 {
   "common": {
     "name": "soliscloud",
-    "version": "1.2.2",
+    "version": "1.2.3",
     "connectionType": "cloud",
     "dataSource": "poll",
     "news": {
+      "1.2.3": {
+        "en": "Typo in main which caused application crashes",
+        "de": "Typo im Haupt, die Anwendungsunfälle verursacht",
+        "ru": "Typo в основном, что вызвало аварии приложения",
+        "pt": "Typo na principal que causou falhas de aplicação",
+        "nl": "Typo in de hoofdstad die toepassing veroorzaakte",
+        "fr": "Typo dans le principal qui a causé des accidents d'application",
+        "it": "Typo in principale che ha causato crash di applicazione",
+        "es": "Typo en el principal que causó fallos de aplicación",
+        "pl": "Typowo, w którym aplikacja rozbiła się",
+        "uk": "Тіпо в основному, що призвело до аварійних ситуацій додатків",
+        "zh-cn": "造成使用事故的主要渠道"
+      },
       "1.2.2": {
         "en": "Typo in main which caused application crashes",
         "de": "Typo im Haupt, die Anwendungsunfälle verursacht",
@@ -82,19 +95,6 @@
         "pl": "Ulepszenie wymaga włączenia do repozytorium testów",
         "uk": "Оновлення, необхідні для включення в репозиторію тестування",
         "zh-cn": "列入试验储存所需的最新资料"
-      },
-      "1.1.4": {
-        "en": "Translations should work correctly now.",
-        "de": "Übersetzungen sollten jetzt korrekt funktionieren.",
-        "ru": "Переводы должны работать правильно сейчас.",
-        "pt": "As traduções devem funcionar corretamente agora.",
-        "nl": "Vertalingen moeten nu correct werken.",
-        "fr": "Les traductions devraient fonctionner correctement maintenant.",
-        "it": "Le traduzioni dovrebbero funzionare correttamente ora.",
-        "es": "Las traducciones deben funcionar correctamente ahora.",
-        "pl": "Tłumaczenia powinny działać poprawnie.",
-        "uk": "Переклади повинні працювати правильно зараз.",
-        "zh-cn": "翻译工作现在应该正确。."
       }
     },
     "titleLang": {

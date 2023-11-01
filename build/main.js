@@ -89,7 +89,7 @@ class soliscloud extends utils.Adapter {
           write: false
         },
         native: {}
-      },);
+      });
       await this.setObjectNotExistsAsync(
         `${this.config.plantId}.generated_today`,
         {
