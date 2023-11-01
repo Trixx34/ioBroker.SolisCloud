@@ -1,10 +1,23 @@
 {
   "common": {
     "name": "soliscloud",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "connectionType": "cloud",
     "dataSource": "poll",
     "news": {
+      "1.2.1": {
+        "en": "added ack to value updates.",
+        "de": "zu wertaktualisierungen hinzugefügt.",
+        "ru": "добавлена ack к обновлениям стоимости.",
+        "pt": "adicionado ack para atualizações de valor.",
+        "nl": "voegde ack toe aan waarde updates.",
+        "fr": "ajouté ack aux mises à jour de valeur.",
+        "it": "aggiunto ack agli aggiornamenti di valore.",
+        "es": "añadido a las actualizaciones de valor.",
+        "pl": "dodano dodatki do wartości aktualizacji.",
+        "uk": "додано ack до оновлення значень.",
+        "zh-cn": "增加附加值更新。."
+      },
       "1.2.0": {
         "en": "Adjusted processing of inverter API call.\nFixed logging for API calls\nimproved error handling\nwrite attribute set to false for all objects.",
         "de": "Anpassung der Verarbeitung von Inverter-API-Aufruf.\nFeste Protokollierung für API-Anrufe\nverbesserte fehlerbehandlung\nschreibattribut auf false für alle objekte gesetzt.",
@@ -82,19 +95,6 @@
         "pl": "Zamiast pętli zamiast miksowania. Wydanie 14",
         "uk": "Перемкнено до комплектуСталь замість петлі. Випуск #14",
         "zh-cn": "证人试图打造相互交道,而不是开头。 问题"
-      },
-      "1.0.3": {
-        "en": "Updates based on feedback. Check readme for details.",
-        "de": "Updates basierend auf Feedback. Lesen Sie mehr über die Details.",
-        "ru": "Обновления на основе обратной связи. Проверьте readme для деталей.",
-        "pt": "Atualizações baseadas no feedback. Verifique o readme para detalhes.",
-        "nl": "Updates gebaseerd op feedback. Controleer de details.",
-        "fr": "Mises à jour basées sur les commentaires. Vérifiez le readme pour les détails.",
-        "it": "Aggiornamenti basati su feedback. Controlla il readme per i dettagli.",
-        "es": "Actualizaciones basadas en comentarios. Revisa el texto para obtener detalles.",
-        "pl": "Updates oparty jest na opiniach. Uczy się czytać szczegóły.",
-        "uk": "Оновлення на основі відгуків. Перевірити зчитувач для деталей.",
-        "zh-cn": "根据反馈的最新情况。 详细情况见面。."
       }
     },
     "titleLang": {
