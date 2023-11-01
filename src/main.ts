@@ -13,14 +13,9 @@ class soliscloud extends utils.Adapter {
 		this.on("unload", this.onUnload.bind(this));
 	}
 
-	public logMessage(level: string, message: string): void {
-		if (level === "error") {
-			this.log.error(message);
-		}
-	}
-
 	private async onReady(): Promise<void> {
 		this.log.info("Starting soliscloud adapter");
+
 		if (this.config.plantId != null) {
 			await this.setObjectNotExistsAsync(
 				`${this.config.plantId}.current_consumption`,
@@ -288,88 +283,93 @@ class soliscloud extends utils.Adapter {
 	}
 
 	private async pollSolis(): Promise<void> {
-		const callResult = await getStationDetails(
-			this.config.plantId,
-			this.config.apiKey,
-			this.config.apiSecret,
-		);
+		try {
+			const callResult = await getStationDetails(
+				this.config.plantId,
+				this.config.apiKey,
+				this.config.apiSecret,
+				this.log
+			);
 
-		if (callResult) {
-			this.log.debug("Received result from API call, current consumption should be: " + callResult.current_consumption);
-			let plantStatus = "";
-			switch (callResult.plant_state) {
-				case 1:
-					plantStatus = "Online";
-					break;
-				case 2:
-					plantStatus = "Offline";
-					break;
-				case 3:
-					plantStatus = "Alarm";
-					break;
-				default:
-					this.log.error(`Received an incorrect plant status from the API Call, this should NOT happen.`)
-					break;
+			if (callResult) {
+				this.log.debug("Received result from API call, current consumption should be: " + callResult.current_consumption);
+				let plantStatus = "";
+				switch (callResult.plant_state) {
+					case 1:
+						plantStatus = "Online";
+						break;
+					case 2:
+						plantStatus = "Offline";
+						break;
+					case 3:
+						plantStatus = "Alarm";
+						break;
+					default:
+						this.log.error(`Received an incorrect plant status from the API Call, this should NOT happen.`)
+						break;
+				}
+				this.log.debug(`Plant ${this.config.plantId} is ${plantStatus}`);
+				await this.setStateAsync(
+					`${this.config.plantId}.current_consumption`,
+					callResult.current_consumption,
+				);
+				await this.setStateAsync(
+					`${this.config.plantId}.current_power`,
+					callResult.current_power,
+				);
+				await this.setStateAsync(
+					`${this.config.plantId}.current_from_net`,
+					callResult.current_from_net,
+				);
+				await this.setStateAsync(
+					`${this.config.plantId}.sold_today`,
+					callResult.sold_today,
+				);
+				await this.setStateAsync(
+					`${this.config.plantId}.generated_today`,
+					callResult.generated_today,
+				);
+				await this.setStateAsync(
+					`${this.config.plantId}.bought_today`,
+					callResult.bought_today,
+				);
+				await this.setStateAsync(
+					`${this.config.plantId}.consumption_today`,
+					callResult.consumption_today,
+				);
+				await this.setStateAsync(
+					`${this.config.plantId}.battery_percent`,
+					callResult.battery_percent,
+				);
+				await this.setStateAsync(
+					`${this.config.plantId}.battery_current_usage`,
+					callResult.battery_current_usage,
+				);
+				await this.setStateAsync(
+					`${this.config.plantId}.battery_today_charge`,
+					callResult.battery_today_charge,
+				);
+				await this.setStateAsync(
+					`${this.config.plantId}.battery_today_discharge`,
+					callResult.battery_today_discharge,
+				);
+				await this.setStateAsync(
+					`${this.config.plantId}.total_consumption_energy`,
+					callResult.total_consumption_energy,
+				);
+				await this.setStateAsync(
+					`${this.config.plantId}.self_consumption_energy`,
+					callResult.self_consumption_energy,
+				);
+				await this.setStateAsync(
+					`${this.config.plantId}.plant_state`,
+					plantStatus,
+				);
+			} else {
+				this.log.debug("Did not receive a correct response from the Stationdetails API call");
 			}
-			this.log.debug(`Plant ${this.config.plantId} is ${plantStatus}`);
-			await this.setStateAsync(
-				`${this.config.plantId}.current_consumption`,
-				callResult.current_consumption,
-			);
-			await this.setStateAsync(
-				`${this.config.plantId}.current_power`,
-				callResult.current_power,
-			);
-			await this.setStateAsync(
-				`${this.config.plantId}.current_from_net`,
-				callResult.current_from_net,
-			);
-			await this.setStateAsync(
-				`${this.config.plantId}.sold_today`,
-				callResult.sold_today,
-			);
-			await this.setStateAsync(
-				`${this.config.plantId}.generated_today`,
-				callResult.generated_today,
-			);
-			await this.setStateAsync(
-				`${this.config.plantId}.bought_today`,
-				callResult.bought_today,
-			);
-			await this.setStateAsync(
-				`${this.config.plantId}.consumption_today`,
-				callResult.consumption_today,
-			);
-			await this.setStateAsync(
-				`${this.config.plantId}.battery_percent`,
-				callResult.battery_percent,
-			);
-			await this.setStateAsync(
-				`${this.config.plantId}.battery_current_usage`,
-				callResult.battery_current_usage,
-			);
-			await this.setStateAsync(
-				`${this.config.plantId}.battery_today_charge`,
-				callResult.battery_today_charge,
-			);
-			await this.setStateAsync(
-				`${this.config.plantId}.battery_today_discharge`,
-				callResult.battery_today_discharge,
-			);
-			await this.setStateAsync(
-				`${this.config.plantId}.total_consumption_energy`,
-				callResult.total_consumption_energy,
-			);
-			await this.setStateAsync(
-				`${this.config.plantId}.self_consumption_energy`,
-				callResult.self_consumption_energy,
-			);
-			await this.setStateAsync(
-				`${this.config.plantId}.plant_state`,
-				plantStatus,
-			);
-		} else {
-			this.log.debug("Did not receive a correct response from the Stationdetails API call");
+		} catch (e) {
+			this.log.error(`Error while calling API (Station): ${e} `)
 		}
 
 		try {
@@ -377,10 +377,11 @@ class soliscloud extends utils.Adapter {
 				this.config.plantId,
 				this.config.apiKey,
 				this.config.apiSecret,
+				this.log
 			);
-			this.log.debug(`Correct result from Inverter API call, inverter state: ${inverterResult.data.page.records[0].state}`)
+			this.log.debug(`Correct result from Inverter API call, inverter state: ${inverterResult.inverter_state}`)
 			let inverterStatus = "";
-			switch (inverterResult.data.page.records[0].state) {
+			switch (inverterResult.inverter_state) {
 				case 1:
 					inverterStatus = "Online";
 					break;
@@ -398,7 +399,7 @@ class soliscloud extends utils.Adapter {
 			if (inverterResult) {
 				await this.setStateAsync(
 					`${this.config.plantId}.energy_day`,
-					inverterResult.data.page.records[0].etoday,
+					inverterResult.etoday,
 				);
 				await this.setStateAsync(
 					`${this.config.plantId}.inverter_state`,

@@ -1,10 +1,23 @@
 {
   "common": {
     "name": "soliscloud",
-    "version": "1.1.6",
+    "version": "1.1.7",
     "connectionType": "cloud",
     "dataSource": "poll",
     "news": {
+      "1.1.7": {
+        "en": "Code improvements",
+        "de": "Verbesserungen des Codes",
+        "ru": "Улучшения кода",
+        "pt": "Melhorias de código",
+        "nl": "Code verbetering",
+        "fr": "Amélioration des codes",
+        "it": "Miglioramento del codice",
+        "es": "Mejoras del Código",
+        "pl": "Poprawa kodu",
+        "uk": "Поліпшення коду",
+        "zh-cn": "A. 守则的改进"
+      },
       "1.1.6": {
         "en": "Added new values.",
         "de": "Neue Werte hinzugefügt.",

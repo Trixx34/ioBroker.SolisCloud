@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/indent */
 import axios from "axios";
 import crypto from "crypto";
-import { stat } from "fs";
 const API_BASE_URL = "https://www.soliscloud.com:13333";
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
@@ -10,6 +9,7 @@ export async function getStationDetails(
   stationId: string,
   apiKey: string,
   apiSecret: string,
+  apiLogger: any
 ) {
   const map = {
     id: stationId,
@@ -28,9 +28,9 @@ export async function getStationDetails(
     "\n" +
     "/v1/api/stationDetail";
   const sign = HmacSHA1Encrypt(param, apiSecret);
-  //#todo fix logging in apihelper
-  //logger.info(`Encrypted SHA1 (this can NOT be retraced to your API secret): ${sign}`);
+  apiLogger.debug(`Encrypted sign for StationDetails call (this can NOT be retraced to your API key/secret): ${sign}`);
   const url = API_BASE_URL + "/v1/api/stationDetail";
+  apiLogger.debug(`Stationdetails URL: ${url}`);
   try {
     const requestBody = JSON.stringify(map);
     //this.log.debug(`Request body: ${JSON.stringify(map)}`);
@@ -46,7 +46,7 @@ export async function getStationDetails(
       data: requestBody,
       timeout: 5000,
     });
-    //this.log.debug(`API response was: ${response.data}`);
+    apiLogger.silly(`API response (Station) was: ${response.data.data}`);
     return {
       current_power: response.data.data.power,
       current_consumption: response.data.data.familyLoadPower,
@@ -64,7 +64,7 @@ export async function getStationDetails(
       plant_state: response.data.data.state,
     };
   } catch (error) {
-    this.log.error(error);
+    apiLogger.error(error);
   }
 }
 
@@ -72,7 +72,8 @@ export async function getInverterDetails(
   this: any,
   stationId: string,
   apiKey: string,
-  apiSecret: string
+  apiSecret: string,
+  apiLogger: any
 ): Promise<any> {
   const map = {
     pageNo: 1,
@@ -93,7 +94,9 @@ export async function getInverterDetails(
     "\n" +
     "/v1/api/inverterList";
   const sign = HmacSHA1Encrypt(param, apiSecret);
+  apiLogger.debug(`Encrypted sign for InverterDetails call (this can NOT be retraced to your API key/secret): ${sign}`);
   const url = API_BASE_URL + "/v1/api/inverterList";
+  apiLogger.debug(`Inverterdetails URL: ${url}`);
   try {
     const requestBody = JSON.stringify(map);
     const response = await axios({
@@ -108,10 +111,13 @@ export async function getInverterDetails(
       data: requestBody,
       timeout: 5000,
     });
-    return response.data
+    apiLogger.silly(`API response (Inverter) was: ${response.data.data}`);
+    return {
+      inverter_state: response.data.data.page.records[0].state,
+      etoday: response.data.data.page.records[0].etoday,
+    }
   } catch (e) {
-    //#TODO fix console logging
-    console.log(e)
+    apiLogger.error(e)
   }
 }
 

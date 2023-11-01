@@ -34,7 +34,7 @@ module.exports = __toCommonJS(apiHelper_exports);
 var import_axios = __toESM(require("axios"));
 var import_crypto = __toESM(require("crypto"));
 const API_BASE_URL = "https://www.soliscloud.com:13333";
-async function getStationDetails(stationId, apiKey, apiSecret) {
+async function getStationDetails(stationId, apiKey, apiSecret, apiLogger) {
   const map = {
     id: stationId
   };
@@ -43,7 +43,9 @@ async function getStationDetails(stationId, apiKey, apiSecret) {
   const currentDate = getGMTTime();
   const param = "POST\n" + ContentMd5 + "\napplication/json\n" + currentDate + "\n/v1/api/stationDetail";
   const sign = HmacSHA1Encrypt(param, apiSecret);
+  apiLogger.debug(`Encrypted sign for StationDetails call (this can NOT be retraced to your API key/secret): ${sign}`);
   const url = API_BASE_URL + "/v1/api/stationDetail";
+  apiLogger.debug(`Stationdetails URL: ${url}`);
   try {
     const requestBody = JSON.stringify(map);
     const response = await (0, import_axios.default)({
@@ -58,6 +60,7 @@ async function getStationDetails(stationId, apiKey, apiSecret) {
       data: requestBody,
       timeout: 5e3
     });
+    apiLogger.silly(`API response (Station) was: ${response.data.data}`);
     return {
       current_power: response.data.data.power,
       current_consumption: response.data.data.familyLoadPower,
@@ -75,10 +78,10 @@ async function getStationDetails(stationId, apiKey, apiSecret) {
       plant_state: response.data.data.state
     };
   } catch (error) {
-    this.log.error(error);
+    apiLogger.error(error);
   }
 }
-async function getInverterDetails(stationId, apiKey, apiSecret) {
+async function getInverterDetails(stationId, apiKey, apiSecret, apiLogger) {
   const map = {
     pageNo: 1,
     pageSize: 20,
@@ -89,7 +92,9 @@ async function getInverterDetails(stationId, apiKey, apiSecret) {
   const currentDate = getGMTTime();
   const param = "POST\n" + ContentMd5 + "\napplication/json\n" + currentDate + "\n/v1/api/inverterList";
   const sign = HmacSHA1Encrypt(param, apiSecret);
+  apiLogger.debug(`Encrypted sign for InverterDetails call (this can NOT be retraced to your API key/secret): ${sign}`);
   const url = API_BASE_URL + "/v1/api/inverterList";
+  apiLogger.debug(`Inverterdetails URL: ${url}`);
   try {
     const requestBody = JSON.stringify(map);
     const response = await (0, import_axios.default)({
@@ -104,9 +109,13 @@ async function getInverterDetails(stationId, apiKey, apiSecret) {
       data: requestBody,
       timeout: 5e3
     });
-    return response.data;
+    apiLogger.silly(`API response (Inverter) was: ${response.data.data}`);
+    return {
+      inverter_state: response.data.data.page.records[0].state,
+      etoday: response.data.data.page.records[0].etoday
+    };
   } catch (e) {
-    console.log(e);
+    apiLogger.error(e);
   }
 }
 function HmacSHA1Encrypt(encryptText, keySecret) {
