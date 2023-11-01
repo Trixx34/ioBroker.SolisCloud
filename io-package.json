@@ -1,10 +1,23 @@
 {
   "common": {
     "name": "soliscloud",
-    "version": "1.2.4",
+    "version": "1.2.5",
     "connectionType": "cloud",
     "dataSource": "poll",
     "news": {
+      "1.2.5": {
+        "en": "attempt 2 to fix values",
+        "de": "versuch 2 werte zu fixieren",
+        "ru": "попытка 2 исправить значения",
+        "pt": "tentativa 2 para corrigir valores",
+        "nl": "poging 2 om waarden te herstellen",
+        "fr": "tenter 2 de fixer des valeurs",
+        "it": "tentativo 2 per correggere i valori",
+        "es": "intentar 2 para fijar valores",
+        "pl": "próba 2",
+        "uk": "спроба 2 виправити значення",
+        "zh-cn": "试图2"
+      },
       "1.2.4": {
         "en": "2 values weren't updated correctly",
         "de": "2 werte wurden nicht korrekt aktualisiert",
@@ -82,19 +95,6 @@
         "pl": "Poprawa kodu",
         "uk": "Поліпшення коду",
         "zh-cn": "A. 守则的改进"
-      },
-      "1.1.6": {
-        "en": "Added new values.",
-        "de": "Neue Werte hinzugefügt.",
-        "ru": "Добавлены новые значения.",
-        "pt": "Adicionados novos valores.",
-        "nl": "Nieuwe waarden toegevoegd.",
-        "fr": "Ajout de nouvelles valeurs.",
-        "it": "Aggiunti nuovi valori.",
-        "es": "Nuevos valores añadidos.",
-        "pl": "Nowe wartości.",
-        "uk": "Додано нові значення.",
-        "zh-cn": "增加新的价值。."
       }
     },
     "titleLang": {
