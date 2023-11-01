@@ -43,7 +43,7 @@ I'm not a professional developer. Use at your own risk.
 
 ## Changelog
 
-## **WORK IN PROGRESS**
+### **WORK IN PROGRESS**
 
 - added ack to value updates.
 
