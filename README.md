@@ -43,11 +43,12 @@ I'm not a professional developer. Use at your own risk.
 
 ## Changelog
 
-### 1.1.7 (TBD)
+### **WORK IN PROGRESS**
 
 - Adjusted processing of inverter API call.
 - Fixed logging for API calls
 - improved error handling
+- write attribute set to false for all objects.
 
 ### 1.1.6 (2023-31-10)
 

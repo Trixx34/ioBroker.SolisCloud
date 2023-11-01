@@ -13,10 +13,15 @@ class soliscloud extends utils.Adapter {
 		this.on("unload", this.onUnload.bind(this));
 	}
 
+	name2id(pName: string): string {
+		return (pName || "").replace(this.FORBIDDEN_CHARS, "_");
+	}
+
 	private async onReady(): Promise<void> {
 		this.log.info("Starting soliscloud adapter");
 
 		if (this.config.plantId != null) {
+			this.config.plantId = this.name2id(this.config.plantId);
 			await this.setObjectNotExistsAsync(
 				`${this.config.plantId}.current_consumption`,
 				{
@@ -27,7 +32,7 @@ class soliscloud extends utils.Adapter {
 						unit: "kW",
 						role: "value.power.consumed",
 						read: true,
-						write: true,
+						write: false,
 					},
 					native: {},
 				},
@@ -43,7 +48,7 @@ class soliscloud extends utils.Adapter {
 						unit: "kW",
 						role: "value.power.produced",
 						read: true,
-						write: true,
+						write: false,
 					},
 					native: {},
 				},
@@ -59,7 +64,7 @@ class soliscloud extends utils.Adapter {
 						unit: "kW",
 						role: "value.power",
 						read: true,
-						write: true,
+						write: false,
 					},
 					native: {},
 				},
@@ -73,7 +78,7 @@ class soliscloud extends utils.Adapter {
 					unit: "kWh",
 					role: "value.energy",
 					read: true,
-					write: true,
+					write: false,
 				},
 				native: {},
 			});
@@ -87,7 +92,7 @@ class soliscloud extends utils.Adapter {
 						unit: "kWh",
 						role: "value.energy",
 						read: true,
-						write: true,
+						write: false,
 					},
 					native: {},
 				},
@@ -103,7 +108,7 @@ class soliscloud extends utils.Adapter {
 						unit: "kWh",
 						role: "value.energy",
 						read: true,
-						write: true,
+						write: false,
 					},
 					native: {},
 				},
@@ -119,7 +124,7 @@ class soliscloud extends utils.Adapter {
 						unit: "kWh",
 						role: "value.energy",
 						read: true,
-						write: true,
+						write: false,
 					},
 					native: {},
 				},
@@ -135,7 +140,7 @@ class soliscloud extends utils.Adapter {
 						unit: "%",
 						role: "value.fill",
 						read: true,
-						write: true,
+						write: false,
 					},
 					native: {},
 				},
@@ -151,7 +156,7 @@ class soliscloud extends utils.Adapter {
 						unit: "kW",
 						role: "value.power",
 						read: true,
-						write: true,
+						write: false,
 					},
 					native: {},
 				},
@@ -167,7 +172,7 @@ class soliscloud extends utils.Adapter {
 						unit: "kWh",
 						role: "value.power",
 						read: true,
-						write: true,
+						write: false,
 					},
 					native: {},
 				},
@@ -183,7 +188,7 @@ class soliscloud extends utils.Adapter {
 						unit: "kWh",
 						role: "value.power",
 						read: true,
-						write: true,
+						write: false,
 					},
 					native: {},
 				},
@@ -199,7 +204,7 @@ class soliscloud extends utils.Adapter {
 						unit: "kWh",
 						role: "value.power",
 						read: true,
-						write: true,
+						write: false,
 					},
 					native: {},
 				},
@@ -215,7 +220,7 @@ class soliscloud extends utils.Adapter {
 						unit: "kWh",
 						role: "value.power",
 						read: true,
-						write: true,
+						write: false,
 					},
 					native: {},
 				},
@@ -230,7 +235,7 @@ class soliscloud extends utils.Adapter {
 						type: "string",
 						role: "text",
 						read: true,
-						write: true,
+						write: false,
 					},
 					native: {},
 				},
@@ -246,7 +251,7 @@ class soliscloud extends utils.Adapter {
 						role: "value.power",
 						unit: "kWh",
 						read: true,
-						write: true,
+						write: false,
 					},
 					native: {},
 				},
@@ -261,7 +266,7 @@ class soliscloud extends utils.Adapter {
 						type: "string",
 						role: "text",
 						read: true,
-						write: true,
+						write: false,
 					},
 					native: {},
 				},
@@ -270,7 +275,7 @@ class soliscloud extends utils.Adapter {
 			this.log.error("No plantID was entered or it contains invalid characters.");
 		}
 
-		if (this.config.apiKey && this.config.apiSecret && this.config.plantId) {
+		if (this.configOK()) {
 			this.log.info(
 				`Start polling soliscloud, polling every ${this.config.pollInterval} seconds`,
 			);
@@ -278,8 +283,21 @@ class soliscloud extends utils.Adapter {
 				await this.pollSolis();
 			}, this.config.pollInterval * 1000);
 		} else {
-			this.log.error("No plantID was entered or it contains invalid characters. NOT polling.");
+			this.log.error("Config seems to be invalid, NOT polling.");
 		}
+	}
+
+	private configOK(): boolean {
+		if (
+			this.config.apiKey &&
+			this.config.plantId &&
+			typeof this.config.pollInterval === "number" &&
+			this.config.pollInterval >= 45 &&
+			this.config.pollInterval <= 1800
+		) {
+			return true;
+		}
+		return false;
 	}
 
 	private async pollSolis(): Promise<void> {
