@@ -29,9 +29,6 @@ class soliscloud extends utils.Adapter {
     this.on("ready", this.onReady.bind(this));
     this.on("unload", this.onUnload.bind(this));
   }
-  name2id(pName) {
-    return (pName || "").replace(this.FORBIDDEN_CHARS, "_");
-  }
   async onReady() {
     this.log.info("Starting soliscloud adapter");
     if (this.config.plantId != null) {
@@ -92,7 +89,7 @@ class soliscloud extends utils.Adapter {
           write: false
         },
         native: {}
-      });
+      }, true);
       await this.setObjectNotExistsAsync(
         `${this.config.plantId}.generated_today`,
         {
@@ -285,6 +282,9 @@ class soliscloud extends utils.Adapter {
       this.log.error("Config seems to be invalid, NOT polling.");
     }
   }
+  name2id(pName) {
+    return (pName || "").replace(this.FORBIDDEN_CHARS, "_");
+  }
   configOK() {
     if (this.config.apiKey && this.config.plantId && typeof this.config.pollInterval === "number" && this.config.pollInterval >= 45 && this.config.pollInterval <= 1800) {
       return true;
@@ -319,59 +319,59 @@ class soliscloud extends utils.Adapter {
         this.log.debug(`Plant ${this.config.plantId} is ${plantStatus}`);
         await this.setStateAsync(
           `${this.config.plantId}.current_consumption`,
-          callResult.current_consumption
+          { val: callResult.current_consumption, ack: true }
         );
         await this.setStateAsync(
           `${this.config.plantId}.current_power`,
-          callResult.current_power
+          { val: callResult.current_power, ack: true }
         );
         await this.setStateAsync(
           `${this.config.plantId}.current_from_net`,
-          callResult.current_from_net
+          { val: callResult.current_from_net, ack: true }
         );
         await this.setStateAsync(
           `${this.config.plantId}.sold_today`,
-          callResult.sold_today
+          { val: callResult.sold_today, ack: true }
         );
         await this.setStateAsync(
           `${this.config.plantId}.generated_today`,
-          callResult.generated_today
+          { val: callResult.generated_today, ack: true }
         );
         await this.setStateAsync(
           `${this.config.plantId}.bought_today`,
-          callResult.bought_today
+          { val: callResult.bought_today, ack: true }
         );
         await this.setStateAsync(
           `${this.config.plantId}.consumption_today`,
-          callResult.consumption_today
+          { val: callResult.consumption_today, ack: true }
         );
         await this.setStateAsync(
           `${this.config.plantId}.battery_percent`,
-          callResult.battery_percent
+          { val: callResult.battery_percent, ack: true }
         );
         await this.setStateAsync(
           `${this.config.plantId}.battery_current_usage`,
-          callResult.battery_current_usage
+          { val: callResult.battery_current_usage, ack: true }
         );
         await this.setStateAsync(
           `${this.config.plantId}.battery_today_charge`,
-          callResult.battery_today_charge
+          { val: callResult.battery_today_charge, ack: true }
         );
         await this.setStateAsync(
           `${this.config.plantId}.battery_today_discharge`,
-          callResult.battery_today_discharge
+          { val: callResult.battery_today_discharge, ack: true }
         );
         await this.setStateAsync(
           `${this.config.plantId}.total_consumption_energy`,
-          callResult.total_consumption_energy
+          { val: callResult.total_consumption_energy, ack: true }
         );
         await this.setStateAsync(
           `${this.config.plantId}.self_consumption_energy`,
-          callResult.self_consumption_energy
+          { val: callResult.self_consumption_energy, ack: true }
         );
         await this.setStateAsync(
           `${this.config.plantId}.plant_state`,
-          plantStatus
+          { val: plantStatus, ack: true }
         );
       } else {
         this.log.debug("Did not receive a correct response from the Stationdetails API call");
