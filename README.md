@@ -42,6 +42,11 @@ I'm not a professional developer. Use at your own risk.
 [![Buy Me a Coffee](https://www.buymeacoffee.com/assets/img/guidelines/download-assets-sm-2.svg)](https://www.buymeacoffee.com/trixxdev)
 
 ## Changelog
+
+### **WORK IN PROGRESS**
+
+- 2 values weren't updated correctly
+
 ### 1.2.3 (2023-11-01)
 
 - Typo in main which caused application crashes
