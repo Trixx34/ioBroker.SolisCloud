@@ -1,10 +1,23 @@
 {
   "common": {
     "name": "soliscloud",
-    "version": "1.2.5",
+    "version": "1.3.0",
     "connectionType": "cloud",
     "dataSource": "poll",
     "news": {
+      "1.3.0": {
+        "en": "Added more values",
+        "de": "Weitere Werte",
+        "ru": "Добавлено больше значений",
+        "pt": "Adicionado mais valores",
+        "nl": "Vermeldde meer waarden",
+        "fr": "Ajout de plus de valeurs",
+        "it": "Aggiunto più valori",
+        "es": "Añadido más valores",
+        "pl": "Dodać więcej wartości",
+        "uk": "Додати більше значень",
+        "zh-cn": "增加价值"
+      },
       "1.2.5": {
         "en": "attempt 2 to fix values",
         "de": "versuch 2 werte zu fixieren",
@@ -82,19 +95,6 @@
         "pl": "Adjusted processing of inverter API call.\nFixed logging forAPI calls call\npolepszenie błędów\npisanie atrybutów jest fałszywe dla wszystkich obiektów.",
         "uk": "Регульована обробка інвертора API виклику.\nФіксований журнал для викликів API\nполіпшення обробки помилок\nнапишіть атрибут, який встановлюється на false для всіх об'єктів.",
         "zh-cn": "合理处理各种不同的阿联酋呼吁。.\nA. 扶持型企业的固定伐木\n改进错误处理\n写信给所有物体。."
-      },
-      "1.1.7": {
-        "en": "Code improvements",
-        "de": "Verbesserungen des Codes",
-        "ru": "Улучшения кода",
-        "pt": "Melhorias de código",
-        "nl": "Code verbetering",
-        "fr": "Amélioration des codes",
-        "it": "Miglioramento del codice",
-        "es": "Mejoras del Código",
-        "pl": "Poprawa kodu",
-        "uk": "Поліпшення коду",
-        "zh-cn": "A. 守则的改进"
       }
     },
     "titleLang": {
