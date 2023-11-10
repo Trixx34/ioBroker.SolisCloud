@@ -19,7 +19,6 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
 ));
 var utils = __toESM(require("@iobroker/adapter-core"));
 var import_apiHelper = require("./lib/apiHelper");
-var import_apiHelper2 = require("./lib/apiHelper");
 class soliscloud extends utils.Adapter {
   constructor(options = {}) {
     super({
@@ -671,6 +670,10 @@ class soliscloud extends utils.Adapter {
             break;
         }
         this.log.debug(`Plant ${this.config.plantId} is ${plantStatus}`);
+        await this.setStateAsync(
+          `${this.config.plantId}.station_detail.plant_state`,
+          { val: plantStatus, ack: true }
+        );
         const properties = [
           "current_consumption",
           "current_power",
@@ -683,7 +686,6 @@ class soliscloud extends utils.Adapter {
           "battery_current_usage",
           "total_consumption_energy",
           "self_consumption_energy",
-          "plant_state",
           "battery_month_charge_energy",
           "battery_month_charge_energy_units",
           "battery_year_charge_energy",

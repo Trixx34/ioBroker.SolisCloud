@@ -1,6 +1,5 @@
 import * as utils from "@iobroker/adapter-core";
 import { getInverterDetails, getInverterList, getStationDetails } from "./lib/apiHelper";
-import "./lib/apiHelper";
 
 class soliscloud extends utils.Adapter {
 	private intervalId: any;
@@ -701,6 +700,10 @@ class soliscloud extends utils.Adapter {
 						break;
 				}
 				this.log.debug(`Plant ${this.config.plantId} is ${plantStatus}`);
+				await this.setStateAsync(
+					`${this.config.plantId}.station_detail.plant_state`,
+					{ val: plantStatus, ack: true }
+				);
 
 				const properties = [
 					"current_consumption",
@@ -714,7 +717,6 @@ class soliscloud extends utils.Adapter {
 					"battery_current_usage",
 					"total_consumption_energy",
 					"self_consumption_energy",
-					"plant_state",
 					"battery_month_charge_energy",
 					"battery_month_charge_energy_units",
 					"battery_year_charge_energy",
