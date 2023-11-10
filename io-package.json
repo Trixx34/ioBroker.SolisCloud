@@ -1,10 +1,23 @@
 {
   "common": {
     "name": "soliscloud",
-    "version": "1.3.0",
+    "version": "1.3.1",
     "connectionType": "cloud",
     "dataSource": "poll",
     "news": {
+      "1.3.1": {
+        "en": "Plant_state wasn't processed correctly",
+        "de": "Plant_state wurde nicht korrekt verarbeitet",
+        "ru": "Plant_state не обрабатывается правильно",
+        "pt": "Plant_state não foi processado corretamente",
+        "nl": "Plantstate is niet correct verwerkt",
+        "fr": "Plant_state n'a pas été traitée correctement",
+        "it": "Plant_state non è stato elaborato correttamente",
+        "es": "Plant_state no fue procesado correctamente",
+        "pl": "Plant_state nie został poprawnie wykonany",
+        "uk": "Завод_держава не оброблена правильно",
+        "zh-cn": "计划:国家被正确处理"
+      },
       "1.3.0": {
         "en": "Added more values",
         "de": "Weitere Werte",
@@ -82,19 +95,6 @@
         "pl": "dodano dodatki do wartości aktualizacji.",
         "uk": "додано ack до оновлення значень.",
         "zh-cn": "增加附加值更新。."
-      },
-      "1.2.0": {
-        "en": "Adjusted processing of inverter API call.\nFixed logging for API calls\nimproved error handling\nwrite attribute set to false for all objects.",
-        "de": "Anpassung der Verarbeitung von Inverter-API-Aufruf.\nFeste Protokollierung für API-Anrufe\nverbesserte fehlerbehandlung\nschreibattribut auf false für alle objekte gesetzt.",
-        "ru": "Настройка обработки инверторного API звонка.\nФиксированный вход для API звонков\nулучшенная обработка ошибок\nнаписать атрибут, установленный ложно для всех объектов.",
-        "pt": "Processamento ajustado da chamada API do inversor.\nRegistro fixo para chamadas de API\nmelhor manipulação de erros\nescrever atributo definido para false para todos os objetos.",
-        "nl": "Verwerking van inverter API oproep.\nVertaling:\nverbeterde fouten\nschrijf attribute op vals voor alle objecten.",
-        "fr": "Traitement ajusté de l'appel API d'inverter.\nLogging fixe pour les appels API\namélioration de la manipulation des erreurs\nécrire attribut set à false pour tous les objets.",
-        "it": "Trattamento rettificato della chiamata API inverter.\nRegistrazione fissa per le chiamate API\nmigliore gestione degli errori\nscrivere attributo impostato a falso per tutti gli oggetti.",
-        "es": "Tratamiento ajustado de la llamada API inverter.\nRegistro fijo para llamadas API\nmejor manejo de errores\nescribir atributo fijado a falso para todos los objetos.",
-        "pl": "Adjusted processing of inverter API call.\nFixed logging forAPI calls call\npolepszenie błędów\npisanie atrybutów jest fałszywe dla wszystkich obiektów.",
-        "uk": "Регульована обробка інвертора API виклику.\nФіксований журнал для викликів API\nполіпшення обробки помилок\nнапишіть атрибут, який встановлюється на false для всіх об'єктів.",
-        "zh-cn": "合理处理各种不同的阿联酋呼吁。.\nA. 扶持型企业的固定伐木\n改进错误处理\n写信给所有物体。."
       }
     },
     "titleLang": {
