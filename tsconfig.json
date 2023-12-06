@@ -13,7 +13,7 @@
 		"resolveJsonModule": true,
 		"sourceMap": true,
 		"inlineSourceMap": false,
-		"module": "commonjs"
+		"module": "Node16"
 	},
 	"include": [
 		"src/**/*.ts"
