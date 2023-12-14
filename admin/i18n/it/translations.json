@@ -14,5 +14,7 @@
     "Station/Plant ID": "ID stazione/impianto",
     "plantId": "ID stazione/impianto",
     "help_pollInterval": "Valore minimo=45 secondi, valore massimo=1800 secondi.",
-    "errValplantId": "Caratteri non validi trovati in plantId, sono consentiti solo valori numerici."
+    "errValplantId": "Caratteri non validi trovati in plantId, sono consentiti solo valori numerici.",
+    "help_epl": "EPL è disponibile per l'installazione? Se non sei sicuro, lascialo disabilitato.",
+    "label_epl": "EPL disponibile"
 }

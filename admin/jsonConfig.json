@@ -30,6 +30,12 @@
       "newLine": true,
       "min": 45,
       "max": 1800
+    },
+    "epl": {
+      "type": "checkbox",
+      "label": "label_epl",
+      "help": "help_epl",
+      "newLine": true
     }
   }
 }

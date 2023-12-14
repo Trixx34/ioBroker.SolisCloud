@@ -14,5 +14,7 @@
     "api Secret": "Secret API",
     "plantId": "ID de station/usine",
     "help_pollInterval": "Valeur minimale = 45 secondes, valeur maximale = 1 800 secondes.",
-    "errValplantId": "Caractères non valides trouvés dans plantId, seules les valeurs numériques sont autorisées."
+    "errValplantId": "Caractères non valides trouvés dans plantId, seules les valeurs numériques sont autorisées.",
+    "help_epl": "L'EPL est-il disponible pour l'installation ? En cas de doute, laissez cette option désactivée.",
+    "label_epl": "LPE disponible"
 }

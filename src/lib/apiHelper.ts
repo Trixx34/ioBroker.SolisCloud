@@ -1,9 +1,7 @@
-/* eslint-disable @typescript-eslint/indent */
 import axios from "axios";
 import crypto from "crypto";
 const API_BASE_URL = "https://www.soliscloud.com:13333";
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export async function getStationDetails(
   this: any,
   stationId: string,
@@ -190,6 +188,55 @@ export async function getInverterDetails(
       battery_today_discharge_energy_units: response.data.data.batteryTodayDischargeEnergyStr,
       battery_total_discharge_energy: response.data.data.batteryTotalDischargeEnergy,
       battery_total_discharge_energy_units: response.data.data.batteryTotalDischargeEnergyStr,
+    }
+  } catch (e) {
+    apiLogger.error(e)
+  }
+}
+
+export async function getEplDetails(
+  this: any,
+  inverterId: string,
+  apiKey: string,
+  apiSecret: string,
+  apiLogger: any
+): Promise<any> {
+  const map = {
+    id: inverterId
+  };
+  const body = JSON.stringify(map);
+  const ContentMd5 = getDigest(body);
+  const currentDate = getGMTTime();
+  const param =
+    "POST" +
+    "\n" +
+    ContentMd5 +
+    "\n" +
+    "application/json" +
+    "\n" +
+    currentDate +
+    "\n" +
+    "/v1/api/inverterDetail";
+  const sign = HmacSHA1Encrypt(param, apiSecret);
+  const url = API_BASE_URL + "/v1/api/inverterDetail";
+  apiLogger.debug(`Inverterdetails URL: ${url}`);
+  try {
+    const requestBody = JSON.stringify(map);
+    const response = await axios({
+      method: "post",
+      url: url,
+      headers: {
+        "Content-type": "application/json;charset=UTF-8",
+        Authorization: `API ${apiKey}:${sign}`,
+        "Content-MD5": ContentMd5,
+        Date: currentDate,
+      },
+      data: requestBody,
+      timeout: 5000,
+    });
+    //apiLogger.debug(`API response (Inverterdetail) was:` + JSON.stringify(response.data));
+    return {
+
     }
   } catch (e) {
     apiLogger.error(e)

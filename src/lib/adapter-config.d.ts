@@ -8,9 +8,10 @@ declare global {
 			apiSecret: string;
 			plantId: string;
 			pollInterval: number;
+			epl: boolean
 		}
 	}
 }
 
 // this is required so the above AdapterConfig is found by TypeScript / type checking
-export {};
+export { };

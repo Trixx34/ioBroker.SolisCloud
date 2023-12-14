@@ -26,6 +26,7 @@ var apiHelper_exports = {};
 __export(apiHelper_exports, {
   HmacSHA1Encrypt: () => HmacSHA1Encrypt,
   getDigest: () => getDigest,
+  getEplDetails: () => getEplDetails,
   getGMTTime: () => getGMTTime,
   getInverterDetails: () => getInverterDetails,
   getInverterList: () => getInverterList,
@@ -176,6 +177,36 @@ async function getInverterDetails(inverterId, apiKey, apiSecret, apiLogger) {
     apiLogger.error(e);
   }
 }
+async function getEplDetails(inverterId, apiKey, apiSecret, apiLogger) {
+  const map = {
+    id: inverterId
+  };
+  const body = JSON.stringify(map);
+  const ContentMd5 = getDigest(body);
+  const currentDate = getGMTTime();
+  const param = "POST\n" + ContentMd5 + "\napplication/json\n" + currentDate + "\n/v1/api/inverterDetail";
+  const sign = HmacSHA1Encrypt(param, apiSecret);
+  const url = API_BASE_URL + "/v1/api/inverterDetail";
+  apiLogger.debug(`Inverterdetails URL: ${url}`);
+  try {
+    const requestBody = JSON.stringify(map);
+    const response = await (0, import_axios.default)({
+      method: "post",
+      url,
+      headers: {
+        "Content-type": "application/json;charset=UTF-8",
+        Authorization: `API ${apiKey}:${sign}`,
+        "Content-MD5": ContentMd5,
+        Date: currentDate
+      },
+      data: requestBody,
+      timeout: 5e3
+    });
+    return {};
+  } catch (e) {
+    apiLogger.error(e);
+  }
+}
 function HmacSHA1Encrypt(encryptText, keySecret) {
   const keyBuffer = Buffer.from(keySecret, "utf-8");
   const hmac = import_crypto.default.createHmac("sha1", keyBuffer);
@@ -211,6 +242,7 @@ function getDigest(test) {
 0 && (module.exports = {
   HmacSHA1Encrypt,
   getDigest,
+  getEplDetails,
   getGMTTime,
   getInverterDetails,
   getInverterList,
