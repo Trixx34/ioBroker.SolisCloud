@@ -1,6 +1,6 @@
 import axios from "axios";
 import crypto from "crypto";
-import { stat } from "fs";
+
 const API_BASE_URL = "https://www.soliscloud.com:13333";
 
 export async function getStationDetails(
