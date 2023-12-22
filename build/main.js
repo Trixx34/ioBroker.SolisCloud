@@ -790,8 +790,9 @@ class soliscloud extends utils.Adapter {
     } catch (e) {
       this.log.error("Error calling inverterDetails");
     }
-    if (this.config.epl) {
-      this.log.info("EPL is enabled, making API call");
+    if (this.config.epm) {
+      this.log.info("EPM is enabled, making API call");
+      (0, import_apiHelper.getEpmDetails)(this.config.plantId, this.config.apiKey, this.config.apiSecret, this.log, this.config.debugLogging);
     }
   }
   onUnload(callback) {

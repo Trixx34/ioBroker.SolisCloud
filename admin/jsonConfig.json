@@ -31,10 +31,16 @@
       "min": 45,
       "max": 1800
     },
-    "epl": {
+    "epm": {
       "type": "checkbox",
-      "label": "label_epl",
-      "help": "help_epl",
+      "label": "label_epm",
+      "help": "help_epm",
+      "newLine": true
+    },
+    "debugLogging": {
+      "type": "checkbox",
+      "label": "label_debug",
+      "help": "help_debug",
       "newLine": true
     }
   }

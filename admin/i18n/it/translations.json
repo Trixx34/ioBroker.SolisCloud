@@ -16,5 +16,10 @@
     "help_pollInterval": "Valore minimo=45 secondi, valore massimo=1800 secondi.",
     "errValplantId": "Caratteri non validi trovati in plantId, sono consentiti solo valori numerici.",
     "help_epl": "EPL è disponibile per l'installazione? Se non sei sicuro, lascialo disabilitato.",
-    "label_epl": "EPL disponibile"
+    "label_epl": "EPL disponibile",
+    "help_epm": "EPL è disponibile per l'installazione? Se non sei sicuro, lascialo disabilitato.",
+    "label_epm": "EPL disponibile",
+    "help_debug": "Abilitare la registrazione del debug?",
+    "label_help": "Registrazione di debug",
+    "label_debug": "Abilitare la registrazione del debug?"
 }

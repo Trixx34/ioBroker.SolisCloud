@@ -1,172 +1,191 @@
 {
-    "common": {
-        "name": "soliscloud",
-        "version": "1.3.1",
-        "connectionType": "cloud",
-        "dataSource": "poll",
-        "news": {
-            "1.3.1": {
-                "en": "Plant_state wasn't processed correctly",
-                "de": "Plant_state wurde nicht korrekt verarbeitet",
-                "ru": "Plant_state не обрабатывается правильно",
-                "pt": "Plant_state não foi processado corretamente",
-                "nl": "Plantstate is niet correct verwerkt",
-                "fr": "Plant_state n'a pas été traitée correctement",
-                "it": "Plant_state non è stato elaborato correttamente",
-                "es": "Plant_state no fue procesado correctamente",
-                "pl": "Plant_state nie został poprawnie wykonany",
-                "uk": "Завод_держава не оброблена правильно",
-                "zh-cn": "计划:国家被正确处理"
-            },
-            "1.3.0": {
-                "en": "Added more values",
-                "de": "Weitere Werte",
-                "ru": "Добавлено больше значений",
-                "pt": "Adicionado mais valores",
-                "nl": "Vermeldde meer waarden",
-                "fr": "Ajout de plus de valeurs",
-                "it": "Aggiunto più valori",
-                "es": "Añadido más valores",
-                "pl": "Dodać więcej wartości",
-                "uk": "Додати більше значень",
-                "zh-cn": "增加价值"
-            },
-            "1.2.5": {
-                "en": "attempt 2 to fix values",
-                "de": "versuch 2 werte zu fixieren",
-                "ru": "попытка 2 исправить значения",
-                "pt": "tentativa 2 para corrigir valores",
-                "nl": "poging 2 om waarden te herstellen",
-                "fr": "tenter 2 de fixer des valeurs",
-                "it": "tentativo 2 per correggere i valori",
-                "es": "intentar 2 para fijar valores",
-                "pl": "próba 2",
-                "uk": "спроба 2 виправити значення",
-                "zh-cn": "试图2"
-            },
-            "1.2.4": {
-                "en": "2 values weren't updated correctly",
-                "de": "2 werte wurden nicht korrekt aktualisiert",
-                "ru": "2 значения не были обновлены правильно",
-                "pt": "2 valores não foram atualizados corretamente",
-                "nl": "twee waarden werden niet correct geüpdateerd",
-                "fr": "2 valeurs n'ont pas été mises à jour correctement",
-                "it": "2 valori non sono stati aggiornati correttamente",
-                "es": "2 valores no se han actualizado correctamente",
-                "pl": "2 wartości nie zostały poprawnie aktualizowane",
-                "uk": "2 значення не було оновлено належним чином",
-                "zh-cn": "2 价值正确更新"
-            },
-            "1.2.3": {
-                "en": "Typo in main which caused application crashes",
-                "de": "Typo im Haupt, die Anwendungsunfälle verursacht",
-                "ru": "Typo в основном, что вызвало аварии приложения",
-                "pt": "Typo na principal que causou falhas de aplicação",
-                "nl": "Typo in de hoofdstad die toepassing veroorzaakte",
-                "fr": "Typo dans le principal qui a causé des accidents d'application",
-                "it": "Typo in principale che ha causato crash di applicazione",
-                "es": "Typo en el principal que causó fallos de aplicación",
-                "pl": "Typowo, w którym aplikacja rozbiła się",
-                "uk": "Тіпо в основному, що призвело до аварійних ситуацій додатків",
-                "zh-cn": "造成使用事故的主要渠道"
-            },
-            "1.2.2": {
-                "en": "Typo in main which caused application crashes",
-                "de": "Typo im Haupt, die Anwendungsunfälle verursacht",
-                "ru": "Typo в основном, что вызвало аварии приложения",
-                "pt": "Typo na principal que causou falhas de aplicação",
-                "nl": "Typo in de hoofdstad die toepassing veroorzaakte",
-                "fr": "Typo dans le principal qui a causé des accidents d'application",
-                "it": "Typo in principale che ha causato crash di applicazione",
-                "es": "Typo en el principal que causó fallos de aplicación",
-                "pl": "Typowo, w którym aplikacja rozbiła się",
-                "uk": "Тіпо в основному, що призвело до аварійних ситуацій додатків",
-                "zh-cn": "造成使用事故的主要渠道"
-            },
-            "1.2.1": {
-                "en": "added ack to value updates.",
-                "de": "zu wertaktualisierungen hinzugefügt.",
-                "ru": "добавлена ack к обновлениям стоимости.",
-                "pt": "adicionado ack para atualizações de valor.",
-                "nl": "voegde ack toe aan waarde updates.",
-                "fr": "ajouté ack aux mises à jour de valeur.",
-                "it": "aggiunto ack agli aggiornamenti di valore.",
-                "es": "añadido a las actualizaciones de valor.",
-                "pl": "dodano dodatki do wartości aktualizacji.",
-                "uk": "додано ack до оновлення значень.",
-                "zh-cn": "增加附加值更新。."
-            }
-        },
-        "titleLang": {
-            "en": "soliscloud",
-            "de": "soliscloud",
-            "ru": "soliscloud",
-            "pt": "soliscloud",
-            "nl": "soliscloud",
-            "fr": "soliscloud",
-            "it": "soliscloud",
-            "es": "soliscloud",
-            "pl": "soliscloud",
-            "zh-cn": "soliscloud",
-            "uk": "soliscloud"
-        },
-        "desc": {
-            "en": "Adapter for reading data from soliscloud",
-            "de": "Adapter zum Lesen von Daten von soliscloud",
-            "ru": "Адаптер для чтения данных из soliscloud",
-            "pt": "Adaptador para ler dados de soliscloud",
-            "nl": "Adapter voor het lezen van gegevens van Soliscloud",
-            "fr": "Adaptateur pour la lecture des données de soliscloud",
-            "it": "Adattatore per la lettura dei dati da soliscloud",
-            "es": "Adaptador para la lectura de datos de soliscloud",
-            "pl": "Adapter for read data from soliscloud (ang.)",
-            "uk": "Адаптер для читання даних з солісклою",
-            "zh-cn": "阅读从Iliscloud获得的数据"
-        },
-        "authors": [
-            {
-                "name": "Trixx",
-                "email": "trixxdev034@gmail.com"
-            }
-        ],
-        "keywords": [
-            "Solis",
-            "soliscloud"
-        ],
-        "license": "MIT",
-        "platform": "Javascript/Node.js",
-        "main": "build/main.js",
-        "icon": "solis.png",
-        "enabled": true,
-        "extIcon": "https://raw.githubusercontent.com/Trixx34/ioBroker.soliscloud/main/admin/solis.png",
-        "readme": "https://github.com/Trixx34/ioBroker.soliscloud#readme",
-        "loglevel": "info",
-        "mode": "daemon",
-        "type": "energy",
-        "compact": true,
-        "adminUI": {
-            "config": "json"
-        },
-        "supportCustoms": false,
-        "dependencies": [
-            {
-                "js-controller": ">=3.3.22"
-            }
-        ],
-        "globalDependencies": [
-            {
-                "admin": ">=5.1.13"
-            }
-        ]
+  "common": {
+    "name": "soliscloud",
+    "version": "1.3.2",
+    "connectionType": "cloud",
+    "dataSource": "poll",
+    "news": {
+      "1.3.3": {
+        "en": "Testrelease with EPL settings",
+        "de": "Testrelease mit EPL-Einstellungen",
+        "ru": "Тест-релиз с настройками EPL",
+        "pt": "Testrelease com configurações da EPL",
+        "nl": "Testrelease met EPL settings",
+        "fr": "Testelease avec les réglages EPL",
+        "it": "Testrelease con le impostazioni EPL",
+        "es": "Exámenes con configuración EPL",
+        "pl": "Test release with EPL (ang.)",
+        "uk": "Тестування з налаштуваннями EPL",
+        "zh-cn": "与非苏人环境的试验"
+      },
+      "1.3.2": {
+        "en": "",
+        "de": "Plant_state wurde nicht korrekt verarbeitet",
+        "ru": "Plant_state не обрабатывается правильно",
+        "pt": "Plant_state não foi processado corretamente",
+        "nl": "Plantstate is niet correct verwerkt",
+        "fr": "Plant_state n'a pas été traitée correctement",
+        "it": "Plant_state non è stato elaborato correttamente",
+        "es": "Plant_state no fue procesado correctamente",
+        "pl": "Plant_state nie został poprawnie wykonany",
+        "uk": "Завод_держава не оброблена правильно",
+        "zh-cn": "计划:国家被正确处理"
+      },
+      "1.3.1": {
+        "en": "Plant_state wasn't processed correctly",
+        "de": "Plant_state wurde nicht korrekt verarbeitet",
+        "ru": "Plant_state не обрабатывается правильно",
+        "pt": "Plant_state não foi processado corretamente",
+        "nl": "Plantstate is niet correct verwerkt",
+        "fr": "Plant_state n'a pas été traitée correctement",
+        "it": "Plant_state non è stato elaborato correttamente",
+        "es": "Plant_state no fue procesado correctamente",
+        "pl": "Plant_state nie został poprawnie wykonany",
+        "uk": "Завод_держава не оброблена правильно",
+        "zh-cn": "计划:国家被正确处理"
+      },
+      "1.3.0": {
+        "en": "Added more values",
+        "de": "Weitere Werte",
+        "ru": "Добавлено больше значений",
+        "pt": "Adicionado mais valores",
+        "nl": "Vermeldde meer waarden",
+        "fr": "Ajout de plus de valeurs",
+        "it": "Aggiunto più valori",
+        "es": "Añadido más valores",
+        "pl": "Dodać więcej wartości",
+        "uk": "Додати більше значень",
+        "zh-cn": "增加价值"
+      },
+      "1.2.5": {
+        "en": "attempt 2 to fix values",
+        "de": "versuch 2 werte zu fixieren",
+        "ru": "попытка 2 исправить значения",
+        "pt": "tentativa 2 para corrigir valores",
+        "nl": "poging 2 om waarden te herstellen",
+        "fr": "tenter 2 de fixer des valeurs",
+        "it": "tentativo 2 per correggere i valori",
+        "es": "intentar 2 para fijar valores",
+        "pl": "próba 2",
+        "uk": "спроба 2 виправити значення",
+        "zh-cn": "试图2"
+      },
+      "1.2.4": {
+        "en": "2 values weren't updated correctly",
+        "de": "2 werte wurden nicht korrekt aktualisiert",
+        "ru": "2 значения не были обновлены правильно",
+        "pt": "2 valores não foram atualizados corretamente",
+        "nl": "twee waarden werden niet correct geüpdateerd",
+        "fr": "2 valeurs n'ont pas été mises à jour correctement",
+        "it": "2 valori non sono stati aggiornati correttamente",
+        "es": "2 valores no se han actualizado correctamente",
+        "pl": "2 wartości nie zostały poprawnie aktualizowane",
+        "uk": "2 значення не було оновлено належним чином",
+        "zh-cn": "2 价值正确更新"
+      },
+      "1.2.3": {
+        "en": "Typo in main which caused application crashes",
+        "de": "Typo im Haupt, die Anwendungsunfälle verursacht",
+        "ru": "Typo в основном, что вызвало аварии приложения",
+        "pt": "Typo na principal que causou falhas de aplicação",
+        "nl": "Typo in de hoofdstad die toepassing veroorzaakte",
+        "fr": "Typo dans le principal qui a causé des accidents d'application",
+        "it": "Typo in principale che ha causato crash di applicazione",
+        "es": "Typo en el principal que causó fallos de aplicación",
+        "pl": "Typowo, w którym aplikacja rozbiła się",
+        "uk": "Тіпо в основному, що призвело до аварійних ситуацій додатків",
+        "zh-cn": "造成使用事故的主要渠道"
+      },
+      "1.2.2": {
+        "en": "Typo in main which caused application crashes",
+        "de": "Typo im Haupt, die Anwendungsunfälle verursacht",
+        "ru": "Typo в основном, что вызвало аварии приложения",
+        "pt": "Typo na principal que causou falhas de aplicação",
+        "nl": "Typo in de hoofdstad die toepassing veroorzaakte",
+        "fr": "Typo dans le principal qui a causé des accidents d'application",
+        "it": "Typo in principale che ha causato crash di applicazione",
+        "es": "Typo en el principal que causó fallos de aplicación",
+        "pl": "Typowo, w którym aplikacja rozbiła się",
+        "uk": "Тіпо в основному, що призвело до аварійних ситуацій додатків",
+        "zh-cn": "造成使用事故的主要渠道"
+      },
+      "1.2.1": {
+        "en": "added ack to value updates.",
+        "de": "zu wertaktualisierungen hinzugefügt.",
+        "ru": "добавлена ack к обновлениям стоимости.",
+        "pt": "adicionado ack para atualizações de valor.",
+        "nl": "voegde ack toe aan waarde updates.",
+        "fr": "ajouté ack aux mises à jour de valeur.",
+        "it": "aggiunto ack agli aggiornamenti di valore.",
+        "es": "añadido a las actualizaciones de valor.",
+        "pl": "dodano dodatki do wartości aktualizacji.",
+        "uk": "додано ack до оновлення значень.",
+        "zh-cn": "增加附加值更新。."
+      }
     },
-    "native": {},
-    "i18n": true,
-    "encryptedNative": [
-        "apiKey"
+    "titleLang": {
+      "en": "soliscloud",
+      "de": "soliscloud",
+      "ru": "soliscloud",
+      "pt": "soliscloud",
+      "nl": "soliscloud",
+      "fr": "soliscloud",
+      "it": "soliscloud",
+      "es": "soliscloud",
+      "pl": "soliscloud",
+      "zh-cn": "soliscloud",
+      "uk": "soliscloud"
+    },
+    "desc": {
+      "en": "Adapter for reading data from soliscloud",
+      "de": "Adapter zum Lesen von Daten von soliscloud",
+      "ru": "Адаптер для чтения данных из soliscloud",
+      "pt": "Adaptador para ler dados de soliscloud",
+      "nl": "Adapter voor het lezen van gegevens van Soliscloud",
+      "fr": "Adaptateur pour la lecture des données de soliscloud",
+      "it": "Adattatore per la lettura dei dati da soliscloud",
+      "es": "Adaptador para la lectura de datos de soliscloud",
+      "pl": "Adapter for read data from soliscloud (ang.)",
+      "uk": "Адаптер для читання даних з солісклою",
+      "zh-cn": "阅读从Iliscloud获得的数据"
+    },
+    "authors": [
+      {
+        "name": "Trixx",
+        "email": "trixxdev034@gmail.com"
+      }
     ],
-    "protectedNative": [
-        "apiKey"
+    "keywords": ["Solis", "soliscloud"],
+    "license": "MIT",
+    "platform": "Javascript/Node.js",
+    "main": "build/main.js",
+    "icon": "solis.png",
+    "enabled": true,
+    "extIcon": "https://raw.githubusercontent.com/Trixx34/ioBroker.soliscloud/main/admin/solis.png",
+    "readme": "https://github.com/Trixx34/ioBroker.soliscloud#readme",
+    "loglevel": "info",
+    "mode": "daemon",
+    "type": "energy",
+    "compact": true,
+    "adminUI": {
+      "config": "json"
+    },
+    "supportCustoms": false,
+    "dependencies": [
+      {
+        "js-controller": ">=3.3.22"
+      }
     ],
-    "objects": [],
-    "instanceObjects": []
+    "globalDependencies": [
+      {
+        "admin": ">=5.1.13"
+      }
+    ]
+  },
+  "native": {},
+  "i18n": true,
+  "encryptedNative": ["apiKey"],
+  "protectedNative": ["apiKey"],
+  "objects": [],
+  "instanceObjects": []
 }

@@ -16,5 +16,10 @@
     "help_pollInterval": "Wartość minimalna = 45 sekund, wartość maksymalna = 1800 sekund.",
     "errValplantId": "Znaleziono nieprawidłowe znaki w plantId. Dozwolone są tylko wartości numeryczne.",
     "help_epl": "Czy dla instalacji dostępna jest licencja EPL? Jeśli nie jesteś pewien, pozostaw tę opcję wyłączoną.",
-    "label_epl": "Dostępne EPL"
+    "label_epl": "Dostępne EPL",
+    "help_epm": "Czy dla instalacji dostępna jest licencja EPL? Jeśli nie jesteś pewien, pozostaw tę opcję wyłączoną.",
+    "label_epm": "Dostępne EPL",
+    "help_debug": "Włączyć rejestrowanie debugowania?",
+    "label_help": "Rejestrowanie debugowania",
+    "label_debug": "Włączyć rejestrowanie debugowania?"
 }

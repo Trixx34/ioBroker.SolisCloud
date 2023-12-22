@@ -16,5 +16,10 @@
     "help_pollInterval": "Valor mínimo=45 segundos, valor máximo=1800 segundos.",
     "errValplantId": "Caracteres inválidos encontrados em plantId, apenas valores numéricos são permitidos.",
     "help_epl": "O EPL está disponível para instalação? Se não tiver certeza, deixe esta opção desativada.",
-    "label_epl": "EPL disponível"
+    "label_epl": "EPL disponível",
+    "help_epm": "O EPL está disponível para instalação? Se não tiver certeza, deixe esta opção desativada.",
+    "label_epm": "EPL disponível",
+    "help_debug": "Habilitar registro de depuração?",
+    "label_help": "Registro de depuração",
+    "label_debug": "Habilitar registro de depuração?"
 }

@@ -13,6 +13,8 @@
   "help_plantId": "Found in URL when logged into soliscloud. soliscloud.com/#/station/stationdetail_1?id=123486816843454864",
   "help_pollInterval": "Min value=45 seconds, max value=1800 seconds.",
   "errValplantId": "Invalid characters found in plantId, only numerical values are allowed.",
-  "help_epl": "Is EPL available for the installation ? If unsure, leave this disabled.",
-  "label_epl": "EPL available"
+  "help_epm": "Is EPL available for the installation ? If unsure, leave this disabled.",
+  "label_epm": "EPL available",
+  "label_debug": "Enable debug logging ?",
+  "label_help": "Debug logging"
 }

@@ -26,7 +26,7 @@ var apiHelper_exports = {};
 __export(apiHelper_exports, {
   HmacSHA1Encrypt: () => HmacSHA1Encrypt,
   getDigest: () => getDigest,
-  getEplDetails: () => getEplDetails,
+  getEpmDetails: () => getEpmDetails,
   getGMTTime: () => getGMTTime,
   getInverterDetails: () => getInverterDetails,
   getInverterList: () => getInverterList,
@@ -177,17 +177,19 @@ async function getInverterDetails(inverterId, apiKey, apiSecret, apiLogger) {
     apiLogger.error(e);
   }
 }
-async function getEplDetails(inverterId, apiKey, apiSecret, apiLogger) {
+async function getEpmDetails(stationId, apiKey, apiSecret, apiLogger, debugLog) {
   const map = {
-    id: inverterId
+    pageNo: 1,
+    pageSize: 20,
+    stationId
   };
   const body = JSON.stringify(map);
   const ContentMd5 = getDigest(body);
   const currentDate = getGMTTime();
-  const param = "POST\n" + ContentMd5 + "\napplication/json\n" + currentDate + "\n/v1/api/inverterDetail";
+  const param = "POST\n" + ContentMd5 + "\napplication/json\n" + currentDate + "\n/v1/api/epmList";
   const sign = HmacSHA1Encrypt(param, apiSecret);
-  const url = API_BASE_URL + "/v1/api/inverterDetail";
-  apiLogger.debug(`Inverterdetails URL: ${url}`);
+  const url = API_BASE_URL + "/v1/api/epmList";
+  apiLogger.debug(`EPMlist URL: ${url}`);
   try {
     const requestBody = JSON.stringify(map);
     const response = await (0, import_axios.default)({
@@ -202,6 +204,10 @@ async function getEplDetails(inverterId, apiKey, apiSecret, apiLogger) {
       data: requestBody,
       timeout: 5e3
     });
+    apiLogger.info(`EPM Detail test. eTotalBuy should be: ` + response.data.data.page.records[0].eTotalBuy);
+    if (debugLog) {
+      apiLogger.debug(`API response (EPM detail) was:` + JSON.stringify(response.data));
+    }
     return {};
   } catch (e) {
     apiLogger.error(e);
@@ -242,7 +248,7 @@ function getDigest(test) {
 0 && (module.exports = {
   HmacSHA1Encrypt,
   getDigest,
-  getEplDetails,
+  getEpmDetails,
   getGMTTime,
   getInverterDetails,
   getInverterList,

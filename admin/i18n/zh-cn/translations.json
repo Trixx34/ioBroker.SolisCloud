@@ -16,5 +16,10 @@
     "help_pollInterval": "最小值=45 秒，最大值=1800 秒。",
     "errValplantId": "plantId 中发现无效字符，仅允许使用数字值。",
     "help_epl": "EPL 可用于安装吗？如果不确定，请将其禁用。",
-    "label_epl": "英超可用"
+    "label_epl": "英超可用",
+    "help_epm": "EPL 可用于安装吗？如果不确定，请将其禁用。",
+    "label_epm": "英超可用",
+    "help_debug": "启用调试日志记录 ?",
+    "label_help": "调试日志",
+    "label_debug": "启用调试日志记录 ?"
 }

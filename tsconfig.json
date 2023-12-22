@@ -1,6 +1,5 @@
 // Root tsconfig to set the settings and power editor support for all TS files
 {
-<<<<<<< HEAD
   // To update the compilation target, install a different version of @tsconfig/node... and reference it here
   // https://github.com/tsconfig/bases#node-14-tsconfigjson
   "extends": "@tsconfig/node14/tsconfig.json",
@@ -18,29 +17,4 @@
   },
   "include": ["src/**/*.ts"],
   "exclude": ["build/**", "node_modules/**", "widgets/**"]
-=======
-	// To update the compilation target, install a different version of @tsconfig/node... and reference it here
-	// https://github.com/tsconfig/bases#node-14-tsconfigjson
-	"extends": "@tsconfig/node14/tsconfig.json",
-	"compilerOptions": {
-		"noEmit": true,
-		"allowJs": true,
-		"checkJs": true,
-		"noEmitOnError": true,
-		"outDir": "./build/",
-		"removeComments": false,
-		"resolveJsonModule": true,
-		"sourceMap": true,
-		"inlineSourceMap": false,
-		"module": "Node16"
-	},
-	"include": [
-		"src/**/*.ts"
-	],
-	"exclude": [
-		"build/**",
-		"node_modules/**",
-		"widgets/**"
-	]
->>>>>>> 6a1f2aa264a50e62bc27687be9682905c8b5a8d1
 }

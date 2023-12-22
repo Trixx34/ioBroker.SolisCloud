@@ -8,7 +8,8 @@ declare global {
 			apiSecret: string;
 			plantId: string;
 			pollInterval: number;
-			epl: boolean
+			epm: boolean;
+			debugLogging: boolean
 		}
 	}
 }

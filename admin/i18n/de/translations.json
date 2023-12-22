@@ -16,5 +16,10 @@
     "help_pollInterval": "Min. Wert=45 Sekunden, Max. Wert=1800 Sekunden.",
     "errValplantId": "In plantId wurden ungültige Zeichen gefunden. Es sind nur numerische Werte zulässig.",
     "help_epl": "Ist EPL für die Installation verfügbar? Wenn Sie sich nicht sicher sind, lassen Sie dies deaktiviert.",
-    "label_epl": "EPL verfügbar"
+    "label_epl": "EPL verfügbar",
+    "help_epm": "Ist EPL für die Installation verfügbar? Wenn Sie sich nicht sicher sind, lassen Sie dies deaktiviert.",
+    "label_epm": "EPL verfügbar",
+    "help_debug": "Debug-Protokollierung aktivieren?",
+    "label_help": "Debug Protokollierung",
+    "label_debug": "Debug-Protokollierung aktivieren?"
 }

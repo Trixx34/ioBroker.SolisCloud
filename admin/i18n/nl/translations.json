@@ -16,5 +16,10 @@
     "help_pollInterval": "Min. waarde=45 seconden, max. waarde=1800 seconden.",
     "errValplantId": "Ongeldige tekens gevonden in plantId, alleen numerieke waarden zijn toegestaan.",
     "help_epl": "Is EPL beschikbaar voor de installatie? Als u het niet zeker weet, laat u dit uitgeschakeld.",
-    "label_epl": "EPL beschikbaar"
+    "label_epl": "EPL beschikbaar",
+    "help_epm": "Is EPL beschikbaar voor de installatie? Als u het niet zeker weet, laat u dit uitgeschakeld.",
+    "label_epm": "EPL beschikbaar",
+    "help_debug": "Foutopsporingsregistratie inschakelen?",
+    "label_help": "Foutopsporingslogboekregistratie",
+    "label_debug": "Foutopsporingsregistratie inschakelen?"
 }
