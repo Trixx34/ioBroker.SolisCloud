@@ -201,7 +201,6 @@ export async function getEpmDetails(
 	apiKey: string,
 	apiSecret: string,
 	apiLogger: any,
-	debugLog: boolean
 ): Promise<any> {
 	const map = {
 		pageNo: 1,
@@ -238,12 +237,7 @@ export async function getEpmDetails(
 			data: requestBody,
 			timeout: 5000,
 		});
-		if (debugLog) {
-			apiLogger.debug(`API response (EPM detail) was:` + JSON.stringify(response.data));
-			// if (response.data.data.page.records[0].eTotalBuy) {
-			// 	apiLogger.info(`EPM Detail test. eTotalBuy should be: ` + response.data.data.page.records[0].eTotalBuy)
-			// }
-		}
+		apiLogger.info(`API response (EPM detail) was:` + JSON.stringify(response.data));
 		return {
 		}
 	} catch (e) {

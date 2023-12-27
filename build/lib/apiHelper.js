@@ -177,7 +177,7 @@ async function getInverterDetails(inverterId, apiKey, apiSecret, apiLogger) {
     apiLogger.error(e);
   }
 }
-async function getEpmDetails(stationId, apiKey, apiSecret, apiLogger, debugLog) {
+async function getEpmDetails(stationId, apiKey, apiSecret, apiLogger) {
   const map = {
     pageNo: 1,
     pageSize: 20,
@@ -204,10 +204,7 @@ async function getEpmDetails(stationId, apiKey, apiSecret, apiLogger, debugLog) 
       data: requestBody,
       timeout: 5e3
     });
-    apiLogger.info(`EPM Detail test. eTotalBuy should be: ` + response.data.data.page.records[0].eTotalBuy);
-    if (debugLog) {
-      apiLogger.debug(`API response (EPM detail) was:` + JSON.stringify(response.data));
-    }
+    apiLogger.info(`API response (EPM detail) was:` + JSON.stringify(response.data));
     return {};
   } catch (e) {
     apiLogger.error(e);
