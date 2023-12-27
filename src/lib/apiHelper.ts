@@ -1,4 +1,3 @@
-import { getSentryRelease } from "@sentry/node";
 import axios from "axios";
 import crypto from "crypto";
 
