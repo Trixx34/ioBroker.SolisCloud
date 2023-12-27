@@ -1,10 +1,23 @@
 {
   "common": {
     "name": "soliscloud",
-    "version": "1.3.2",
+    "version": "1.3.3",
     "connectionType": "cloud",
     "dataSource": "poll",
     "news": {
+      "1.3.3": {
+        "en": "Added settings to test EPM API Call. Result is logged, not processed at the moment.",
+        "de": "Einstellungen hinzugefügt, um EPM API Call zu testen. Ergebnis wird protokolliert, nicht im Moment verarbeitet.",
+        "ru": "Добавлены настройки для тестирования EPM API Call. Результат зарегистрирован, не обрабатывается на данный момент.",
+        "pt": "Configurações adicionadas para testar a chamada de API EPM. O resultado é registrado, não processado no momento.",
+        "nl": "Gevoegd instellingen om EPM API Call te testen. De result is ingelogd, niet verwerkt op dit moment.",
+        "fr": "Ajout de paramètres pour tester EPM API Call. Le résultat est enregistré, pas traité en ce moment.",
+        "it": "Aggiunte le impostazioni per testare EPM API Call. I risultati sono registrati, non elaborati al momento.",
+        "es": "Ajustes adicionales para probar EPM API Call. El resultado está registrado, no procesado en este momento.",
+        "pl": "Zastosowanie do testowania EPM API Call. Wynik jest wylogowany, nie przetwarzany w momencie.",
+        "uk": "Додано налаштування для тестування EPM API Call. Результат логується, не обробляється в момент.",
+        "zh-cn": "添加试验性免疫计划要求的环境。 反应被打破,目前没有处理。."
+      },
       "1.3.2": {
         "en": "Testrelease with EPL settings",
         "de": "Testrelease mit EPL-Einstellungen",
@@ -82,32 +95,6 @@
         "pl": "Typowo, w którym aplikacja rozbiła się",
         "uk": "Тіпо в основному, що призвело до аварійних ситуацій додатків",
         "zh-cn": "造成使用事故的主要渠道"
-      },
-      "1.2.2": {
-        "en": "Typo in main which caused application crashes",
-        "de": "Typo im Haupt, die Anwendungsunfälle verursacht",
-        "ru": "Typo в основном, что вызвало аварии приложения",
-        "pt": "Typo na principal que causou falhas de aplicação",
-        "nl": "Typo in de hoofdstad die toepassing veroorzaakte",
-        "fr": "Typo dans le principal qui a causé des accidents d'application",
-        "it": "Typo in principale che ha causato crash di applicazione",
-        "es": "Typo en el principal que causó fallos de aplicación",
-        "pl": "Typowo, w którym aplikacja rozbiła się",
-        "uk": "Тіпо в основному, що призвело до аварійних ситуацій додатків",
-        "zh-cn": "造成使用事故的主要渠道"
-      },
-      "1.2.1": {
-        "en": "added ack to value updates.",
-        "de": "zu wertaktualisierungen hinzugefügt.",
-        "ru": "добавлена ack к обновлениям стоимости.",
-        "pt": "adicionado ack para atualizações de valor.",
-        "nl": "voegde ack toe aan waarde updates.",
-        "fr": "ajouté ack aux mises à jour de valeur.",
-        "it": "aggiunto ack agli aggiornamenti di valore.",
-        "es": "añadido a las actualizaciones de valor.",
-        "pl": "dodano dodatki do wartości aktualizacji.",
-        "uk": "додано ack до оновлення значень.",
-        "zh-cn": "增加附加值更新。."
       }
     },
     "titleLang": {
@@ -142,7 +129,10 @@
         "email": "trixxdev034@gmail.com"
       }
     ],
-    "keywords": ["Solis", "soliscloud"],
+    "keywords": [
+      "Solis",
+      "soliscloud"
+    ],
     "license": "MIT",
     "platform": "Javascript/Node.js",
     "main": "build/main.js",
@@ -171,8 +161,12 @@
   },
   "native": {},
   "i18n": true,
-  "encryptedNative": ["apiKey"],
-  "protectedNative": ["apiKey"],
+  "encryptedNative": [
+    "apiKey"
+  ],
+  "protectedNative": [
+    "apiKey"
+  ],
   "objects": [],
   "instanceObjects": []
 }
