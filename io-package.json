@@ -1,11 +1,11 @@
 {
   "common": {
     "name": "soliscloud",
-    "version": "1.3.3",
+    "version": "1.3.2",
     "connectionType": "cloud",
     "dataSource": "poll",
     "news": {
-      "1.3.3": {
+      "1.3.2": {
         "en": "Testrelease with EPL settings",
         "de": "Testrelease mit EPL-Einstellungen",
         "ru": "Тест-релиз с настройками EPL",
@@ -17,19 +17,6 @@
         "pl": "Test release with EPL (ang.)",
         "uk": "Тестування з налаштуваннями EPL",
         "zh-cn": "与非苏人环境的试验"
-      },
-      "1.3.2": {
-        "en": "",
-        "de": "Plant_state wurde nicht korrekt verarbeitet",
-        "ru": "Plant_state не обрабатывается правильно",
-        "pt": "Plant_state não foi processado corretamente",
-        "nl": "Plantstate is niet correct verwerkt",
-        "fr": "Plant_state n'a pas été traitée correctement",
-        "it": "Plant_state non è stato elaborato correttamente",
-        "es": "Plant_state no fue procesado correctamente",
-        "pl": "Plant_state nie został poprawnie wykonany",
-        "uk": "Завод_держава не оброблена правильно",
-        "zh-cn": "计划:国家被正确处理"
       },
       "1.3.1": {
         "en": "Plant_state wasn't processed correctly",
