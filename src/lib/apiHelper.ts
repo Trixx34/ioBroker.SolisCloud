@@ -73,7 +73,7 @@ export async function getStationDetails(
 	} catch (error) {
 		apiLogger.error(error);
 		if (errorReports) {
-			Sentry.captureException(error)
+			Sentry.captureException(error);
 		}
 	}
 }
@@ -132,7 +132,7 @@ export async function getInverterList(
 	} catch (e) {
 		apiLogger.error(e)
 		if (errorReports) {
-			Sentry.captureException(e)
+			Sentry.captureException(e);
 		}
 	}
 }
@@ -203,9 +203,9 @@ export async function getInverterDetails(
 			battery_total_discharge_energy_units: response.data.data.batteryTotalDischargeEnergyStr,
 		}
 	} catch (e) {
-		apiLogger.error(e)
+		apiLogger.error(e);
 		if (errorReports) {
-			Sentry.captureException(e)
+			Sentry.captureException(e);
 		}
 	}
 }
@@ -261,9 +261,9 @@ export async function getEpmDetails(
 		return {
 		}
 	} catch (e) {
-		apiLogger.error(e)
+		apiLogger.error(e);
 		if (errorReports) {
-			Sentry.captureException(e)
+			Sentry.captureException(e);
 		}
 	}
 }
