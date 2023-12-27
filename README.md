@@ -42,8 +42,7 @@ I'm not a professional developer. Use at your own risk.
 [![Buy Me a Coffee](https://www.buymeacoffee.com/assets/img/guidelines/download-assets-sm-2.svg)](https://www.buymeacoffee.com/trixxdev)
 
 ## Changelog
-
-### **WORK IN PROGRESS**
+### 1.3.4 (2023-12-27)
 
 - Allow for EPM debug logging to be turned off.
 

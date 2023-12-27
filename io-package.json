@@ -1,10 +1,23 @@
 {
   "common": {
     "name": "soliscloud",
-    "version": "1.3.3",
+    "version": "1.3.4",
     "connectionType": "cloud",
     "dataSource": "poll",
     "news": {
+      "1.3.4": {
+        "en": "Allow for EPM debug logging to be turned off.",
+        "de": "Erlauben Sie, dass das EPM-Debug-Logging ausgeschaltet wird.",
+        "ru": "Разрешить для EPM debug вход, чтобы быть выключен.",
+        "pt": "Permitir que o registro de depuração EPM seja desligado.",
+        "nl": "Laat EPM debug uitschakelen.",
+        "fr": "Permettre que le débogueur EPM soit désactivé.",
+        "it": "Consentire per EPM debug logging essere spento.",
+        "es": "Permitir que el registro de depuración de EPM sea apagado.",
+        "pl": "Allow dla EPM debug logowanie zostało odrzucone.",
+        "uk": "Дозволити для входу в EPM, щоб бути вимкнено.",
+        "zh-cn": "允许取消排他性。."
+      },
       "1.3.3": {
         "en": "Added settings to test EPM API Call. Result is logged, not processed at the moment.",
         "de": "Einstellungen hinzugefügt, um EPM API Call zu testen. Ergebnis wird protokolliert, nicht im Moment verarbeitet.",
@@ -82,19 +95,6 @@
         "pl": "2 wartości nie zostały poprawnie aktualizowane",
         "uk": "2 значення не було оновлено належним чином",
         "zh-cn": "2 价值正确更新"
-      },
-      "1.2.3": {
-        "en": "Typo in main which caused application crashes",
-        "de": "Typo im Haupt, die Anwendungsunfälle verursacht",
-        "ru": "Typo в основном, что вызвало аварии приложения",
-        "pt": "Typo na principal que causou falhas de aplicação",
-        "nl": "Typo in de hoofdstad die toepassing veroorzaakte",
-        "fr": "Typo dans le principal qui a causé des accidents d'application",
-        "it": "Typo in principale che ha causato crash di applicazione",
-        "es": "Typo en el principal que causó fallos de aplicación",
-        "pl": "Typowo, w którym aplikacja rozbiła się",
-        "uk": "Тіпо в основному, що призвело до аварійних ситуацій додатків",
-        "zh-cn": "造成使用事故的主要渠道"
       }
     },
     "titleLang": {
