@@ -274,6 +274,7 @@ export function getGMTTime(): string {
 		"Dec",
 	];
 	return `${days[cd.getUTCDay()]}, ${cd.getUTCDate()} ${months[cd.getUTCMonth()]
+		// eslint-disable-next-line @typescript-eslint/indent
 		} ${cd.getUTCFullYear()} ${cd.getUTCHours()}:${cd.getUTCMinutes()}:${cd.getUTCSeconds()} GMT`;
 }
 
