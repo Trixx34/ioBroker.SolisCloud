@@ -201,6 +201,7 @@ export async function getEpmDetails(
 	apiKey: string,
 	apiSecret: string,
 	apiLogger: any,
+	debugLogging: boolean
 ): Promise<any> {
 	const map = {
 		pageNo: 1,
@@ -237,7 +238,9 @@ export async function getEpmDetails(
 			data: requestBody,
 			timeout: 5000,
 		});
-		apiLogger.info(`API response (EPM detail) was:` + JSON.stringify(response.data));
+		if (debugLogging) {
+			apiLogger.info(`API response (EPM detail) was:` + JSON.stringify(response.data));
+		}
 		return {
 		}
 	} catch (e) {
@@ -274,6 +277,7 @@ export function getGMTTime(): string {
 		"Dec",
 	];
 	return `${days[cd.getUTCDay()]}, ${cd.getUTCDate()} ${months[cd.getUTCMonth()]
+		// eslint-disable-next-line @typescript-eslint/indent
 		} ${cd.getUTCFullYear()} ${cd.getUTCHours()}:${cd.getUTCMinutes()}:${cd.getUTCSeconds()} GMT`;
 }
 

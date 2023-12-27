@@ -42,6 +42,11 @@ I'm not a professional developer. Use at your own risk.
 [![Buy Me a Coffee](https://www.buymeacoffee.com/assets/img/guidelines/download-assets-sm-2.svg)](https://www.buymeacoffee.com/trixxdev)
 
 ## Changelog
+
+### **WORK IN PROGRESS**
+
+- Allow for EPM debug logging to be turned off.
+
 ### 1.3.3 (2023-12-27)
 
 - Added settings to test EPM API Call. Result is logged, not processed at the moment.

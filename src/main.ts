@@ -827,7 +827,7 @@ class soliscloud extends utils.Adapter {
 
 		if (this.config.epm) {
 			this.log.info("EPM is enabled, making API call");
-			getEpmDetails(this.config.plantId, this.config.apiKey, this.config.apiSecret, this.log);
+			getEpmDetails(this.config.plantId, this.config.apiKey, this.config.apiSecret, this.log, this.config.debugLogging);
 		}
 
 	}
