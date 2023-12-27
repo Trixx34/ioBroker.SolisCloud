@@ -21,5 +21,7 @@
     "label_epm": "EPL verfügbar",
     "help_debug": "Debug-Protokollierung aktivieren?",
     "label_help": "Debug Protokollierung",
-    "label_debug": "Debug-Protokollierung aktivieren?"
+    "label_debug": "Debug-Protokollierung aktivieren?",
+    "label_errorReport": "Fehlerberichte senden?",
+    "help_errorReport": "Senden von Stacktraces zulassen? (Enthält keine persönlichen Daten)."
 }

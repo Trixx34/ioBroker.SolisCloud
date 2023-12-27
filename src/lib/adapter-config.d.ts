@@ -9,7 +9,8 @@ declare global {
 			plantId: string;
 			pollInterval: number;
 			epm: boolean;
-			debugLogging: boolean
+			debugLogging: boolean;
+			errorReports: boolean;
 		}
 	}
 }

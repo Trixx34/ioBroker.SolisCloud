@@ -21,5 +21,7 @@
     "label_epm": "EPL disponível",
     "help_debug": "Habilitar registro de depuração?",
     "label_help": "Registro de depuração",
-    "label_debug": "Habilitar registro de depuração?"
+    "label_debug": "Habilitar registro de depuração?",
+    "label_errorReport": "Enviar relatórios de erros?",
+    "help_errorReport": "Permitir envio de stacktraces? (não contém nenhuma informação pessoal)."
 }

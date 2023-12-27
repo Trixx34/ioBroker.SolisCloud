@@ -21,5 +21,7 @@
     "label_epm": "EPL disponibile",
     "help_debug": "Abilitare la registrazione del debug?",
     "label_help": "Registrazione di debug",
-    "label_debug": "Abilitare la registrazione del debug?"
+    "label_debug": "Abilitare la registrazione del debug?",
+    "label_errorReport": "Inviare segnalazioni di errori?",
+    "help_errorReport": "Consentire l'invio di stacktrace? (non contiene informazioni personali)."
 }

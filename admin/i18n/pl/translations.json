@@ -21,5 +21,7 @@
     "label_epm": "Dostępne EPL",
     "help_debug": "Włączyć rejestrowanie debugowania?",
     "label_help": "Rejestrowanie debugowania",
-    "label_debug": "Włączyć rejestrowanie debugowania?"
+    "label_debug": "Włączyć rejestrowanie debugowania?",
+    "label_errorReport": "Wysłać raporty o błędach?",
+    "help_errorReport": "Zezwolić na wysyłanie śladów stosu? (nie zawiera żadnych danych osobowych)."
 }

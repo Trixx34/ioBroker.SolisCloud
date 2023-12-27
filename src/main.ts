@@ -1,5 +1,6 @@
 import * as utils from "@iobroker/adapter-core";
 import { getEpmDetails, getInverterDetails, getInverterList, getStationDetails } from "./lib/apiHelper";
+import * as Sentry from "@sentry/node";
 
 class soliscloud extends utils.Adapter {
 	private intervalId: any;
@@ -15,6 +16,7 @@ class soliscloud extends utils.Adapter {
 	//station details
 	private async onReady(): Promise<void> {
 		this.log.info("Starting soliscloud adapter");
+		Sentry.init({ dsn: "https://c92a18489a9a4d6ea1f770cb1b3f3434@app.glitchtip.com/5404" });
 
 		if (this.config.plantId != null) {
 			this.config.plantId = this.name2id(this.config.plantId);
@@ -679,7 +681,9 @@ class soliscloud extends utils.Adapter {
 				this.config.plantId,
 				this.config.apiKey,
 				this.config.apiSecret,
-				this.log
+				this.log,
+				Sentry,
+				this.config.errorReports
 			);
 
 			if (callResult) {
@@ -697,6 +701,9 @@ class soliscloud extends utils.Adapter {
 						break;
 					default:
 						this.log.error(`Received an incorrect plant status from the API Call, this should NOT happen.`)
+						if (this.config.errorReports) {
+							Sentry.captureException(callResult.plant_state);
+						}
 						break;
 				}
 				this.log.debug(`Plant ${this.config.plantId} is ${plantStatus}`);
@@ -734,9 +741,15 @@ class soliscloud extends utils.Adapter {
 				}
 			} else {
 				this.log.debug("Did not receive a correct response from the Stationdetails API call");
+				if (this.config.errorReports) {
+					Sentry.captureException(callResult);
+				}
 			}
 		} catch (e) {
 			this.log.error(`Error while calling API (Station): ${e} `)
+			if (this.config.errorReports) {
+				Sentry.captureException(e);
+			}
 		}
 
 		try {
@@ -744,7 +757,9 @@ class soliscloud extends utils.Adapter {
 				this.config.plantId,
 				this.config.apiKey,
 				this.config.apiSecret,
-				this.log
+				this.log,
+				Sentry,
+				this.config.errorReports
 			);
 			this.log.debug(`Correct result from Inverter API call, inverter state: ${inverterDetailResult.inverter_state}`)
 			let inverterStatus = "";
@@ -782,7 +797,10 @@ class soliscloud extends utils.Adapter {
 				);
 			}
 		} catch (e) {
-			this.log.error(`error while calling API (Inverter): ${e}`)
+			this.log.error(`error while calling API (Inverter): ${e}`);
+			if (this.config.errorReports) {
+				Sentry.captureException(e);
+			}
 		}
 
 		try {
@@ -790,7 +808,9 @@ class soliscloud extends utils.Adapter {
 				if (!err && state && state.val) {
 					const inverterId = state.val.toString();
 					this.log.debug(`The value of ${this.config.plantId}.inverter_detail.id is ${inverterId}`);
-					const inverterDetails = await getInverterDetails(inverterId, this.config.apiKey, this.config.apiSecret, this.log);
+					const inverterDetails = await getInverterDetails(inverterId, this.config.apiKey, this.config.apiSecret, this.log,
+						Sentry,
+						this.config.errorReports);
 					if (inverterDetails) {
 						const propertiesToSet = [
 							"ac_current_R",
@@ -823,11 +843,16 @@ class soliscloud extends utils.Adapter {
 			});
 		} catch (e) {
 			this.log.error("Error calling inverterDetails")
+			if (this.config.errorReports) {
+				Sentry.captureException(e);
+			}
 		}
 
 		if (this.config.epm) {
 			this.log.info("EPM is enabled, making API call");
-			getEpmDetails(this.config.plantId, this.config.apiKey, this.config.apiSecret, this.log, this.config.debugLogging);
+			getEpmDetails(this.config.plantId, this.config.apiKey, this.config.apiSecret, this.log, this.config.debugLogging,
+				Sentry,
+				this.config.errorReports);
 		}
 
 	}
@@ -839,6 +864,9 @@ class soliscloud extends utils.Adapter {
 			callback();
 		} catch (e) {
 			this.log.info("Error while stopping polling: " + e);
+			if (this.config.errorReports) {
+				Sentry.captureException(e);
+			}
 			callback();
 		}
 	}

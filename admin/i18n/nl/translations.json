@@ -21,5 +21,7 @@
     "label_epm": "EPL beschikbaar",
     "help_debug": "Foutopsporingsregistratie inschakelen?",
     "label_help": "Foutopsporingslogboekregistratie",
-    "label_debug": "Foutopsporingsregistratie inschakelen?"
+    "label_debug": "Foutopsporingsregistratie inschakelen?",
+    "label_errorReport": "Foutrapporten verzenden?",
+    "help_errorReport": "Verzenden van stacktraces toestaan? (bevat geen persoonlijke informatie)."
 }

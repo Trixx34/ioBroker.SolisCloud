@@ -21,5 +21,7 @@
     "label_epm": "LPE disponible",
     "help_debug": "Activer la journalisation du débogage ?",
     "label_help": "Journalisation du débogage",
-    "label_debug": "Activer la journalisation du débogage ?"
+    "label_debug": "Activer la journalisation du débogage ?",
+    "label_errorReport": "Envoyer des rapports d'erreurs ?",
+    "help_errorReport": "Autoriser l'envoi de stacktraces ? (ne contient aucune information personnelle)."
 }

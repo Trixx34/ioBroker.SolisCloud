@@ -21,5 +21,7 @@
     "label_epm": "英超可用",
     "help_debug": "启用调试日志记录 ?",
     "label_help": "调试日志",
-    "label_debug": "启用调试日志记录 ?"
+    "label_debug": "启用调试日志记录 ?",
+    "label_errorReport": "发送错误报告？",
+    "help_errorReport": "允许发送堆栈跟踪吗？ （不包含任何个人信息）。"
 }

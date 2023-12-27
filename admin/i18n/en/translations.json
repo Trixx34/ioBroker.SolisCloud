@@ -16,5 +16,7 @@
   "help_epm": "Is EPM available for the installation ? If unsure, leave this disabled.",
   "label_epm": "EPM available",
   "label_debug": "Enable debug logging ?",
-  "label_help": "Debug logging"
+  "help_debug": "Send debug logging",
+  "label_errorReport": "Send error reports?",
+  "help_errorReport": "Allow sending of stacktraces ? (does not contain any personal info)."
 }

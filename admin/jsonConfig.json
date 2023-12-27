@@ -42,6 +42,12 @@
       "label": "label_debug",
       "help": "help_debug",
       "newLine": true
+    },
+    "errorReport": {
+      "type": "checkbox",
+      "label": "label_errorReport",
+      "help": "help_errorReport",
+      "newLine": true
     }
   }
 }

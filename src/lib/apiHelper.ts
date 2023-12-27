@@ -1,3 +1,4 @@
+import { getSentryRelease } from "@sentry/node";
 import axios from "axios";
 import crypto from "crypto";
 
@@ -8,7 +9,9 @@ export async function getStationDetails(
 	stationId: string,
 	apiKey: string,
 	apiSecret: string,
-	apiLogger: any
+	apiLogger: any,
+	Sentry: any,
+	errorReports: boolean
 ): Promise<any> {
 	const map = {
 		id: stationId,
@@ -70,6 +73,9 @@ export async function getStationDetails(
 		};
 	} catch (error) {
 		apiLogger.error(error);
+		if (errorReports) {
+			Sentry.captureException(error)
+		}
 	}
 }
 
@@ -78,7 +84,9 @@ export async function getInverterList(
 	stationId: string,
 	apiKey: string,
 	apiSecret: string,
-	apiLogger: any
+	apiLogger: any,
+	Sentry: any,
+	errorReports: boolean
 ): Promise<any> {
 	const map = {
 		pageNo: 1,
@@ -124,6 +132,9 @@ export async function getInverterList(
 		}
 	} catch (e) {
 		apiLogger.error(e)
+		if (errorReports) {
+			Sentry.captureException(e)
+		}
 	}
 }
 
@@ -132,7 +143,9 @@ export async function getInverterDetails(
 	inverterId: string,
 	apiKey: string,
 	apiSecret: string,
-	apiLogger: any
+	apiLogger: any,
+	Sentry: any,
+	errorReports: boolean
 ): Promise<any> {
 	const map = {
 		id: inverterId
@@ -192,6 +205,9 @@ export async function getInverterDetails(
 		}
 	} catch (e) {
 		apiLogger.error(e)
+		if (errorReports) {
+			Sentry.captureException(e)
+		}
 	}
 }
 
@@ -201,7 +217,9 @@ export async function getEpmDetails(
 	apiKey: string,
 	apiSecret: string,
 	apiLogger: any,
-	debugLogging: boolean
+	debugLogging: boolean,
+	Sentry: any,
+	errorReports: boolean
 ): Promise<any> {
 	const map = {
 		pageNo: 1,
@@ -245,6 +263,9 @@ export async function getEpmDetails(
 		}
 	} catch (e) {
 		apiLogger.error(e)
+		if (errorReports) {
+			Sentry.captureException(e)
+		}
 	}
 }
 

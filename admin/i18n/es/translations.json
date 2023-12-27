@@ -21,5 +21,7 @@
     "label_epm": "EPL disponible",
     "help_debug": "¿Habilitar el registro de depuración?",
     "label_help": "Registro de depuración",
-    "label_debug": "¿Habilitar el registro de depuración?"
+    "label_debug": "¿Habilitar el registro de depuración?",
+    "label_errorReport": "¿Enviar informes de errores?",
+    "help_errorReport": "¿Permitir el envío de seguimientos de pila? (no contiene ninguna información personal)."
 }
