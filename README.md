@@ -42,8 +42,7 @@ I'm not a professional developer. Use at your own risk.
 [![Buy Me a Coffee](https://www.buymeacoffee.com/assets/img/guidelines/download-assets-sm-2.svg)](https://www.buymeacoffee.com/trixxdev)
 
 ## Changelog
-
-### **WORK IN PROGRESS**
+### 1.3.5 (2023-12-28)
 
 - Added option to send stacktraces
 - improved errorhandling
