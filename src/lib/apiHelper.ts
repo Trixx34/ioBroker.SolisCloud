@@ -130,7 +130,7 @@ export async function getInverterList(
 			inverter_serial_number: response.data.data.page.records[0].sn,
 		};
 	} catch (e) {
-		apiLogger.error(e)
+		apiLogger.error(e);
 		if (errorReports) {
 			Sentry.captureException(e);
 		}
