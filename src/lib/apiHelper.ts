@@ -128,7 +128,7 @@ export async function getInverterList(
 			etoday: response.data.data.page.records[0].etoday,
 			inverter_id: response.data.data.page.records[0].id,
 			inverter_serial_number: response.data.data.page.records[0].sn,
-		}
+		};
 	} catch (e) {
 		apiLogger.error(e)
 		if (errorReports) {
@@ -201,7 +201,7 @@ export async function getInverterDetails(
 			battery_today_discharge_energy_units: response.data.data.batteryTodayDischargeEnergyStr,
 			battery_total_discharge_energy: response.data.data.batteryTotalDischargeEnergy,
 			battery_total_discharge_energy_units: response.data.data.batteryTotalDischargeEnergyStr,
-		}
+		};
 	} catch (e) {
 		apiLogger.error(e);
 		if (errorReports) {
@@ -259,7 +259,7 @@ export async function getEpmDetails(
 			apiLogger.info(`API response (EPM detail) was:` + JSON.stringify(response.data));
 		}
 		return {
-		}
+		};
 	} catch (e) {
 		apiLogger.error(e);
 		if (errorReports) {

@@ -1,6 +1,5 @@
 # No dot-directories except github/vscode
 .*/
-build/
 !.vscode/
 !.github/
 .create-adapter.json

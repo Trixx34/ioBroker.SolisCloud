@@ -761,24 +761,25 @@ class soliscloud extends utils.Adapter {
 				Sentry,
 				this.config.errorReports
 			);
-			this.log.debug(`Correct result from Inverter API call, inverter state: ${inverterDetailResult.inverter_state}`)
-			let inverterStatus = "";
-			switch (inverterDetailResult.inverter_state) {
-				case 1:
-					inverterStatus = "Online";
-					break;
-				case 2:
-					inverterStatus = "Offline";
-					break;
-				case 3:
-					inverterStatus = "Alarm";
-					break;
-				default:
-					this.log.error(`Received an incorrect plant status from the inverter API Call, this should NOT happen.`)
-					break;
-			}
-			this.log.debug(`set inverter state to: ${inverterStatus}`)
 			if (inverterDetailResult) {
+				this.log.debug(`Correct result from Inverter API call, inverter state: ${inverterDetailResult.inverter_state}`)
+				let inverterStatus = "";
+
+				switch (inverterDetailResult.inverter_state) {
+					case 1:
+						inverterStatus = "Online";
+						break;
+					case 2:
+						inverterStatus = "Offline";
+						break;
+					case 3:
+						inverterStatus = "Alarm";
+						break;
+					default:
+						this.log.error(`Received an incorrect plant status from the inverter API Call, this should NOT happen.`)
+						break;
+				}
+				this.log.debug(`set inverter state to: ${inverterStatus}`)
 				await this.setStateAsync(
 					`${this.config.plantId}.inverter_detail.energy_day`,
 					{ val: inverterDetailResult.etoday, ack: true },
