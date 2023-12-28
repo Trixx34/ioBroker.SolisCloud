@@ -1,6 +1,6 @@
 ![Logo](admin/solis.png)
 
-[![NPM version](http://img.shields.io/npm/v/iobroker.soliscloud)](https://www.npmjs.com/package/iobroker.soliscloud) [![Known Vulnerabilities](https://snyk.io/test/github/Trixx34/ioBroker.soliscloud/badge.svg)]
+[![NPM version](http://img.shields.io/npm/v/iobroker.soliscloud)](https://www.npmjs.com/package/iobroker.soliscloud) (https://snyk.io/test/github/Trixx34/ioBroker.soliscloud/badge.svg)
 
 ## soliscloud adapter for IOBroker
 
