@@ -2,6 +2,10 @@
 
 [![NPM version](http://img.shields.io/npm/v/iobroker.soliscloud)](https://www.npmjs.com/package/iobroker.soliscloud) [![Known vulnerabilities](https://snyk.io/test/github/Trixx34/ioBroker.soliscloud/badge.svg)]
 
+**This adapter uses Sentry libraries to automatically report exceptions and code errors to the developers.** 
+**This option is entirely opt-in (disabled by default). No personal information is sent, only information regarding which error occurred during which API call.**
+**To allow this information to be sent, check the box indication "Send error reports?"**
+
 ## soliscloud adapter for IOBroker
 
 This integration is based on this home-assistant integration:
