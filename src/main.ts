@@ -119,13 +119,15 @@ class soliscloud extends utils.Adapter {
 		} catch (e) {
 			this.logErrorWithSentry(this, e, "getStationDetails");
 		}
-
+		this.logErrorWithSentry(this, "This is the erorr", "pollSolis()");
 		try {
 			const inverterDetailResult = await getInverterList(
 				this
 			);
 			if (inverterDetailResult) {
-				this.log.debug(`Correct result from Inverter API call, inverter state: ${inverterDetailResult.inverter_state}`)
+				if (this.config.debugLogging) {
+					this.log.debug(`Correct result from Inverter API call, inverter state: ${inverterDetailResult.inverter_state}`)
+				}
 				let inverterStatus = "";
 
 				switch (inverterDetailResult.inverter_state) {
@@ -142,7 +144,9 @@ class soliscloud extends utils.Adapter {
 						this.log.error(`Received an incorrect plant status from the inverter API Call, this should NOT happen.`)
 						break;
 				}
-				this.log.debug(`set inverter state to: ${inverterStatus}`)
+				if (this.config.debugLogging) {
+					this.log.debug(`set inverter state to: ${inverterStatus}`)
+				}
 				await this.setStateAsync(
 					`${this.config.plantId}.inverter_detail.energy_day`,
 					{ val: inverterDetailResult.etoday, ack: true },
@@ -172,7 +176,7 @@ class soliscloud extends utils.Adapter {
 					if (this.config.debugLogging) {
 						this.log.debug(`The value of ${this.config.plantId}.inverter_detail.id is ${inverterId}`);
 					}
-					const inverterDetails = await getInverterDetails(this);
+					const inverterDetails = await getInverterDetails(this, inverterId);
 					if (inverterDetails) {
 						const propertiesToSet = [
 							"ac_current_R",
@@ -229,9 +233,10 @@ class soliscloud extends utils.Adapter {
 		if (adapter.supportsFeature && adapter.supportsFeature("PLUGINS")) {
 			const sentryInstance = adapter.getPluginInstance("sentry");
 			if (sentryInstance) {
+				adapter.log.error(functionName);
 				sentryInstance.getSentryObject().captureException(error, {
 					extra: {
-						functionName: functionName,
+						"functionName": functionName,
 					}
 				});
 			}

@@ -10,7 +10,6 @@ declare global {
 			pollInterval: number;
 			epm: boolean;
 			debugLogging: boolean;
-			errorReports: boolean;
 		}
 	}
 }

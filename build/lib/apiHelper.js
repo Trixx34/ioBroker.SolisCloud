@@ -38,7 +38,7 @@ var import_crypto = __toESM(require("crypto"));
 const API_BASE_URL = "https://www.soliscloud.com:13333";
 async function getStationDetails(adapter) {
   const map = {
-    id: adapter.config.stationId
+    id: adapter.config.plantId
   };
   const body = JSON.stringify(map);
   const ContentMd5 = getDigest(body);
@@ -64,7 +64,7 @@ async function getStationDetails(adapter) {
       timeout: 5e3
     });
     if (adapter.config.debugLogging) {
-      adapter.log.debug(`API response (Station) was:` + JSON.stringify(response.data.data));
+      adapter.log.debug(`API response (Station) was:` + JSON.stringify(response.data));
     }
     return {
       current_power: response.data.data.power,
@@ -136,9 +136,9 @@ async function getInverterList(adapter) {
     adapter.logErrorWithSentry(adapter, e, "getInverterList");
   }
 }
-async function getInverterDetails(adapter) {
+async function getInverterDetails(adapter, inverterId) {
   const map = {
-    id: adapter.config.plantId
+    id: inverterId
   };
   const body = JSON.stringify(map);
   const ContentMd5 = getDigest(body);
@@ -146,7 +146,9 @@ async function getInverterDetails(adapter) {
   const param = "POST\n" + ContentMd5 + "\napplication/json\n" + currentDate + "\n/v1/api/inverterDetail";
   const sign = HmacSHA1Encrypt(param, adapter.config.apiSecret);
   const url = API_BASE_URL + "/v1/api/inverterDetail";
-  adapter.log.debug(`Inverterdetails URL: ${url}`);
+  if (adapter.config.debugLogging) {
+    adapter.log.debug(`Inverterdetails URL: ${url}`);
+  }
   try {
     const requestBody = JSON.stringify(map);
     const response = await (0, import_axios.default)({
@@ -162,30 +164,32 @@ async function getInverterDetails(adapter) {
       timeout: 5e3
     });
     if (adapter.config.debugLogging) {
-      adapter.log.debug(`API response (Inverterdetail) was:` + JSON.stringify(response.data));
+      adapter.log.debug(`API response (Inverterdetail) was:` + JSON.stringify(response.data.data));
     }
-    return {
-      ac_current_R: response.data.data.iAc1,
-      ac_current_S: response.data.data.iAc2,
-      ac_current_T: response.data.data.iAc3,
-      ac_voltage_R: response.data.data.uAc1,
-      ac_voltage_S: response.data.data.uAc2,
-      ac_voltage_T: response.data.data.uAc3,
-      family_load_power_units: response.data.data.familyLoadPowerStr,
-      family_load_power: response.data.data.familyLoadPower,
-      temperature: response.data.data.inverterTemperature,
-      battery_power: response.data.data.batteryPower,
-      battery_power_units: response.data.data.batterypowerStr,
-      battery_power_percentage: response.data.data.batteryPowerPec,
-      battery_today_charge_energy: response.data.data.batteryTodayChargeEnergy,
-      battery_today_charge_energy_units: response.data.data.batteryTodayChargeEnergyStr,
-      battery_total_charge_energy: response.data.data.batteryTotalChargeEnergy,
-      battery_total_charge_energy_units: response.data.data.batteryTotalChargeEnergyStr,
-      battery_today_discharge_energy: response.data.data.batteryTodayDischargeEnergy,
-      battery_today_discharge_energy_units: response.data.data.batteryTodayDischargeEnergyStr,
-      battery_total_discharge_energy: response.data.data.batteryTotalDischargeEnergy,
-      battery_total_discharge_energy_units: response.data.data.batteryTotalDischargeEnergyStr
-    };
+    if (response.data.data) {
+      return {
+        ac_current_R: response.data.data.iAc1,
+        ac_current_S: response.data.data.iAc2,
+        ac_current_T: response.data.data.iAc3,
+        ac_voltage_R: response.data.data.uAc1,
+        ac_voltage_S: response.data.data.uAc2,
+        ac_voltage_T: response.data.data.uAc3,
+        family_load_power_units: response.data.data.familyLoadPowerStr,
+        family_load_power: response.data.data.familyLoadPower,
+        temperature: response.data.data.inverterTemperature,
+        battery_power: response.data.data.batteryPower,
+        battery_power_units: response.data.data.batterypowerStr,
+        battery_power_percentage: response.data.data.batteryPowerPec,
+        battery_today_charge_energy: response.data.data.batteryTodayChargeEnergy,
+        battery_today_charge_energy_units: response.data.data.batteryTodayChargeEnergyStr,
+        battery_total_charge_energy: response.data.data.batteryTotalChargeEnergy,
+        battery_total_charge_energy_units: response.data.data.batteryTotalChargeEnergyStr,
+        battery_today_discharge_energy: response.data.data.batteryTodayDischargeEnergy,
+        battery_today_discharge_energy_units: response.data.data.batteryTodayDischargeEnergyStr,
+        battery_total_discharge_energy: response.data.data.batteryTotalDischargeEnergy,
+        battery_total_discharge_energy_units: response.data.data.batteryTotalDischargeEnergyStr
+      };
+    }
   } catch (e) {
     adapter.logErrorWithSentry(adapter, e, "getInverterDetails");
   }
@@ -202,7 +206,7 @@ async function getEpmDetails(adapter) {
   const param = "POST\n" + ContentMd5 + "\napplication/json\n" + currentDate + "\n/v1/api/epmList";
   const sign = HmacSHA1Encrypt(param, adapter.config.apiSecret);
   const url = API_BASE_URL + "/v1/api/epmList";
-  if (adapter.condfig.debugLogging) {
+  if (adapter.config.debugLogging) {
     adapter.log.debug(`EPMlist URL: ${url}`);
   }
   try {
