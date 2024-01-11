@@ -40,12 +40,11 @@ I'm not a professional developer. Use at your own risk.
 
 ## Changelog
 
-### **_WORK IN PROGRESS_**
+### **WORK IN PROGRESS**
 
 - Switched to ioBrokers sentry plugin instead of own implementation.
 - Removed setting for own implementation of Sentry.
 - All informational logging can now be turned off in settings.
-- #TODO test configuration before starting to poll.
 
 ### 1.3.5 (2023-12-28)
 
