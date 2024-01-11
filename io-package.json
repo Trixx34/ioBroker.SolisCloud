@@ -1,10 +1,23 @@
 {
   "common": {
     "name": "soliscloud",
-    "version": "1.3.5",
+    "version": "1.4.0",
     "connectionType": "cloud",
     "dataSource": "poll",
     "news": {
+      "1.4.0": {
+        "en": "Switched to ioBrokers sentry plugin instead of own implementation.\nRemoved setting for own implementation of Sentry.\nAll informational logging can now be turned off in settings.",
+        "de": "Umgestellt auf ioBrokers sende Plugin anstelle der eigenen Implementierung.\nEntfernte Einstellung zur eigenen Umsetzung von Sentry.\nAlle Informationsprotokolle können nun in Einstellungen abgeschaltet werden.",
+        "ru": "Переключился на плагин ioBrokers sentry вместо собственной реализации.\nУдаленная установка для собственной реализации Sentry.\nТеперь все информационные блоги могут быть выключены в настройках.",
+        "pt": "Mudado para ioBrokers plugin sentinela em vez de própria implementação.\nConfiguração removida para a própria implementação da Sentry.\nTodo registro informativo agora pode ser desligado nas configurações.",
+        "nl": "Overgeschakeld naar ioBrokers wacht plugin in plaats van eigen implementatie.\nVerwijderde instelling voor eigen implementatie van Sentry.\nAlle informatieve logging kan nu uitgeschakeld worden in instellingen.",
+        "fr": "Passé au plugin ioBrokers sentiry au lieu de sa propre implémentation.\nLe paramètre supprimé pour sa propre mise en œuvre de Sentry.\nTous les enregistrements d'informations peuvent maintenant être désactivés dans les paramètres.",
+        "it": "Passato a ioBrokers plugin inviato invece di propria implementazione.\nImpostazione eliminata per la propria implementazione di Sentry.\nTutte le registrazioni informative possono ora essere disattivate nelle impostazioni.",
+        "es": "Se cambió a ioBrokers plugin centry en lugar de su propia implementación.\nAjuste eliminado para la propia implementación de Sentry.\nToda la registro de información ahora se puede apagar en la configuración.",
+        "pl": "Przełączony na joBrokers sentry plugin zamiast własnej implementacji.\nUsunięto ustawienie dla własnego wdrożenia Sentry.\nWszystkie informacje mogą być teraz wyłączone w ustawieniach.",
+        "uk": "Переключений до ioBrokers відправлений плагін замість власної реалізації.\nВилучена установка для власної реалізації Sentry.\nУ налаштуваннях можна вимкнути всі інформаційні журнали.",
+        "zh-cn": "切换到 ioBrokers 哨兵插件,而不是自己的执行.\n取消了用于实施哨兵的设置.\n现在所有信息记录可以在设置中关闭 ."
+      },
       "1.3.5": {
         "en": "Added option to send stacktraces\nimproved errorhandling",
         "de": "Option zum Senden von Stacktraces\nfehlerbehebung",
@@ -82,19 +95,6 @@
         "pl": "Dodać więcej wartości",
         "uk": "Додати більше значень",
         "zh-cn": "增加价值"
-      },
-      "1.2.5": {
-        "en": "attempt 2 to fix values",
-        "de": "versuch 2 werte zu fixieren",
-        "ru": "попытка 2 исправить значения",
-        "pt": "tentativa 2 para corrigir valores",
-        "nl": "poging 2 om waarden te herstellen",
-        "fr": "tenter 2 de fixer des valeurs",
-        "it": "tentativo 2 per correggere i valori",
-        "es": "intentar 2 para fijar valores",
-        "pl": "próba 2",
-        "uk": "спроба 2 виправити значення",
-        "zh-cn": "试图2"
       }
     },
     "titleLang": {
@@ -129,7 +129,10 @@
         "email": "trixxdev034@gmail.com"
       }
     ],
-    "keywords": ["Solis", "soliscloud"],
+    "keywords": [
+      "Solis",
+      "soliscloud"
+    ],
     "license": "MIT",
     "platform": "Javascript/Node.js",
     "main": "build/main.js",
@@ -163,8 +166,12 @@
   },
   "native": {},
   "i18n": true,
-  "encryptedNative": ["apiKey"],
-  "protectedNative": ["apiKey"],
+  "encryptedNative": [
+    "apiKey"
+  ],
+  "protectedNative": [
+    "apiKey"
+  ],
   "objects": [],
   "instanceObjects": []
 }
