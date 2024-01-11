@@ -1,6 +1,6 @@
 import * as utils from "@iobroker/adapter-core";
 import { getEpmDetails, getInverterDetails, getInverterList, getStationDetails } from "./lib/apiHelper";
-import * as Sentry from "@sentry/node";
+import { createObjects } from "./lib/createObjects";
 
 class soliscloud extends utils.Adapter {
 	private intervalId: any;
@@ -13,635 +13,12 @@ class soliscloud extends utils.Adapter {
 		this.on("unload", this.onUnload.bind(this));
 	}
 
-	//station details
 	private async onReady(): Promise<void> {
 		this.log.info("Starting soliscloud adapter");
-		Sentry.init({ dsn: "https://c92a18489a9a4d6ea1f770cb1b3f3434@app.glitchtip.com/5404" });
 
 		if (this.config.plantId != null) {
 			this.config.plantId = this.name2id(this.config.plantId);
-
-			await this.setObjectNotExistsAsync(
-				`${this.config.plantId}.station_detail.current_consumption`,
-				{
-					type: "state",
-					common: {
-						name: "current_consumption",
-						type: "number",
-						unit: "kW",
-						role: "value.power.consumed",
-						read: true,
-						write: false,
-					},
-					native: {},
-				},
-			);
-
-			await this.setObjectNotExistsAsync(
-				`${this.config.plantId}.station_detail.current_power`,
-				{
-					type: "state",
-					common: {
-						name: "current_power",
-						type: "number",
-						unit: "kW",
-						role: "value.power.produced",
-						read: true,
-						write: false,
-					},
-					native: {},
-				},
-			);
-
-			await this.setObjectNotExistsAsync(
-				`${this.config.plantId}.station_detail.current_from_net`,
-				{
-					type: "state",
-					common: {
-						name: "current_from_net",
-						type: "number",
-						unit: "kW",
-						role: "value.power",
-						read: true,
-						write: false,
-					},
-					native: {},
-				},
-			);
-
-			await this.setObjectNotExistsAsync(`${this.config.plantId}.station_detail.sold_today`, {
-				type: "state",
-				common: {
-					name: "sold_today",
-					type: "number",
-					unit: "kWh",
-					role: "value.energy",
-					read: true,
-					write: false,
-				},
-				native: {},
-			},);
-			await this.setObjectNotExistsAsync(
-				`${this.config.plantId}.station_detail.generated_today`,
-				{
-					type: "state",
-					common: {
-						name: "generated_today",
-						type: "number",
-						unit: "kWh",
-						role: "value.energy",
-						read: true,
-						write: false,
-					},
-					native: {},
-				},
-			);
-
-			await this.setObjectNotExistsAsync(
-				`${this.config.plantId}.station_detail.bought_today`,
-				{
-					type: "state",
-					common: {
-						name: "bought_today",
-						type: "number",
-						unit: "kWh",
-						role: "value.energy",
-						read: true,
-						write: false,
-					},
-					native: {},
-				},
-			);
-
-			await this.setObjectNotExistsAsync(
-				`${this.config.plantId}.station_detail.consumption_today`,
-				{
-					type: "state",
-					common: {
-						name: "consumption_today",
-						type: "number",
-						unit: "kWh",
-						role: "value.energy",
-						read: true,
-						write: false,
-					},
-					native: {},
-				},
-			);
-
-			await this.setObjectNotExistsAsync(
-				`${this.config.plantId}.station_detail.battery_percent`,
-				{
-					type: "state",
-					common: {
-						name: "battery_percent",
-						type: "number",
-						role: "value.battery",
-						read: true,
-						write: false,
-					},
-					native: {},
-				},
-			);
-
-			await this.setObjectNotExistsAsync(
-				`${this.config.plantId}.station_detail.battery_current_usage`,
-				{
-					type: "state",
-					common: {
-						name: "battery_current_usage",
-						type: "number",
-						unit: "kW",
-						role: "value.power",
-						read: true,
-						write: false,
-					},
-					native: {},
-				},
-			);
-
-			await this.setObjectNotExistsAsync(
-				`${this.config.plantId}.station_detail.total_consumption_energy`,
-				{
-					type: "state",
-					common: {
-						name: "total_consumption_energy",
-						type: "number",
-						unit: "kWh",
-						role: "value.power",
-						read: true,
-						write: false,
-					},
-					native: {},
-				},
-			);
-
-			await this.setObjectNotExistsAsync(
-				`${this.config.plantId}.station_detail.self_consumption_energy`,
-				{
-					type: "state",
-					common: {
-						name: "self_consumption_energy",
-						type: "number",
-						unit: "W",
-						role: "value.power",
-						read: true,
-						write: false,
-					},
-					native: {},
-				},
-			);
-
-			await this.setObjectNotExistsAsync(
-				`${this.config.plantId}.station_detail.plant_state`,
-				{
-					type: "state",
-					common: {
-						name: "plant_state",
-						type: "string",
-						role: "text",
-						read: true,
-						write: false,
-					},
-					native: {},
-				},
-			);
-
-			await this.setObjectNotExistsAsync(
-				`${this.config.plantId}.station_detail.battery_month_charge_energy`,
-				{
-					type: "state",
-					common: {
-						name: "battery_month_charge_energy",
-						type: "number",
-						role: "value.power",
-						read: true,
-						write: false,
-					},
-					native: {},
-				},
-			);
-
-			await this.setObjectNotExistsAsync(
-				`${this.config.plantId}.station_detail.battery_month_charge_energy_units`,
-				{
-					type: "state",
-					common: {
-						name: "battery_month_charge_energy_units",
-						type: "string",
-						role: "text",
-						read: true,
-						write: false,
-					},
-					native: {},
-				},
-			);
-
-			await this.setObjectNotExistsAsync(
-				`${this.config.plantId}.station_detail.battery_year_charge_energy`,
-				{
-					type: "state",
-					common: {
-						name: "battery_year_charge_energy",
-						type: "number",
-						role: "value.power",
-						read: true,
-						write: false,
-					},
-					native: {},
-				},
-			);
-
-			await this.setObjectNotExistsAsync(
-				`${this.config.plantId}.station_detail.battery_year_charge_energy_units`,
-				{
-					type: "state",
-					common: {
-						name: "battery_year_charge_energy_units",
-						type: "string",
-						role: "text",
-						read: true,
-						write: false,
-					},
-					native: {},
-				},
-			);
-
-			await this.setObjectNotExistsAsync(
-				`${this.config.plantId}.station_detail.battery_month_discharge_energy`,
-				{
-					type: "state",
-					common: {
-						name: "battery_month_discharge_energy",
-						type: "number",
-						role: "value.power",
-						read: true,
-						write: false,
-					},
-					native: {},
-				},
-			);
-
-			await this.setObjectNotExistsAsync(
-				`${this.config.plantId}.station_detail.battery_month_discharge_energy_units`,
-				{
-					type: "state",
-					common: {
-						name: "battery_month_discharge_units",
-						type: "string",
-						role: "text",
-						read: true,
-						write: false,
-					},
-					native: {},
-				},
-			);
-
-			await this.setObjectNotExistsAsync(
-				`${this.config.plantId}.station_detail.battery_year_discharge_energy`,
-				{
-					type: "state",
-					common: {
-						name: "battery_year_discharge",
-						type: "number",
-						role: "value.power",
-						read: true,
-						write: false,
-					},
-					native: {},
-				},
-			);
-
-			await this.setObjectNotExistsAsync(
-				`${this.config.plantId}.station_detail.battery_year_discharge_energy_units`,
-				{
-					type: "state",
-					common: {
-						name: "battery_year_discharge_units",
-						type: "string",
-						role: "text",
-						read: true,
-						write: false,
-					},
-					native: {},
-				},
-			);
-
-			//Inverter list
-			await this.setObjectNotExistsAsync(
-				`${this.config.plantId}.inverter_detail.energy_day`,
-				{
-					type: "state",
-					common: {
-						name: "energy_day",
-						type: "number",
-						role: "value.power",
-						unit: "kWh",
-						read: true,
-						write: false,
-					},
-					native: {},
-				},
-			);
-
-			await this.setObjectNotExistsAsync(
-				`${this.config.plantId}.inverter_detail.state`,
-				{
-					type: "state",
-					common: {
-						name: "inverter_state",
-						type: "string",
-						role: "text",
-						read: true,
-						write: false,
-					},
-					native: {},
-				},
-			);
-
-			//inverter details
-			await this.setObjectNotExistsAsync(
-				`${this.config.plantId}.inverter_detail.ac_current_R`,
-				{
-					type: "state",
-					common: {
-						name: "ac_current_R",
-						type: "number",
-						role: "value.current",
-						unit: "A",
-						read: true,
-						write: false,
-					},
-					native: {},
-				},
-			);
-			await this.setObjectNotExistsAsync(
-				`${this.config.plantId}.inverter_detail.ac_current_S`,
-				{
-					type: "state",
-					common: {
-						name: "ac_current_S",
-						type: "number",
-						role: "value.current",
-						unit: "A",
-						read: true,
-						write: false,
-					},
-					native: {},
-				},
-			);
-			await this.setObjectNotExistsAsync(
-				`${this.config.plantId}.inverter_detail.ac_current_T`,
-				{
-					type: "state",
-					common: {
-						name: "ac_current_T",
-						type: "number",
-						role: "value.current",
-						unit: "A",
-						read: true,
-						write: false,
-					},
-					native: {},
-				},
-			);
-			await this.setObjectNotExistsAsync(
-				`${this.config.plantId}.inverter_detail.ac_voltage_R`,
-				{
-					type: "state",
-					common: {
-						name: "ac_voltage_R",
-						type: "number",
-						role: "value.voltage",
-						unit: "V",
-						read: true,
-						write: false,
-					},
-					native: {},
-				},
-			);
-			await this.setObjectNotExistsAsync(
-				`${this.config.plantId}.inverter_detail.ac_voltage_S`,
-				{
-					type: "state",
-					common: {
-						name: "ac_voltage_S",
-						type: "number",
-						role: "value.voltage",
-						unit: "V",
-						read: true,
-						write: false,
-					},
-					native: {},
-				},
-			);
-			await this.setObjectNotExistsAsync(
-				`${this.config.plantId}.inverter_detail.ac_voltage_T`,
-				{
-					type: "state",
-					common: {
-						name: "ac_voltage_T",
-						type: "number",
-						role: "value.voltage",
-						unit: "V",
-						read: true,
-						write: false,
-					},
-					native: {},
-				},
-			);
-
-			await this.setObjectNotExistsAsync(
-				`${this.config.plantId}.inverter_detail.id`,
-				{
-					type: "state",
-					common: {
-						name: "id",
-						type: "string",
-						role: "text",
-						read: true,
-						write: false,
-					},
-					native: {},
-				},
-			);
-
-			await this.setObjectNotExistsAsync(
-				`${this.config.plantId}.inverter_detail.serial_number`,
-				{
-					type: "state",
-					common: {
-						name: "serial_number",
-						type: "string",
-						role: "text",
-						read: true,
-						write: false,
-					},
-					native: {},
-				},
-			);
-
-			await this.setObjectNotExistsAsync(
-				`${this.config.plantId}.inverter_detail.family_load_power_units`,
-				{
-					type: "state",
-					common: {
-						name: "family_load_power_units",
-						type: "string",
-						role: "text",
-						read: true,
-						write: false,
-					},
-					native: {},
-				},
-			);
-
-			await this.setObjectNotExistsAsync(
-				`${this.config.plantId}.inverter_detail.family_load_power`,
-				{
-					type: "state",
-					common: {
-						name: "family_load_power",
-						type: "number",
-						role: "value.power",
-						read: true,
-						write: false,
-					},
-					native: {},
-				},
-			);
-
-			await this.setObjectNotExistsAsync(
-				`${this.config.plantId}.inverter_detail.temperature`,
-				{
-					type: "state",
-					common: {
-						name: "temperature",
-						type: "number",
-						role: "value.temperature",
-						unit: "°C",
-						read: true,
-						write: false,
-					},
-					native: {},
-				},
-			);
-
-			await this.setObjectNotExistsAsync(
-				`${this.config.plantId}.inverter_detail.battery_today_charge_energy`,
-				{
-					type: "state",
-					common: {
-						name: "battery_today_charge_energy",
-						type: "number",
-						role: "value.power",
-						read: true,
-						write: false,
-					},
-					native: {},
-				},
-			);
-			await this.setObjectNotExistsAsync(
-				`${this.config.plantId}.inverter_detail.battery_today_charge_energy_units`,
-				{
-					type: "state",
-					common: {
-						name: "battery_today_charge_energy_units",
-						type: "string",
-						role: "text",
-						read: true,
-						write: false,
-					},
-					native: {},
-				},
-			);
-
-			await this.setObjectNotExistsAsync(
-				`${this.config.plantId}.inverter_detail.battery_total_charge_energy`,
-				{
-					type: "state",
-					common: {
-						name: "battery_total_charge_energy",
-						type: "number",
-						role: "value.power",
-						read: true,
-						write: false,
-					},
-					native: {},
-				},
-			);
-			await this.setObjectNotExistsAsync(
-				`${this.config.plantId}.inverter_detail.battery_total_charge_energy_units`,
-				{
-					type: "state",
-					common: {
-						name: "battery_total_charge_energy_units",
-						type: "string",
-						role: "text",
-						read: true,
-						write: false,
-					},
-					native: {},
-				},
-			);
-			await this.setObjectNotExistsAsync(
-				`${this.config.plantId}.inverter_detail.battery_today_discharge_energy`,
-				{
-					type: "state",
-					common: {
-						name: "battery_today_discharge_energy_units",
-						type: "number",
-						role: "value.power",
-						read: true,
-						write: false,
-					},
-					native: {},
-				},
-			);
-			await this.setObjectNotExistsAsync(
-				`${this.config.plantId}.inverter_detail.battery_today_discharge_energy_units`,
-				{
-					type: "state",
-					common: {
-						name: "battery_today_discharge_energy_units",
-						type: "string",
-						role: "text",
-						read: true,
-						write: false,
-					},
-					native: {},
-				},
-			);
-
-			await this.setObjectNotExistsAsync(
-				`${this.config.plantId}.inverter_detail.battery_total_discharge_energy`,
-				{
-					type: "state",
-					common: {
-						name: "battery_total_discharge",
-						type: "number",
-						role: "value.power",
-						read: true,
-						write: false,
-					},
-					native: {},
-				},
-			);
-			await this.setObjectNotExistsAsync(
-				`${this.config.plantId}.inverter_detail.battery_total_discharge_energy_units`,
-				{
-					type: "state",
-					common: {
-						name: "battery_total_discharge_units",
-						type: "string",
-						role: "text",
-						read: true,
-						write: false,
-					},
-					native: {},
-				},
-			);
-
+			createObjects(this);
 		} else {
 			this.log.error("No plantID was entered or it contains invalid characters.");
 		}
@@ -678,16 +55,13 @@ class soliscloud extends utils.Adapter {
 	private async pollSolis(): Promise<void> {
 		try {
 			const callResult = await getStationDetails(
-				this.config.plantId,
-				this.config.apiKey,
-				this.config.apiSecret,
-				this.log,
-				Sentry,
-				this.config.errorReports
+				this
 			);
 
 			if (callResult) {
-				this.log.debug("Received result from API call, current consumption should be: " + callResult.current_consumption);
+				if (this.config.debugLogging) {
+					this.log.debug("Received result from API call, current consumption should be: " + callResult.current_consumption);
+				}
 				let plantStatus = "";
 				switch (callResult.plant_state) {
 					case 1:
@@ -701,12 +75,12 @@ class soliscloud extends utils.Adapter {
 						break;
 					default:
 						this.log.error(`Received an incorrect plant status from the API Call, this should NOT happen.`)
-						if (this.config.errorReports) {
-							Sentry.captureException(callResult.plant_state);
-						}
+						this.logErrorWithSentry(this, callResult.plant_state, "incorrectPlantState");
 						break;
 				}
-				this.log.debug(`Plant ${this.config.plantId} is ${plantStatus}`);
+				if (this.config.debugLogging) {
+					this.log.debug(`Plant ${this.config.plantId} is ${plantStatus}`);
+				}
 				await this.setStateAsync(
 					`${this.config.plantId}.station_detail.plant_state`,
 					{ val: plantStatus, ack: true }
@@ -740,26 +114,15 @@ class soliscloud extends utils.Adapter {
 					);
 				}
 			} else {
-				this.log.debug("Did not receive a correct response from the Stationdetails API call");
-				if (this.config.errorReports) {
-					Sentry.captureException(callResult);
-				}
+				this.logErrorWithSentry(this, callResult, "stationCallResult");
 			}
 		} catch (e) {
-			this.log.error(`Error while calling API (Station): ${e} `)
-			if (this.config.errorReports) {
-				Sentry.captureException(e);
-			}
+			this.logErrorWithSentry(this, e, "getStationDetails");
 		}
 
 		try {
 			const inverterDetailResult = await getInverterList(
-				this.config.plantId,
-				this.config.apiKey,
-				this.config.apiSecret,
-				this.log,
-				Sentry,
-				this.config.errorReports
+				this
 			);
 			if (inverterDetailResult) {
 				this.log.debug(`Correct result from Inverter API call, inverter state: ${inverterDetailResult.inverter_state}`)
@@ -799,19 +162,17 @@ class soliscloud extends utils.Adapter {
 			}
 		} catch (e) {
 			this.log.error(`error while calling API (Inverter): ${e}`);
-			if (this.config.errorReports) {
-				Sentry.captureException(e);
-			}
+			this.logErrorWithSentry(this, e, "getInverterList");
 		}
 
 		try {
 			this.getState(`${this.config.plantId}.inverter_detail.id`, async (err, state) => {
 				if (!err && state && state.val) {
 					const inverterId = state.val.toString();
-					this.log.debug(`The value of ${this.config.plantId}.inverter_detail.id is ${inverterId}`);
-					const inverterDetails = await getInverterDetails(inverterId, this.config.apiKey, this.config.apiSecret, this.log,
-						Sentry,
-						this.config.errorReports);
+					if (this.config.debugLogging) {
+						this.log.debug(`The value of ${this.config.plantId}.inverter_detail.id is ${inverterId}`);
+					}
+					const inverterDetails = await getInverterDetails(this);
 					if (inverterDetails) {
 						const propertiesToSet = [
 							"ac_current_R",
@@ -843,19 +204,13 @@ class soliscloud extends utils.Adapter {
 				}
 			});
 		} catch (e) {
-			this.log.error("Error calling inverterDetails")
-			if (this.config.errorReports) {
-				Sentry.captureException(e);
-			}
+			this.logErrorWithSentry(this, e, "getStateInverterDetails");
 		}
 
 		if (this.config.epm) {
 			this.log.info("EPM is enabled, making API call");
-			getEpmDetails(this.config.plantId, this.config.apiKey, this.config.apiSecret, this.log, this.config.debugLogging,
-				Sentry,
-				this.config.errorReports);
+			getEpmDetails(this);
 		}
-
 	}
 
 	private onUnload(callback: () => void): void {
@@ -864,13 +219,25 @@ class soliscloud extends utils.Adapter {
 			this.clearInterval(this.intervalId);
 			callback();
 		} catch (e) {
-			this.log.info("Error while stopping polling: " + e);
-			if (this.config.errorReports) {
-				Sentry.captureException(e);
-			}
+			this.logErrorWithSentry(this, e, "onUnload");
 			callback();
 		}
 	}
+
+	private logErrorWithSentry(adapter: any, error: any, functionName: string): void {
+		adapter.log.error(error);
+		if (adapter.supportsFeature && adapter.supportsFeature("PLUGINS")) {
+			const sentryInstance = adapter.getPluginInstance("sentry");
+			if (sentryInstance) {
+				sentryInstance.getSentryObject().captureException(error, {
+					extra: {
+						functionName: functionName,
+					}
+				});
+			}
+		}
+	}
+
 }
 
 if (require.main !== module) {

@@ -2,9 +2,7 @@
 
 [![NPM version](http://img.shields.io/npm/v/iobroker.soliscloud)](https://www.npmjs.com/package/iobroker.soliscloud) [![Known vulnerabilities](https://snyk.io/test/github/Trixx34/ioBroker.soliscloud/badge.svg)]
 
-**This adapter uses Sentry libraries to automatically report exceptions and code errors to the developers.** 
-**This option is entirely opt-in (disabled by default). No personal information is sent, only information regarding which error occurred during which API call.**
-**To allow this information to be sent, check the box indication "Send error reports?"**
+**This adapter uses Sentry libraries to automatically report exceptions and code errors to the developers.** For more details and for information how to disable the error reporting see [Sentry-Plugin Documentation](https://github.com/ioBroker/plugin-sentry#plugin-sentry)!
 
 ## soliscloud adapter for IOBroker
 
@@ -24,17 +22,12 @@ You can find the contact information for your region here: https://www.solisinve
 - Once confirmed, you get the API ID, secret and API URL
 - The plant ID you need to enter in the settings is the ID found in the url once you are logged in. For example: soliscloud.com/#/station/stationdetail_1?id=**123486816843454864**
 
-This adapter will read and store the following values into objects:
+This adapter will read multiple values available from the soliscloud API and store them for use in ioBroker.
+To request additional values, you can either:
 
-- battery_current_usage
-- battery_percent
-- bought_Today
-- consumption_Today
-- current_Consumption
-- current_From_Net
-- current_Power
-- generated_Today
-- sold_Today
+- Comment on the ioBroker forums here: https://forum.iobroker.net/topic/69026/new-adapter-soliscloud/37
+- Email me on trixdev034@gmail.com
+- create an issue on github
 
 The API returns other values that can be added, but at the moment these are sufficient for my needs.
 
@@ -46,6 +39,14 @@ I'm not a professional developer. Use at your own risk.
 [![Buy Me a Coffee](https://www.buymeacoffee.com/assets/img/guidelines/download-assets-sm-2.svg)](https://www.buymeacoffee.com/trixxdev)
 
 ## Changelog
+
+### **_WORK IN PROGRESS_**
+
+- Switched to ioBrokers sentry plugin instead of own implementation.
+- Removed setting for own implementation of Sentry.
+- All informational logging can now be turned off in settings.
+- #TODO test configuration before starting to poll.
+
 ### 1.3.5 (2023-12-28)
 
 - Added option to send stacktraces

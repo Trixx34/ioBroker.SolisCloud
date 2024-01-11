@@ -1,172 +1,177 @@
 {
-  "common": {
-    "name": "soliscloud",
-    "version": "1.3.5",
-    "connectionType": "cloud",
-    "dataSource": "poll",
-    "news": {
-      "1.3.5": {
-        "en": "Added option to send stacktraces\nimproved errorhandling",
-        "de": "Option zum Senden von Stacktraces\nfehlerbehebung",
-        "ru": "Добавлена опция отправки стеканий\nулучшенная обработка ошибок",
-        "pt": "Adicionado opção para enviar pilhatraces\nmanipulação de erro melhorada",
-        "nl": "Toegevoegd optie om stapels te sturen\nverbeterde fouten",
-        "fr": "Ajout de l'option pour envoyer stacktraces\namélioration de la manipulation des erreurs",
-        "it": "Aggiunta opzione per inviare stacktraces\nmigliore gestione degli errori",
-        "es": "Opción agregada para enviar los apiltraces\nmejora de errores",
-        "pl": "Wstępna opcja do wysyłania stosu\nudoskonalać",
-        "uk": "Додано варіант для відправки стеків\nполіпшення помилок",
-        "zh-cn": "增派停机的选择\n改进错误处理"
-      },
-      "1.3.4": {
-        "en": "Allow for EPM debug logging to be turned off.",
-        "de": "Erlauben Sie, dass das EPM-Debug-Logging ausgeschaltet wird.",
-        "ru": "Разрешить для EPM debug вход, чтобы быть выключен.",
-        "pt": "Permitir que o registro de depuração EPM seja desligado.",
-        "nl": "Laat EPM debug uitschakelen.",
-        "fr": "Permettre que le débogueur EPM soit désactivé.",
-        "it": "Consentire per EPM debug logging essere spento.",
-        "es": "Permitir que el registro de depuración de EPM sea apagado.",
-        "pl": "Allow dla EPM debug logowanie zostało odrzucone.",
-        "uk": "Дозволити для входу в EPM, щоб бути вимкнено.",
-        "zh-cn": "允许取消排他性。."
-      },
-      "1.3.3": {
-        "en": "Added settings to test EPM API Call. Result is logged, not processed at the moment.",
-        "de": "Einstellungen hinzugefügt, um EPM API Call zu testen. Ergebnis wird protokolliert, nicht im Moment verarbeitet.",
-        "ru": "Добавлены настройки для тестирования EPM API Call. Результат зарегистрирован, не обрабатывается на данный момент.",
-        "pt": "Configurações adicionadas para testar a chamada de API EPM. O resultado é registrado, não processado no momento.",
-        "nl": "Gevoegd instellingen om EPM API Call te testen. De result is ingelogd, niet verwerkt op dit moment.",
-        "fr": "Ajout de paramètres pour tester EPM API Call. Le résultat est enregistré, pas traité en ce moment.",
-        "it": "Aggiunte le impostazioni per testare EPM API Call. I risultati sono registrati, non elaborati al momento.",
-        "es": "Ajustes adicionales para probar EPM API Call. El resultado está registrado, no procesado en este momento.",
-        "pl": "Zastosowanie do testowania EPM API Call. Wynik jest wylogowany, nie przetwarzany w momencie.",
-        "uk": "Додано налаштування для тестування EPM API Call. Результат логується, не обробляється в момент.",
-        "zh-cn": "添加试验性免疫计划要求的环境。 反应被打破,目前没有处理。."
-      },
-      "1.3.2": {
-        "en": "Testrelease with EPL settings",
-        "de": "Testrelease mit EPL-Einstellungen",
-        "ru": "Тест-релиз с настройками EPL",
-        "pt": "Testrelease com configurações da EPL",
-        "nl": "Testrelease met EPL settings",
-        "fr": "Testelease avec les réglages EPL",
-        "it": "Testrelease con le impostazioni EPL",
-        "es": "Exámenes con configuración EPL",
-        "pl": "Test release with EPL (ang.)",
-        "uk": "Тестування з налаштуваннями EPL",
-        "zh-cn": "与非苏人环境的试验"
-      },
-      "1.3.1": {
-        "en": "Plant_state wasn't processed correctly",
-        "de": "Plant_state wurde nicht korrekt verarbeitet",
-        "ru": "Plant_state не обрабатывается правильно",
-        "pt": "Plant_state não foi processado corretamente",
-        "nl": "Plantstate is niet correct verwerkt",
-        "fr": "Plant_state n'a pas été traitée correctement",
-        "it": "Plant_state non è stato elaborato correttamente",
-        "es": "Plant_state no fue procesado correctamente",
-        "pl": "Plant_state nie został poprawnie wykonany",
-        "uk": "Завод_держава не оброблена правильно",
-        "zh-cn": "计划:国家被正确处理"
-      },
-      "1.3.0": {
-        "en": "Added more values",
-        "de": "Weitere Werte",
-        "ru": "Добавлено больше значений",
-        "pt": "Adicionado mais valores",
-        "nl": "Vermeldde meer waarden",
-        "fr": "Ajout de plus de valeurs",
-        "it": "Aggiunto più valori",
-        "es": "Añadido más valores",
-        "pl": "Dodać więcej wartości",
-        "uk": "Додати більше значень",
-        "zh-cn": "增加价值"
-      },
-      "1.2.5": {
-        "en": "attempt 2 to fix values",
-        "de": "versuch 2 werte zu fixieren",
-        "ru": "попытка 2 исправить значения",
-        "pt": "tentativa 2 para corrigir valores",
-        "nl": "poging 2 om waarden te herstellen",
-        "fr": "tenter 2 de fixer des valeurs",
-        "it": "tentativo 2 per correggere i valori",
-        "es": "intentar 2 para fijar valores",
-        "pl": "próba 2",
-        "uk": "спроба 2 виправити значення",
-        "zh-cn": "试图2"
-      }
+    "common": {
+        "name": "soliscloud",
+        "version": "1.3.5",
+        "connectionType": "cloud",
+        "dataSource": "poll",
+        "news": {
+            "1.3.5": {
+                "en": "Added option to send stacktraces\nimproved errorhandling",
+                "de": "Option zum Senden von Stacktraces\nfehlerbehebung",
+                "ru": "Добавлена опция отправки стеканий\nулучшенная обработка ошибок",
+                "pt": "Adicionado opção para enviar pilhatraces\nmanipulação de erro melhorada",
+                "nl": "Toegevoegd optie om stapels te sturen\nverbeterde fouten",
+                "fr": "Ajout de l'option pour envoyer stacktraces\namélioration de la manipulation des erreurs",
+                "it": "Aggiunta opzione per inviare stacktraces\nmigliore gestione degli errori",
+                "es": "Opción agregada para enviar los apiltraces\nmejora de errores",
+                "pl": "Wstępna opcja do wysyłania stosu\nudoskonalać",
+                "uk": "Додано варіант для відправки стеків\nполіпшення помилок",
+                "zh-cn": "增派停机的选择\n改进错误处理"
+            },
+            "1.3.4": {
+                "en": "Allow for EPM debug logging to be turned off.",
+                "de": "Erlauben Sie, dass das EPM-Debug-Logging ausgeschaltet wird.",
+                "ru": "Разрешить для EPM debug вход, чтобы быть выключен.",
+                "pt": "Permitir que o registro de depuração EPM seja desligado.",
+                "nl": "Laat EPM debug uitschakelen.",
+                "fr": "Permettre que le débogueur EPM soit désactivé.",
+                "it": "Consentire per EPM debug logging essere spento.",
+                "es": "Permitir que el registro de depuración de EPM sea apagado.",
+                "pl": "Allow dla EPM debug logowanie zostało odrzucone.",
+                "uk": "Дозволити для входу в EPM, щоб бути вимкнено.",
+                "zh-cn": "允许取消排他性。."
+            },
+            "1.3.3": {
+                "en": "Added settings to test EPM API Call. Result is logged, not processed at the moment.",
+                "de": "Einstellungen hinzugefügt, um EPM API Call zu testen. Ergebnis wird protokolliert, nicht im Moment verarbeitet.",
+                "ru": "Добавлены настройки для тестирования EPM API Call. Результат зарегистрирован, не обрабатывается на данный момент.",
+                "pt": "Configurações adicionadas para testar a chamada de API EPM. O resultado é registrado, não processado no momento.",
+                "nl": "Gevoegd instellingen om EPM API Call te testen. De result is ingelogd, niet verwerkt op dit moment.",
+                "fr": "Ajout de paramètres pour tester EPM API Call. Le résultat est enregistré, pas traité en ce moment.",
+                "it": "Aggiunte le impostazioni per testare EPM API Call. I risultati sono registrati, non elaborati al momento.",
+                "es": "Ajustes adicionales para probar EPM API Call. El resultado está registrado, no procesado en este momento.",
+                "pl": "Zastosowanie do testowania EPM API Call. Wynik jest wylogowany, nie przetwarzany w momencie.",
+                "uk": "Додано налаштування для тестування EPM API Call. Результат логується, не обробляється в момент.",
+                "zh-cn": "添加试验性免疫计划要求的环境。 反应被打破,目前没有处理。."
+            },
+            "1.3.2": {
+                "en": "Testrelease with EPL settings",
+                "de": "Testrelease mit EPL-Einstellungen",
+                "ru": "Тест-релиз с настройками EPL",
+                "pt": "Testrelease com configurações da EPL",
+                "nl": "Testrelease met EPL settings",
+                "fr": "Testelease avec les réglages EPL",
+                "it": "Testrelease con le impostazioni EPL",
+                "es": "Exámenes con configuración EPL",
+                "pl": "Test release with EPL (ang.)",
+                "uk": "Тестування з налаштуваннями EPL",
+                "zh-cn": "与非苏人环境的试验"
+            },
+            "1.3.1": {
+                "en": "Plant_state wasn't processed correctly",
+                "de": "Plant_state wurde nicht korrekt verarbeitet",
+                "ru": "Plant_state не обрабатывается правильно",
+                "pt": "Plant_state não foi processado corretamente",
+                "nl": "Plantstate is niet correct verwerkt",
+                "fr": "Plant_state n'a pas été traitée correctement",
+                "it": "Plant_state non è stato elaborato correttamente",
+                "es": "Plant_state no fue procesado correctamente",
+                "pl": "Plant_state nie został poprawnie wykonany",
+                "uk": "Завод_держава не оброблена правильно",
+                "zh-cn": "计划:国家被正确处理"
+            },
+            "1.3.0": {
+                "en": "Added more values",
+                "de": "Weitere Werte",
+                "ru": "Добавлено больше значений",
+                "pt": "Adicionado mais valores",
+                "nl": "Vermeldde meer waarden",
+                "fr": "Ajout de plus de valeurs",
+                "it": "Aggiunto più valori",
+                "es": "Añadido más valores",
+                "pl": "Dodać więcej wartości",
+                "uk": "Додати більше значень",
+                "zh-cn": "增加价值"
+            },
+            "1.2.5": {
+                "en": "attempt 2 to fix values",
+                "de": "versuch 2 werte zu fixieren",
+                "ru": "попытка 2 исправить значения",
+                "pt": "tentativa 2 para corrigir valores",
+                "nl": "poging 2 om waarden te herstellen",
+                "fr": "tenter 2 de fixer des valeurs",
+                "it": "tentativo 2 per correggere i valori",
+                "es": "intentar 2 para fijar valores",
+                "pl": "próba 2",
+                "uk": "спроба 2 виправити значення",
+                "zh-cn": "试图2"
+            }
+        },
+        "titleLang": {
+            "en": "soliscloud",
+            "de": "soliscloud",
+            "ru": "soliscloud",
+            "pt": "soliscloud",
+            "nl": "soliscloud",
+            "fr": "soliscloud",
+            "it": "soliscloud",
+            "es": "soliscloud",
+            "pl": "soliscloud",
+            "zh-cn": "soliscloud",
+            "uk": "soliscloud"
+        },
+        "desc": {
+            "en": "Adapter for reading data from soliscloud",
+            "de": "Adapter zum Lesen von Daten von soliscloud",
+            "ru": "Адаптер для чтения данных из soliscloud",
+            "pt": "Adaptador para ler dados de soliscloud",
+            "nl": "Adapter voor het lezen van gegevens van Soliscloud",
+            "fr": "Adaptateur pour la lecture des données de soliscloud",
+            "it": "Adattatore per la lettura dei dati da soliscloud",
+            "es": "Adaptador para la lectura de datos de soliscloud",
+            "pl": "Adapter for read data from soliscloud (ang.)",
+            "uk": "Адаптер для читання даних з солісклою",
+            "zh-cn": "阅读从Iliscloud获得的数据"
+        },
+        "authors": [
+            {
+                "name": "Trixx",
+                "email": "trixxdev034@gmail.com"
+            }
+        ],
+        "keywords": [
+            "Solis",
+            "soliscloud"
+        ],
+        "license": "MIT",
+        "platform": "Javascript/Node.js",
+        "main": "build/main.js",
+        "icon": "solis.png",
+        "enabled": true,
+        "extIcon": "https://raw.githubusercontent.com/Trixx34/ioBroker.soliscloud/main/admin/solis.png",
+        "readme": "https://github.com/Trixx34/ioBroker.soliscloud#readme",
+        "loglevel": "info",
+        "mode": "daemon",
+        "type": "energy",
+        "plugins": {
+            "sentry": {
+                "dsn": "https://82658ad520edff305104b0c674287664@o4506500843438080.ingest.sentry.io/4506500845010944"
+            }
+        },
+        "compact": true,
+        "adminUI": {
+            "config": "json"
+        },
+        "supportCustoms": false,
+        "dependencies": [
+            {
+                "js-controller": ">=3.3.22"
+            }
+        ],
+        "globalDependencies": [
+            {
+                "admin": ">=5.1.13"
+            }
+        ]
     },
-    "titleLang": {
-      "en": "soliscloud",
-      "de": "soliscloud",
-      "ru": "soliscloud",
-      "pt": "soliscloud",
-      "nl": "soliscloud",
-      "fr": "soliscloud",
-      "it": "soliscloud",
-      "es": "soliscloud",
-      "pl": "soliscloud",
-      "zh-cn": "soliscloud",
-      "uk": "soliscloud"
-    },
-    "desc": {
-      "en": "Adapter for reading data from soliscloud",
-      "de": "Adapter zum Lesen von Daten von soliscloud",
-      "ru": "Адаптер для чтения данных из soliscloud",
-      "pt": "Adaptador para ler dados de soliscloud",
-      "nl": "Adapter voor het lezen van gegevens van Soliscloud",
-      "fr": "Adaptateur pour la lecture des données de soliscloud",
-      "it": "Adattatore per la lettura dei dati da soliscloud",
-      "es": "Adaptador para la lectura de datos de soliscloud",
-      "pl": "Adapter for read data from soliscloud (ang.)",
-      "uk": "Адаптер для читання даних з солісклою",
-      "zh-cn": "阅读从Iliscloud获得的数据"
-    },
-    "authors": [
-      {
-        "name": "Trixx",
-        "email": "trixxdev034@gmail.com"
-      }
+    "native": {},
+    "i18n": true,
+    "encryptedNative": [
+        "apiKey"
     ],
-    "keywords": [
-      "Solis",
-      "soliscloud"
+    "protectedNative": [
+        "apiKey"
     ],
-    "license": "MIT",
-    "platform": "Javascript/Node.js",
-    "main": "build/main.js",
-    "icon": "solis.png",
-    "enabled": true,
-    "extIcon": "https://raw.githubusercontent.com/Trixx34/ioBroker.soliscloud/main/admin/solis.png",
-    "readme": "https://github.com/Trixx34/ioBroker.soliscloud#readme",
-    "loglevel": "info",
-    "mode": "daemon",
-    "type": "energy",
-    "compact": true,
-    "adminUI": {
-      "config": "json"
-    },
-    "supportCustoms": false,
-    "dependencies": [
-      {
-        "js-controller": ">=3.3.22"
-      }
-    ],
-    "globalDependencies": [
-      {
-        "admin": ">=5.1.13"
-      }
-    ]
-  },
-  "native": {},
-  "i18n": true,
-  "encryptedNative": [
-    "apiKey"
-  ],
-  "protectedNative": [
-    "apiKey"
-  ],
-  "objects": [],
-  "instanceObjects": []
+    "objects": [],
+    "instanceObjects": []
 }

@@ -4,16 +4,10 @@ import crypto from "crypto";
 const API_BASE_URL = "https://www.soliscloud.com:13333";
 
 export async function getStationDetails(
-	this: any,
-	stationId: string,
-	apiKey: string,
-	apiSecret: string,
-	apiLogger: any,
-	Sentry: any,
-	errorReports: boolean
+	adapter: any
 ): Promise<any> {
 	const map = {
-		id: stationId,
+		id: adapter.config.stationId,
 	};
 	const body = JSON.stringify(map);
 	const ContentMd5 = getDigest(body);
@@ -28,9 +22,11 @@ export async function getStationDetails(
 		currentDate +
 		"\n" +
 		"/v1/api/stationDetail";
-	const sign = HmacSHA1Encrypt(param, apiSecret);
+	const sign = HmacSHA1Encrypt(param, adapter.config.apiSecret);
 	const url = API_BASE_URL + "/v1/api/stationDetail";
-	apiLogger.debug(`Stationdetails URL: ${url}`);
+	if (adapter.config.debugLogging) {
+		adapter.log.debug(`Stationdetails URL: ${url}`);
+	}
 	try {
 		const requestBody = JSON.stringify(map);
 		const response = await axios({
@@ -38,14 +34,16 @@ export async function getStationDetails(
 			url: url,
 			headers: {
 				"Content-type": "application/json;charset=UTF-8",
-				Authorization: `API ${apiKey}:${sign}`,
+				Authorization: `API ${adapter.config.apiKey}:${sign}`,
 				"Content-MD5": ContentMd5,
 				Date: currentDate,
 			},
 			data: requestBody,
 			timeout: 5000,
 		});
-		//apiLogger.debug(`API response (Station) was:` + JSON.stringify(response.data.data));
+		if (adapter.config.debugLogging) {
+			adapter.log.debug(`API response (Station) was:` + JSON.stringify(response.data.data));
+		}
 		return {
 			current_power: response.data.data.power,
 			current_consumption: response.data.data.familyLoadPower,
@@ -71,26 +69,17 @@ export async function getStationDetails(
 			battery_year_discharge_energy_units: response.data.data.batteryDischargeYearEnergyStr,
 		};
 	} catch (error) {
-		apiLogger.error(error);
-		if (errorReports) {
-			Sentry.captureException(error);
-		}
+		adapter.logErrorWithSentry(adapter, error, "getStationDetails");
 	}
 }
 
 export async function getInverterList(
-	this: any,
-	stationId: string,
-	apiKey: string,
-	apiSecret: string,
-	apiLogger: any,
-	Sentry: any,
-	errorReports: boolean
+	adapter: any
 ): Promise<any> {
 	const map = {
 		pageNo: 1,
 		pageSize: 20,
-		stationId: stationId
+		stationId: adapter.config.plantId,
 	};
 	const body = JSON.stringify(map);
 	const ContentMd5 = getDigest(body);
@@ -105,9 +94,11 @@ export async function getInverterList(
 		currentDate +
 		"\n" +
 		"/v1/api/inverterList";
-	const sign = HmacSHA1Encrypt(param, apiSecret);
+	const sign = HmacSHA1Encrypt(param, adapter.config.apiSecret);
 	const url = API_BASE_URL + "/v1/api/inverterList";
-	apiLogger.debug(`Inverterlist URL: ${url}`);
+	if (adapter.config.debugLogging) {
+		adapter.log.debug(`Inverterlist URL: ${url}`);
+	}
 	try {
 		const requestBody = JSON.stringify(map);
 		const response = await axios({
@@ -115,14 +106,16 @@ export async function getInverterList(
 			url: url,
 			headers: {
 				"Content-type": "application/json;charset=UTF-8",
-				Authorization: `API ${apiKey}:${sign}`,
+				Authorization: `API ${adapter.config.apiKey}:${sign}`,
 				"Content-MD5": ContentMd5,
 				Date: currentDate,
 			},
 			data: requestBody,
 			timeout: 5000,
 		});
-		//apiLogger.debug(`API response (InverterList) was:` + JSON.stringify(response.data.data.page.records[0]));
+		if (adapter.config.debugLogging) {
+			adapter.log.debug(`API response (InverterList) was:` + JSON.stringify(response.data.data.page.records[0]));
+		}
 		return {
 			inverter_state: response.data.data.page.records[0].state,
 			etoday: response.data.data.page.records[0].etoday,
@@ -130,24 +123,15 @@ export async function getInverterList(
 			inverter_serial_number: response.data.data.page.records[0].sn,
 		};
 	} catch (e) {
-		apiLogger.error(e);
-		if (errorReports) {
-			Sentry.captureException(e);
-		}
+		adapter.logErrorWithSentry(adapter, e, "getInverterList");
 	}
 }
 
 export async function getInverterDetails(
-	this: any,
-	inverterId: string,
-	apiKey: string,
-	apiSecret: string,
-	apiLogger: any,
-	Sentry: any,
-	errorReports: boolean
+	adapter: any
 ): Promise<any> {
 	const map = {
-		id: inverterId
+		id: adapter.config.plantId
 	};
 	const body = JSON.stringify(map);
 	const ContentMd5 = getDigest(body);
@@ -162,9 +146,11 @@ export async function getInverterDetails(
 		currentDate +
 		"\n" +
 		"/v1/api/inverterDetail";
-	const sign = HmacSHA1Encrypt(param, apiSecret);
+	const sign = HmacSHA1Encrypt(param, adapter.config.apiSecret);
 	const url = API_BASE_URL + "/v1/api/inverterDetail";
-	apiLogger.debug(`Inverterdetails URL: ${url}`);
+	//if (adapter.config.debugLogging) {
+	adapter.log.debug(`Inverterdetails URL: ${url}`);
+	//}
 	try {
 		const requestBody = JSON.stringify(map);
 		const response = await axios({
@@ -172,14 +158,16 @@ export async function getInverterDetails(
 			url: url,
 			headers: {
 				"Content-type": "application/json;charset=UTF-8",
-				Authorization: `API ${apiKey}:${sign}`,
+				Authorization: `API ${adapter.config.apiKey}:${sign}`,
 				"Content-MD5": ContentMd5,
 				Date: currentDate,
 			},
 			data: requestBody,
 			timeout: 5000,
 		});
-		//apiLogger.debug(`API response (Inverterdetail) was:` + JSON.stringify(response.data));
+		if (adapter.config.debugLogging) {
+			adapter.log.debug(`API response (Inverterdetail) was:` + JSON.stringify(response.data));
+		}
 		return {
 			ac_current_R: response.data.data.iAc1,
 			ac_current_S: response.data.data.iAc2,
@@ -203,27 +191,17 @@ export async function getInverterDetails(
 			battery_total_discharge_energy_units: response.data.data.batteryTotalDischargeEnergyStr,
 		};
 	} catch (e) {
-		apiLogger.error(e);
-		if (errorReports) {
-			Sentry.captureException(e);
-		}
+		adapter.logErrorWithSentry(adapter, e, "getInverterDetails");
 	}
 }
 
 export async function getEpmDetails(
-	this: any,
-	stationId: string,
-	apiKey: string,
-	apiSecret: string,
-	apiLogger: any,
-	debugLogging: boolean,
-	Sentry: any,
-	errorReports: boolean
+	adapter: any
 ): Promise<any> {
 	const map = {
 		pageNo: 1,
 		pageSize: 20,
-		stationId
+		id: adapter.config.plantId
 	};
 	const body = JSON.stringify(map);
 	const ContentMd5 = getDigest(body);
@@ -238,9 +216,11 @@ export async function getEpmDetails(
 		currentDate +
 		"\n" +
 		"/v1/api/epmList";
-	const sign = HmacSHA1Encrypt(param, apiSecret);
+	const sign = HmacSHA1Encrypt(param, adapter.config.apiSecret);
 	const url = API_BASE_URL + "/v1/api/epmList";
-	apiLogger.debug(`EPMlist URL: ${url}`);
+	if (adapter.condfig.debugLogging) {
+		adapter.log.debug(`EPMlist URL: ${url}`);
+	}
 	try {
 		const requestBody = JSON.stringify(map);
 		const response = await axios({
@@ -248,23 +228,20 @@ export async function getEpmDetails(
 			url: url,
 			headers: {
 				"Content-type": "application/json;charset=UTF-8",
-				Authorization: `API ${apiKey}:${sign}`,
+				Authorization: `API ${adapter.config.apiKey}:${sign}`,
 				"Content-MD5": ContentMd5,
 				Date: currentDate,
 			},
 			data: requestBody,
 			timeout: 5000,
 		});
-		if (debugLogging) {
-			apiLogger.info(`API response (EPM detail) was:` + JSON.stringify(response.data));
+		if (adapter.config.debugLogging) {
+			adapter.log.debug(`API response (EPM detail) was:` + JSON.stringify(response.data));
 		}
 		return {
 		};
 	} catch (e) {
-		apiLogger.error(e);
-		if (errorReports) {
-			Sentry.captureException(e);
-		}
+		adapter.logErrorWithSentry(adapter, e, "getEpmDetails");
 	}
 }
 
@@ -302,6 +279,7 @@ export function getGMTTime(): string {
 }
 
 export function getDigest(test: string): string {
+	// deepcode ignore InsecureHash: Solis API needs MD5 hash, no option to update at this time.
 	const md5 = crypto.createHash("md5");
 	md5.update(test);
 	return md5.digest("base64");
