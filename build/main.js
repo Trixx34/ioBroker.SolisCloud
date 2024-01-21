@@ -122,7 +122,6 @@ class soliscloud extends utils.Adapter {
     } catch (e) {
       this.logErrorWithSentry(this, e, "getStationDetails");
     }
-    this.logErrorWithSentry(this, "This is the erorr", "pollSolis()");
     try {
       const inverterDetailResult = await (0, import_apiHelper.getInverterList)(
         this

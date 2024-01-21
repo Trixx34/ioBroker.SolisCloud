@@ -1,10 +1,23 @@
 {
   "common": {
     "name": "soliscloud",
-    "version": "1.4.0",
+    "version": "1.4.1",
     "connectionType": "cloud",
     "dataSource": "poll",
     "news": {
+      "1.4.1": {
+        "en": "Removed test code that logged (lots of) errors.",
+        "de": "Entzogener Testcode, der protokollierte (Zahlen) Fehler.",
+        "ru": "Удаленный тестовый код, который зарегистрировал (многие) ошибки.",
+        "pt": "Código de teste removido que logou (muitos) erros.",
+        "nl": "Verwijderde testcode die aangemeld (veel) fouten.",
+        "fr": "Supprimé le code de test qui a enregistré des erreurs (lots de).",
+        "it": "Rimuoveto codice di prova che ha registrato (molti di) errori.",
+        "es": "Código de prueba eliminado que se registró (muchos de) errores.",
+        "pl": "Usunięto kod testowy, który zalogował się (wiele) błędów.",
+        "uk": "Вилучено тестовий код, який записав (відгуки) помилки.",
+        "zh-cn": "已删除已登录( 很多) 错误的测试代码 ."
+      },
       "1.4.0": {
         "en": "Switched to ioBrokers sentry plugin instead of own implementation.\nRemoved setting for own implementation of Sentry.\nAll informational logging can now be turned off in settings.",
         "de": "Umgestellt auf ioBrokers sende Plugin anstelle der eigenen Implementierung.\nEntfernte Einstellung zur eigenen Umsetzung von Sentry.\nAlle Informationsprotokolle können nun in Einstellungen abgeschaltet werden.",
@@ -82,19 +95,6 @@
         "pl": "Plant_state nie został poprawnie wykonany",
         "uk": "Завод_держава не оброблена правильно",
         "zh-cn": "计划:国家被正确处理"
-      },
-      "1.3.0": {
-        "en": "Added more values",
-        "de": "Weitere Werte",
-        "ru": "Добавлено больше значений",
-        "pt": "Adicionado mais valores",
-        "nl": "Vermeldde meer waarden",
-        "fr": "Ajout de plus de valeurs",
-        "it": "Aggiunto più valori",
-        "es": "Añadido más valores",
-        "pl": "Dodać więcej wartości",
-        "uk": "Додати більше значень",
-        "zh-cn": "增加价值"
       }
     },
     "titleLang": {
