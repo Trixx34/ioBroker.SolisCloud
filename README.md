@@ -39,6 +39,11 @@ I'm not a professional developer. Use at your own risk.
 [![Buy Me a Coffee](https://www.buymeacoffee.com/assets/img/guidelines/download-assets-sm-2.svg)](https://www.buymeacoffee.com/trixxdev)
 
 ## Changelog
+
+### **WORK IN PROGRESS**
+
+- Adjustment in logging.
+
 ### 1.4.1 (2024-01-21)
 
 - Removed test code that logged (lots of) errors.
