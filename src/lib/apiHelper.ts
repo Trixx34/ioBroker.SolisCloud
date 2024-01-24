@@ -39,35 +39,39 @@ export async function getStationDetails(
 				Date: currentDate,
 			},
 			data: requestBody,
-			timeout: 5000,
+			timeout: 7000,
 		});
 		if (adapter.config.debugLogging) {
 			adapter.log.debug(`API response (Station) was:` + JSON.stringify(response.data));
 		}
-		return {
-			current_power: response.data.data.power,
-			current_consumption: response.data.data.familyLoadPower,
-			current_from_net: response.data.data.psum,
-			sold_today: response.data.data.gridSellDayEnergy,
-			generated_today: response.data.data.dayEnergy,
-			bought_today: response.data.data.gridPurchasedDayEnergy,
-			consumption_today: response.data.data.homeLoadEnergy,
-			battery_percent: response.data.data.batteryPercent,
-			battery_current_usage: response.data.data.batteryPower,
-			battery_today_charge: response.data.data.batteryChargeEnergy,
-			battery_today_discharge: response.data.data.batteryDischargeEnergy,
-			total_consumption_energy: response.data.data.homeLoadEnergy,
-			self_consumption_energy: response.data.data.oneSelf,
-			plant_state: response.data.data.state,
-			battery_month_charge_energy: response.data.data.batteryChargeMonthEnergy,
-			battery_month_charge_energy_units: response.data.data.batteryChargeMonthEnergyStr,
-			battery_year_charge_energy: response.data.data.batteryChargeYearEnergy,
-			battery_year_charge_energy_units: response.data.data.batteryChargeYearEnergyStr,
-			battery_month_discharge_energy: response.data.data.batteryDischargeMonthEnergy,
-			battery_month_discharge_energy_units: response.data.data.batteryDischargeMonthEnergyStr,
-			battery_year_discharge_energy: response.data.data.batteryDischargeYearEnergy,
-			battery_year_discharge_energy_units: response.data.data.batteryDischargeYearEnergyStr,
-		};
+		if (response.data.data) {
+			return {
+				current_power: response.data.data.power,
+				current_consumption: response.data.data.familyLoadPower,
+				current_from_net: response.data.data.psum,
+				sold_today: response.data.data.gridSellDayEnergy,
+				generated_today: response.data.data.dayEnergy,
+				bought_today: response.data.data.gridPurchasedDayEnergy,
+				consumption_today: response.data.data.homeLoadEnergy,
+				battery_percent: response.data.data.batteryPercent,
+				battery_current_usage: response.data.data.batteryPower,
+				battery_today_charge: response.data.data.batteryChargeEnergy,
+				battery_today_discharge: response.data.data.batteryDischargeEnergy,
+				total_consumption_energy: response.data.data.homeLoadEnergy,
+				self_consumption_energy: response.data.data.oneSelf,
+				plant_state: response.data.data.state,
+				battery_month_charge_energy: response.data.data.batteryChargeMonthEnergy,
+				battery_month_charge_energy_units: response.data.data.batteryChargeMonthEnergyStr,
+				battery_year_charge_energy: response.data.data.batteryChargeYearEnergy,
+				battery_year_charge_energy_units: response.data.data.batteryChargeYearEnergyStr,
+				battery_month_discharge_energy: response.data.data.batteryDischargeMonthEnergy,
+				battery_month_discharge_energy_units: response.data.data.batteryDischargeMonthEnergyStr,
+				battery_year_discharge_energy: response.data.data.batteryDischargeYearEnergy,
+				battery_year_discharge_energy_units: response.data.data.batteryDischargeYearEnergyStr,
+			};
+		} else {
+			adapter.log.error("GetStationDetails: could not parse result. Turn on debug logging for more info");
+		}
 	} catch (error) {
 		adapter.logErrorWithSentry(adapter, error, "getStationDetails");
 	}
@@ -111,17 +115,21 @@ export async function getInverterList(
 				Date: currentDate,
 			},
 			data: requestBody,
-			timeout: 5000,
+			timeout: 7000,
 		});
 		if (adapter.config.debugLogging) {
 			adapter.log.debug(`API response (InverterList) was:` + JSON.stringify(response.data.data.page.records[0]));
 		}
-		return {
-			inverter_state: response.data.data.page.records[0].state,
-			etoday: response.data.data.page.records[0].etoday,
-			inverter_id: response.data.data.page.records[0].id,
-			inverter_serial_number: response.data.data.page.records[0].sn,
-		};
+		if (response.data.data) {
+			return {
+				inverter_state: response.data.data.page.records[0].state,
+				etoday: response.data.data.page.records[0].etoday,
+				inverter_id: response.data.data.page.records[0].id,
+				inverter_serial_number: response.data.data.page.records[0].sn,
+			};
+		} else {
+			adapter.log.error("GetInverterDetails: could not parse result. Turn on debug logging for more info");
+		}
 	} catch (e) {
 		adapter.logErrorWithSentry(adapter, e, "getInverterList");
 	}
@@ -164,7 +172,7 @@ export async function getInverterDetails(
 				Date: currentDate,
 			},
 			data: requestBody,
-			timeout: 5000,
+			timeout: 7000,
 		});
 		if (adapter.config.debugLogging) {
 			adapter.log.debug(`API response (Inverterdetail) was:` + JSON.stringify(response.data.data));
@@ -192,6 +200,8 @@ export async function getInverterDetails(
 				battery_total_discharge_energy: response.data.data.batteryTotalDischargeEnergy,
 				battery_total_discharge_energy_units: response.data.data.batteryTotalDischargeEnergyStr,
 			};
+		} else {
+			adapter.log.error("GetInverterDetails: could not parse result. Turn on debug logging for more info");
 		}
 	} catch (e) {
 		adapter.logErrorWithSentry(adapter, e, "getInverterDetails");
@@ -236,7 +246,7 @@ export async function getEpmDetails(
 				Date: currentDate,
 			},
 			data: requestBody,
-			timeout: 5000,
+			timeout: 7000,
 		});
 		if (adapter.config.debugLogging) {
 			adapter.log.debug(`API response (EPM detail) was:` + JSON.stringify(response.data));
