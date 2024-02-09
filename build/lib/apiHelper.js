@@ -25,6 +25,7 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 var apiHelper_exports = {};
 __export(apiHelper_exports, {
   HmacSHA1Encrypt: () => HmacSHA1Encrypt,
+  createSentryInstance: () => createSentryInstance,
   getDigest: () => getDigest,
   getEpmDetails: () => getEpmDetails,
   getGMTTime: () => getGMTTime,
@@ -36,7 +37,9 @@ module.exports = __toCommonJS(apiHelper_exports);
 var import_axios = __toESM(require("axios"));
 var import_crypto = __toESM(require("crypto"));
 const API_BASE_URL = "https://www.soliscloud.com:13333";
+const timeoutMs = 7e3;
 async function getStationDetails(adapter) {
+  var _a;
   const map = {
     id: adapter.config.plantId
   };
@@ -61,44 +64,46 @@ async function getStationDetails(adapter) {
         Date: currentDate
       },
       data: requestBody,
-      timeout: 7e3
+      timeout: timeoutMs
     });
     if (adapter.config.debugLogging) {
       adapter.log.debug(`API response (Station) was:` + JSON.stringify(response.data));
     }
-    if (response.data.data) {
+    if ((_a = response.data) == null ? void 0 : _a.data) {
+      const record = response.data.data;
       return {
-        current_power: response.data.data.power,
-        current_consumption: response.data.data.familyLoadPower,
-        current_from_net: response.data.data.psum,
-        sold_today: response.data.data.gridSellDayEnergy,
-        generated_today: response.data.data.dayEnergy,
-        bought_today: response.data.data.gridPurchasedDayEnergy,
-        consumption_today: response.data.data.homeLoadEnergy,
-        battery_percent: response.data.data.batteryPercent,
-        battery_current_usage: response.data.data.batteryPower,
-        battery_today_charge: response.data.data.batteryChargeEnergy,
-        battery_today_discharge: response.data.data.batteryDischargeEnergy,
-        total_consumption_energy: response.data.data.homeLoadEnergy,
-        self_consumption_energy: response.data.data.oneSelf,
-        plant_state: response.data.data.state,
-        battery_month_charge_energy: response.data.data.batteryChargeMonthEnergy,
-        battery_month_charge_energy_units: response.data.data.batteryChargeMonthEnergyStr,
-        battery_year_charge_energy: response.data.data.batteryChargeYearEnergy,
-        battery_year_charge_energy_units: response.data.data.batteryChargeYearEnergyStr,
-        battery_month_discharge_energy: response.data.data.batteryDischargeMonthEnergy,
-        battery_month_discharge_energy_units: response.data.data.batteryDischargeMonthEnergyStr,
-        battery_year_discharge_energy: response.data.data.batteryDischargeYearEnergy,
-        battery_year_discharge_energy_units: response.data.data.batteryDischargeYearEnergyStr
+        current_power: record.power,
+        current_consumption: record.familyLoadPower,
+        current_from_net: record.psum,
+        sold_today: record.gridSellDayEnergy,
+        generated_today: record.dayEnergy,
+        bought_today: record.gridPurchasedDayEnergy,
+        consumption_today: record.homeLoadEnergy,
+        battery_percent: record.batteryPercent,
+        battery_current_usage: record.batteryPower,
+        battery_today_charge: record.batteryChargeEnergy,
+        battery_today_discharge: record.batteryDischargeEnergy,
+        total_consumption_energy: record.homeLoadEnergy,
+        self_consumption_energy: record.oneSelf,
+        plant_state: record.state,
+        battery_month_charge_energy: record.batteryChargeMonthEnergy,
+        battery_month_charge_energy_units: record.batteryChargeMonthEnergyStr,
+        battery_year_charge_energy: record.batteryChargeYearEnergy,
+        battery_year_charge_energy_units: record.batteryChargeYearEnergyStr,
+        battery_month_discharge_energy: record.batteryDischargeMonthEnergy,
+        battery_month_discharge_energy_units: record.batteryDischargeMonthEnergyStr,
+        battery_year_discharge_energy: record.batteryDischargeYearEnergy,
+        battery_year_discharge_energy_units: record.batteryDischargeYearEnergyStr
       };
     } else {
       adapter.log.error("GetStationDetails: could not parse result. Turn on debug logging for more info");
     }
   } catch (error) {
-    adapter.logErrorWithSentry(adapter, error, "getStationDetails");
+    adapter.sentryInstance.getSentryObject().captureException(error);
   }
 }
 async function getInverterList(adapter) {
+  var _a, _b, _c;
   const map = {
     pageNo: 1,
     pageSize: 20,
@@ -114,7 +119,7 @@ async function getInverterList(adapter) {
     adapter.log.debug(`Inverterlist URL: ${url}`);
   }
   try {
-    const requestBody = JSON.stringify(map);
+    const requestBody = body;
     const response = await (0, import_axios.default)({
       method: "post",
       url,
@@ -125,26 +130,28 @@ async function getInverterList(adapter) {
         Date: currentDate
       },
       data: requestBody,
-      timeout: 7e3
+      timeout: timeoutMs
     });
     if (adapter.config.debugLogging) {
       adapter.log.debug(`API response (InverterList) was:` + JSON.stringify(response.data.data.page.records[0]));
     }
-    if (response.data.data) {
+    if ((_c = (_b = (_a = response.data) == null ? void 0 : _a.data) == null ? void 0 : _b.page) == null ? void 0 : _c.records[0]) {
+      const record = response.data.data.page.records[0];
       return {
-        inverter_state: response.data.data.page.records[0].state,
-        etoday: response.data.data.page.records[0].etoday,
-        inverter_id: response.data.data.page.records[0].id,
-        inverter_serial_number: response.data.data.page.records[0].sn
+        inverter_state: record.state,
+        etoday: record.etoday,
+        inverter_id: record.id,
+        inverter_serial_number: record.sn
       };
     } else {
       adapter.log.error("GetInverterDetails: could not parse result. Turn on debug logging for more info");
     }
   } catch (e) {
-    adapter.logErrorWithSentry(adapter, e, "getInverterList");
+    adapter.sentryInstance.getSentryObject().captureException(e);
   }
 }
 async function getInverterDetails(adapter, inverterId) {
+  var _a;
   const map = {
     id: inverterId
   };
@@ -169,39 +176,40 @@ async function getInverterDetails(adapter, inverterId) {
         Date: currentDate
       },
       data: requestBody,
-      timeout: 7e3
+      timeout: timeoutMs
     });
     if (adapter.config.debugLogging) {
       adapter.log.debug(`API response (Inverterdetail) was:` + JSON.stringify(response.data.data));
     }
-    if (response.data.data) {
+    if ((_a = response.data) == null ? void 0 : _a.data) {
+      const record = response.data.data;
       return {
-        ac_current_R: response.data.data.iAc1,
-        ac_current_S: response.data.data.iAc2,
-        ac_current_T: response.data.data.iAc3,
-        ac_voltage_R: response.data.data.uAc1,
-        ac_voltage_S: response.data.data.uAc2,
-        ac_voltage_T: response.data.data.uAc3,
-        family_load_power_units: response.data.data.familyLoadPowerStr,
-        family_load_power: response.data.data.familyLoadPower,
-        temperature: response.data.data.inverterTemperature,
-        battery_power: response.data.data.batteryPower,
-        battery_power_units: response.data.data.batterypowerStr,
-        battery_power_percentage: response.data.data.batteryPowerPec,
-        battery_today_charge_energy: response.data.data.batteryTodayChargeEnergy,
-        battery_today_charge_energy_units: response.data.data.batteryTodayChargeEnergyStr,
-        battery_total_charge_energy: response.data.data.batteryTotalChargeEnergy,
-        battery_total_charge_energy_units: response.data.data.batteryTotalChargeEnergyStr,
-        battery_today_discharge_energy: response.data.data.batteryTodayDischargeEnergy,
-        battery_today_discharge_energy_units: response.data.data.batteryTodayDischargeEnergyStr,
-        battery_total_discharge_energy: response.data.data.batteryTotalDischargeEnergy,
-        battery_total_discharge_energy_units: response.data.data.batteryTotalDischargeEnergyStr
+        ac_current_R: record.iAc1,
+        ac_current_S: record.iAc2,
+        ac_current_T: record.iAc3,
+        ac_voltage_R: record.uAc1,
+        ac_voltage_S: record.uAc2,
+        ac_voltage_T: record.uAc3,
+        family_load_power_units: record.familyLoadPowerStr,
+        family_load_power: record.familyLoadPower,
+        temperature: record.inverterTemperature,
+        battery_power: record.batteryPower,
+        battery_power_units: record.batterypowerStr,
+        battery_power_percentage: record.batteryPowerPec,
+        battery_today_charge_energy: record.batteryTodayChargeEnergy,
+        battery_today_charge_energy_units: record.batteryTodayChargeEnergyStr,
+        battery_total_charge_energy: record.batteryTotalChargeEnergy,
+        battery_total_charge_energy_units: record.batteryTotalChargeEnergyStr,
+        battery_today_discharge_energy: record.batteryTodayDischargeEnergy,
+        battery_today_discharge_energy_units: record.batteryTodayDischargeEnergyStr,
+        battery_total_discharge_energy: record.batteryTotalDischargeEnergy,
+        battery_total_discharge_energy_units: record.batteryTotalDischargeEnergyStr
       };
     } else {
       adapter.log.error("GetInverterDetails: could not parse result. Turn on debug logging for more info");
     }
   } catch (e) {
-    adapter.logErrorWithSentry(adapter, e, "getInverterDetails");
+    adapter.sentryInstance.getSentryObject().captureException(e);
   }
 }
 async function getEpmDetails(adapter) {
@@ -231,14 +239,14 @@ async function getEpmDetails(adapter) {
         Date: currentDate
       },
       data: requestBody,
-      timeout: 7e3
+      timeout: timeoutMs
     });
     if (adapter.config.debugLogging) {
       adapter.log.debug(`API response (EPM detail) was:` + JSON.stringify(response.data));
     }
     return {};
   } catch (e) {
-    adapter.logErrorWithSentry(adapter, e, "getEpmDetails");
+    adapter.sentryInstance.getSentryObject().captureException(e);
   }
 }
 function HmacSHA1Encrypt(encryptText, keySecret) {
@@ -272,9 +280,16 @@ function getDigest(test) {
   md5.update(test);
   return md5.digest("base64");
 }
+function createSentryInstance(adapter) {
+  if (adapter.supportsFeature && adapter.supportsFeature("PLUGINS")) {
+    const sentryInstance = adapter.getPluginInstance("sentry");
+    return sentryInstance;
+  }
+}
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   HmacSHA1Encrypt,
+  createSentryInstance,
   getDigest,
   getEpmDetails,
   getGMTTime,
