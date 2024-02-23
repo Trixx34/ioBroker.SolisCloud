@@ -13,7 +13,7 @@
   "help_plantId": "Found in URL when logged into soliscloud. soliscloud.com/#/station/stationdetail_1?id=123486816843454864",
   "help_pollInterval": "Min value=45 seconds, max value=1800 seconds.",
   "errValplantId": "Invalid characters found in plantId, only numerical values are allowed.",
-  "help_epm": "Is EPM available for the installation ? If unsure, leave this disabled.",
+  "help_epm": "Is EPM available for the installation ? If unsure, leave this disabled. (Not implemented yet)",
   "label_epm": "EPM available",
   "label_debug": "Enable debug logging ?",
   "help_debug": "Send debug logging"

@@ -4,6 +4,7 @@ import { createObjects } from "./lib/createObjects";
 
 class soliscloud extends utils.Adapter {
 	private intervalId: any;
+	private sentryInstance: any = this.getSentryInstance();
 	public constructor(options: Partial<utils.AdapterOptions> = {}) {
 		super({
 			...options,
@@ -15,7 +16,7 @@ class soliscloud extends utils.Adapter {
 
 	private async onReady(): Promise<void> {
 		this.log.info("Starting soliscloud adapter");
-
+		this.log.info(`Debuglogging is ${this.config.debugLogging}`);
 		if (this.config.plantId != null) {
 			this.config.plantId = this.name2id(this.config.plantId);
 			createObjects(this);
@@ -57,7 +58,9 @@ class soliscloud extends utils.Adapter {
 			const callResult = await getStationDetails(
 				this
 			);
-
+			if (this.config.debugLogging) {
+				this.log.debug("getStationDetails callResult" + JSON.stringify(callResult));
+			}
 			if (callResult) {
 				if (this.config.debugLogging) {
 					this.log.debug("Received result from API call, current consumption should be: " + callResult.current_consumption);
@@ -75,7 +78,9 @@ class soliscloud extends utils.Adapter {
 						break;
 					default:
 						this.log.error(`Received an incorrect plant status from the API Call, this should NOT happen.`);
-						this.logErrorWithSentry(this, callResult.plant_state, "incorrectPlantState");
+						if (this.sentryInstance) {
+							this.sentryInstance.getSentryObject().captureException(callResult.plant_state);
+						}
 						break;
 				}
 				if (this.config.debugLogging) {
@@ -113,11 +118,11 @@ class soliscloud extends utils.Adapter {
 						{ val: callResult[property], ack: true }
 					);
 				}
-			} else {
-				this.logErrorWithSentry(this, callResult, "stationCallResult");
+			} else if (this.sentryInstance) {
+				this.sentryInstance.getSentryObject().captureException(callResult);
 			}
 		} catch (e) {
-			this.logErrorWithSentry(this, e, "getStationDetails");
+			this.sentryInstance.getSentryObject().captureException(e);
 		}
 		try {
 			const inverterDetailResult = await getInverterList(
@@ -165,7 +170,9 @@ class soliscloud extends utils.Adapter {
 			}
 		} catch (e) {
 			this.log.error(`error while calling API (Inverter): ${e}`);
-			this.logErrorWithSentry(this, e, "getInverterList");
+			if (this.sentryInstance) {
+				this.sentryInstance.getSentryObject().captureException(e);
+			}
 		}
 
 		try {
@@ -207,12 +214,18 @@ class soliscloud extends utils.Adapter {
 				}
 			});
 		} catch (e) {
-			this.logErrorWithSentry(this, e, "getStateInverterDetails");
+			this.sentryInstance.getSentryObject().captureException(e);
 		}
 
 		if (this.config.epm) {
 			this.log.info("EPM is enabled, making API call");
 			getEpmDetails(this);
+		}
+	}
+
+	private getSentryInstance(): any {
+		if (this.supportsFeature && this.supportsFeature("PLUGINS")) {
+			return this.getPluginInstance("sentry");
 		}
 	}
 
@@ -222,26 +235,10 @@ class soliscloud extends utils.Adapter {
 			this.clearInterval(this.intervalId);
 			callback();
 		} catch (e) {
-			this.logErrorWithSentry(this, e, "onUnload");
+			this.sentryInstance.getSentryObject().captureException(e);
 			callback();
 		}
 	}
-
-	private logErrorWithSentry(adapter: any, error: any, functionName: string): void {
-		adapter.log.error(error);
-		if (adapter.supportsFeature && adapter.supportsFeature("PLUGINS")) {
-			const sentryInstance = adapter.getPluginInstance("sentry");
-			if (sentryInstance) {
-				adapter.log.error(functionName);
-				sentryInstance.getSentryObject().captureException(error, {
-					extra: {
-						"functionName": functionName,
-					}
-				});
-			}
-		}
-	}
-
 }
 
 if (require.main !== module) {

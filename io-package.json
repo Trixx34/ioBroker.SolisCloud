@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "soliscloud",
-    "version": "1.4.2",
+    "version": "1.4.3",
     "connectionType": "cloud",
     "dataSource": "poll",
     "news": {
@@ -129,10 +129,7 @@
         "email": "trixxdev034@gmail.com"
       }
     ],
-    "keywords": [
-      "Solis",
-      "soliscloud"
-    ],
+    "keywords": ["Solis", "soliscloud"],
     "license": "MIT",
     "platform": "Javascript/Node.js",
     "main": "build/main.js",
@@ -166,12 +163,8 @@
   },
   "native": {},
   "i18n": true,
-  "encryptedNative": [
-    "apiKey"
-  ],
-  "protectedNative": [
-    "apiKey"
-  ],
+  "encryptedNative": ["apiKey"],
+  "protectedNative": ["apiKey"],
   "objects": [],
   "instanceObjects": []
 }
