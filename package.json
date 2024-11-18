@@ -19,7 +19,7 @@
     "url": "https://github.com/Trixx34/ioBroker.soliscloud.git"
   },
   "engines": {
-    "node": ">= 16"
+    "node": ">= 18"
   },
   "dependencies": {
     "@alcalzone/release-script-plugin-iobroker": "^3.7.0",
