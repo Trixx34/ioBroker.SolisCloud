@@ -26,7 +26,7 @@ This adapter will read multiple values available from the soliscloud API and sto
 To request additional values, you can either:
 
 - Comment on the ioBroker forums here: https://forum.iobroker.net/topic/69026/new-adapter-soliscloud/37
-- Email me on trixdev034@gmail.com
+- Email me on trixxdev034@gmail.com
 - create an issue on github
 
 The API returns other values that can be added, but at the moment these are sufficient for my needs.
