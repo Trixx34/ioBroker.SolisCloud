@@ -27,7 +27,7 @@
     "@alcalzone/release-script-plugin-manual-review": "^3.7.0",
     "@iobroker/adapter-core": "^3.1.6",
     "@sentry/node": "^7.105.0",
-    "rimraf": "^5.0.5"
+    "rimraf": "^6.0.1"
   },
   "devDependencies": {
     "@alcalzone/release-script": "^3.6.0",
